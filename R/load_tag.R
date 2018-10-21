@@ -1,6 +1,7 @@
 #' load a single sat tag
 #'
 #' given a tag directory from a portal download instantiate, populate, and return a \code{\link[sattagutils]{sattag-class}} S4 object.
+#' @family tag stream loaders
 #' @param tag_dir a path to a tag directory containg csv data streams downloaded from the portal.
 #' @param streams a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.
 #' @return a \code{\link[sattagutils]{sattag-class}} S4 object.
@@ -15,15 +16,22 @@ load_tag <- function(tag_dir, streams = NA) {
 	STREAM_DELIM <- "-"	# assuming a standard wildlife computer download
 	
 	# need at least a valid tag diretory to proceed
-	if(!hasArg(tag_dir)) stop("I need a tag directory to look for streams...")
-	if(!file.exists(tag_dir)) stop(tag_dir, ": I don't think that tag directory exists...")
+	if(!hasArg(tag_dir)) stop("i need a tag directory to look for streams...")
+	if(!file.exists(tag_dir)) stop(tag_dir, ": i don't think that tag directory exists...")
+	
+	# reminder the user if they excluded summary they might loose some fields.
+	streams <- tolower(streams)
+	
+	if(!is.na(streams)) {
+		if(!("summary" %in% streams)) warning("you don't seem to want the summary stream. note that load_tag excepts *-Summary.csv to populate some of the slots of sattag")
+	}
 	
 	# grab all the file names and look for csv data streams
 	tfnames <- list.files(tag_dir)
 	iscsv <- grepl("*.csv$", tfnames)
 	
 	# throw an error if you didn't find any csvs
-	if(!any(iscsv)) stop(tag_dir, ": I didn't find any csv files in this directory...")
+	if(!any(iscsv)) stop(tag_dir, ": i didn't find any csv files in this directory...")
 	
 	# subset out the csvs
 	# and look for the stream name
@@ -37,11 +45,9 @@ load_tag <- function(tag_dir, streams = NA) {
 	stream_names <- sapply(strsplit(stream_names, "\\."), '[[', 1)
 	
 	# if streams is not NA then select just those streams
-	if(!is.na(streams)) {
-		streams <- tolower(streams)
-		
+	if(!is.na(streams)) {		
 		desestreams <- stream_names %in% streams
-		if(!any(desestreams)) stop(paste(streams, collapse = ", "), ": I could not find any of these streams...")
+		if(!any(desestreams)) stop(paste(streams, collapse = ", "), ": i could not find any of these streams...")
 		
 		# subsample both stream names and paths
 		csvfpaths <- csvfpaths[desestreams]
