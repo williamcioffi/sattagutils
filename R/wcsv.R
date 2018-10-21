@@ -7,7 +7,7 @@
 #' @details please don't use write_csv or any of that other nonesense, it breaks everyone's code...
 #' @export
 #' @examples
-#' # use it just like read.table but without the worry
+#' # use it just like write.table but without the worry
 #' x <- data.frame(x1 = rnorm(10), x2 = rnorm(10))
 #' wcsv(x, "file.csv")
 
