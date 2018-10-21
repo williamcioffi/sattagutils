@@ -61,7 +61,7 @@ date2num(d, tz = "UTC", format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 \item{tz, format}{as expected by \code{\link[base]{as.POSIXct}}.}
 }
 \description{
-convert character dates to numeric dates (seconds since UNIX epoch by default). see also \code{\link[sattagutils]{num2date}}
+convert character dates to numeric dates (seconds since UNIX epoch by default).
 }
 \details{
 methods are defined for converting objects of a class which extends \code{sattagstream}.
@@ -74,3 +74,9 @@ this methods may become defunct if wildlife updates their conventions and will h
 \examples{
 date2num("1988-03-12 07:00:00", tz = "UTC", format = "\%Y-\%m-\%d \%H:\%M:\%S")
 }
+\seealso{
+\code{\link[base]{as.POSIXct}}
+
+Other date manipulators: \code{\link{num2date}}
+}
+\concept{date manipulators}

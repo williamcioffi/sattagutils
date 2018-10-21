@@ -21,5 +21,6 @@ Collate:
     'sattag_init.R'
     'sattag_show.R'
     'sattagstream_show.R'
+    'sattagutils.R'
     'wcsv.R'
 RoxygenNote: 6.1.0.9000

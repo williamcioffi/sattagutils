@@ -1,6 +1,8 @@
 #' translate numeric dates back to \code{POSIX*}
 #'
-#' will convert a numeric vector (seconds since UNIX epoch) using \code{as.POSIXct}. opposite of \code{\link[sattagutils]{date2num}}. methods for \code{sattagstream} classes not implemeneted.
+#' will convert a numeric vector (seconds since UNIX epoch) using \code{as.POSIXct}. methods for \code{\link[sattagutils]{sattagstream-class}} classes not implemeneted.
+#' @family date manipulators
+#' @seealso \code{\link[base]{as.POSIXct}}
 #' @param d a numeric vector of dates.
 #' @param tz,origin as expected by \code{\link[base]{as.POSIXct}}.
 #' @export

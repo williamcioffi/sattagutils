@@ -1,6 +1,6 @@
 #' a tiny time matching function
 #'
-#' see \code{\link[base]{findInterval}}.
+#' @seealso \code{\link[base]{findInterval}}.
 #' @param t1,t2 numeric time vectors.
 #' @export
 #' @examples

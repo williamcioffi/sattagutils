@@ -4,7 +4,9 @@ NULL
 
 #' translate character dates to numeric dates
 #'
-#' convert character dates to numeric dates (seconds since UNIX epoch by default). see also \code{\link[sattagutils]{num2date}} 
+#' convert character dates to numeric dates (seconds since UNIX epoch by default).
+#' @family date manipulators
+#' @seealso \code{\link[base]{as.POSIXct}}
 #' @param d either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream-class}}.
 #' @param tz,format as expected by \code{\link[base]{as.POSIXct}}. 
 #' @details methods are defined for converting objects of a class which extends \code{sattagstream}.

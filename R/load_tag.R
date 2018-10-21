@@ -3,9 +3,12 @@
 #' given a tag directory from a portal download instantiate, populate, and return a \code{\link[sattagutils]{sattag-class}} S4 object.
 #' @param tag_dir a path to a tag directory containg csv data streams downloaded from the portal.
 #' @param streams a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.
+#' @return a \code{\link[sattagutils]{sattag-class}} S4 object.
 #' @export
 #' @examples
+#' \dontrun{
 #' tag1 <- load_tag("~/path/to/tags/tag1")
+#' }
 
 load_tag <- function(tag_dir, streams = NA) {
 	# constants

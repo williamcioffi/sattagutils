@@ -1,6 +1,6 @@
 #' sensible defaults for \code{read.table}
 #'
-#' see also \code{\link[sattagutils]{wcsv}.}
+#' @family sensible csv functions
 #' @param ... all the regular good stuff for finding files and whatnot.
 #' @param header i always want a header
 #' @param sep we're talking about comma seperated values here.
@@ -9,7 +9,9 @@
 #' @export
 #' @examples
 #' # use it just like read.table but without the worry
-#' # rcsv("file.csv")
+#' # \dontrun{
+#' rcsv("file.csv")
+#' }
 
 rcsv <- function(..., header = TRUE, sep = ',', stringsAsFactors = FALSE)  {
 	read.table(..., header = header, sep = sep, stringsAsFactors = stringsAsFactors)

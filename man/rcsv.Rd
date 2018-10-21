@@ -16,12 +16,18 @@ rcsv(..., header = TRUE, sep = ",", stringsAsFactors = FALSE)
 \item{stringsAsFactors}{default is FALSE. please don't change that. why would you change that?}
 }
 \description{
-see also \code{\link[sattagutils]{wcsv}.}
+sensible defaults for \code{read.table}
 }
 \details{
 please don't use read_csv or any of that other nonesense, it breaks everyone's code...
 }
 \examples{
 # use it just like read.table but without the worry
-# rcsv("file.csv")
+# \dontrun{
+rcsv("file.csv")
 }
+}
+\seealso{
+Other sensible csv functions: \code{\link{wcsv}}
+}
+\concept{sensible csv functions}

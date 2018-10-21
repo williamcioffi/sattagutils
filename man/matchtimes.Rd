@@ -10,11 +10,14 @@ matchtimes(t1, t2)
 \item{t1, t2}{numeric time vectors.}
 }
 \description{
-see \code{\link[base]{findInterval}}.
+a tiny time matching function
 }
 \examples{
 t1 <- c(10, 20, 30, 40)
 t2 <- c(9, 21, 36, 37)
 matchtimes(t1, t2)
 matchtimes(t2, t1)
+}
+\seealso{
+\code{\link[base]{findInterval}}.
 }

@@ -11,10 +11,10 @@ wcsv(..., sep = ",", row.names = FALSE)
 
 \item{sep}{we're talking about comma seperated values here.}
 
-\item{row.names}{defaults to false, because that's usually what i want. not when i'm printing a matrix or something though. but here for tables, yes this is what i want.}
+\item{row.names}{defaults to FALSE, because that's usually what i want. not when i'm printing a matrix or something though. but here for tables, yes this is what i want.}
 }
 \description{
-see also \code{\link[sattagutils]{rcsv}.}
+sensible defaults for \code{write.table}
 }
 \details{
 please don't use write_csv or any of that other nonesense, it breaks everyone's code...
@@ -24,3 +24,7 @@ please don't use write_csv or any of that other nonesense, it breaks everyone's 
 x <- data.frame(x1 = rnorm(10), x2 = rnorm(10))
 wcsv(x, "file.csv")
 }
+\seealso{
+Other sensible csv functions: \code{\link{rcsv}}
+}
+\concept{sensible csv functions}
