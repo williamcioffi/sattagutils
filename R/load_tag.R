@@ -72,9 +72,9 @@ load_tag <- function(tag_dir, streams = NA) {
 			rawsplit <- strsplit(rawlabels, ",") 
 			labels <- as.data.frame(do.call('rbind', rawsplit), stringsAsFactors = FALSE)
 			
-			outtag@instrument <- labels[2, 2]
-			outtag@location <- labels[3, 2]
-			outtag@species <- labels[4, 2]
+			outtag@instrument <- labels$V2[labels$V1 == "TagType"]
+			outtag@location <- labels$V2[labels$V1 == "Locality"]
+			outtag@species <- labels$V2[labels$V1 == "Species"]
 			
 			tmpstream <- labels
 		} else {
