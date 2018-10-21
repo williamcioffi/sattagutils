@@ -9,7 +9,7 @@
 #' @export
 #' @examples
 #' # use it just like read.table but without the worry
-#' # \dontrun{
+#' \dontrun{
 #' rcsv("file.csv")
 #' }
 

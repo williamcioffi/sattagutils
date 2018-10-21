@@ -23,7 +23,7 @@ please don't use read_csv or any of that other nonesense, it breaks everyone's c
 }
 \examples{
 # use it just like read.table but without the worry
-# \dontrun{
+\dontrun{
 rcsv("file.csv")
 }
 }
