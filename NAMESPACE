@@ -2,10 +2,12 @@
 
 export(date2num)
 export(dateseq)
+export(latlond.hav)
 export(load_tag)
 export(matchtimes)
 export(num2date)
 export(rcsv)
+export(torad)
 export(wcsv)
 exportClasses(sattag)
 exportClasses(sattagstream)
