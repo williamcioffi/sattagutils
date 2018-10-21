@@ -8,3 +8,18 @@ Depends: R (>= 3.5.1)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Collate: 
+    'sattagstream.R'
+    'sattagstream_extends.R'
+    'date2num.R'
+    'dateseq.R'
+    'load_tag.R'
+    'matchtimes.R'
+    'num2date.R'
+    'rcsv.R'
+    'sattag.R'
+    'sattag_init.R'
+    'sattag_show.R'
+    'sattagstream_show.R'
+    'wcsv.R'
+RoxygenNote: 6.1.0.9000
