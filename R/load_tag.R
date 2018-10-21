@@ -69,7 +69,7 @@ load_tag <- function(tag_dir, streams = NA) {
 			# also it is a tall table instead of a wide one like every other data stream. go figure.
 			# but I want this metadata so we'll have to parse it.
 			rawlabels <- readLines(path)
-			rawsplit <- strsplit(raw, ",") 
+			rawsplit <- strsplit(rawlabels, ",") 
 			labels <- as.data.frame(do.call('rbind', rawsplit), stringsAsFactors = FALSE)
 			
 			outtag@instrument <- labels[2, 2]
