@@ -16,7 +16,7 @@ load_tag <- function(tag_dir, streams = NA) {
 	
 	# need at least a valid tag diretory to proceed
 	if(!hasArg(tag_dir)) stop("I need a tag directory to look for streams...")
-	if(!file.exists(tagdir)) stop(tag_dir, ": I don't think that tag directory exists...")
+	if(!file.exists(tag_dir)) stop(tag_dir, ": I don't think that tag directory exists...")
 	
 	# grab all the file names and look for csv data streams
 	tfnames <- list.files(tag_dir)
