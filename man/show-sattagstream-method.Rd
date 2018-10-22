@@ -8,5 +8,5 @@
 \S4method{show}{sattagstream}(object)
 }
 \description{
-display an S4 object which extends \code{sattagstream}
+generic method for show.
 }
