@@ -96,11 +96,10 @@ load_tag <- function(tag_dir, streams = NA) {
 		
 				},	# end try block / start catch
 				error = function(err) {
-					message(paste0(csvfpaths[s], ": ", err))
-				}, finally = {
 					# remove the stream name from the list if it didn't work
 					stream_names <- stream_names[-s]
-				})
+					message(paste0(csvfpaths[s], ": ", err))
+				}, finally = {})
 #				warning = function(war) {
 #					message(paste0(csvfpaths[s], ": ", war))
 #				}, finally = {}) # end catch
