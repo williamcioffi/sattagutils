@@ -12,10 +12,10 @@ load_tag(tag_dir, streams = NA)
 \item{streams}{a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.}
 }
 \value{
-a \code{\link[sattagutils]{sattag-class}} S4 object.
+a \code{\link[sattagutils]{sattag}} S4 object.
 }
 \description{
-given a tag directory from a portal download instantiate, populate, and return a \code{\link[sattagutils]{sattag-class}} S4 object.
+given a tag directory from a portal download instantiate, populate, and return a \code{\link[sattagutils]{sattag}} S4 object.
 }
 \examples{
 \dontrun{

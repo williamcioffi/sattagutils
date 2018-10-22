@@ -3,10 +3,10 @@
 \docType{methods}
 \name{initialize,sattag-method}
 \alias{initialize,sattag-method}
-\title{initialize an S4 object of class \code{sattag}}
+\title{initialize an S4 object of class \code{\link[sattagutils]{sattag}}}
 \usage{
 \S4method{initialize}{sattag}(.Object, ...)
 }
 \description{
-initialize an S4 object of class \code{sattag}
+initialize an S4 object of class \code{\link[sattagutils]{sattag}}
 }

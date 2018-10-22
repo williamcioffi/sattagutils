@@ -3,10 +3,10 @@
 \docType{methods}
 \name{show,sattag-method}
 \alias{show,sattag-method}
-\title{display an S4 object of class \code{sattag}}
+\title{display an S4 object of class \code{\link[sattagutils]{sattag}}}
 \usage{
 \S4method{show}{sattag}(object)
 }
 \description{
-display an S4 object of class \code{sattag}
+display an S4 object of class \code{\link[sattagutils]{sattag}}
 }

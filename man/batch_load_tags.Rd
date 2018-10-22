@@ -14,7 +14,7 @@ batch_load_tags(data_dir, tags_dir = NA, streams = NA)
 \item{streams}{character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} is expected to populate some of the slots of \code{sattag}.}
 }
 \value{
-a list of \code{\link[sattagutils]{sattag-class}} S4 objects.
+a list of \code{\link[sattagutils]{sattag}} S4 objects.
 }
 \description{
 load sat tags from a directory containing directories downloaded from the portal

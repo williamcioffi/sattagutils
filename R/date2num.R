@@ -7,7 +7,7 @@ NULL
 #' convert character dates to numeric dates (seconds since UNIX epoch by default).
 #' @family date manipulators
 #' @seealso \code{\link[base]{as.POSIXct}}
-#' @param d either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream-class}}.
+#' @param d either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream}}.
 #' @param tz,format as expected by \code{\link[base]{as.POSIXct}}. 
 #' @details methods are defined for converting objects of a class which extends \code{sattagstream}.
 #' note that the date formats and column names are inconsistent in the data streams download from the portal. for example, note the odd capitalization patterns in \code{*-All.csv} (and ambiguous date format). method is not fully implemented for \code{stream_summary} because i've never seen the date format for \code{ReleaseDate} and \code{DeployDate}.

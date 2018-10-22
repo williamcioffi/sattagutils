@@ -56,7 +56,7 @@ date2num(d, tz = "UTC", format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 }
 \arguments{
-\item{d}{either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream-class}}.}
+\item{d}{either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream}}.}
 
 \item{tz, format}{as expected by \code{\link[base]{as.POSIXct}}.}
 }

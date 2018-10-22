@@ -5,7 +5,7 @@
 #' @param data_dir character points to a directory of sat tags
 #' @param tags_dir character vector of tag directory names to include or NA defaults to every directory in \code{data_dir}
 #' @param streams character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} is expected to populate some of the slots of \code{sattag}. 
-#' @return a list of \code{\link[sattagutils]{sattag-class}} S4 objects.
+#' @return a list of \code{\link[sattagutils]{sattag}} S4 objects.
 #' @export
 #' @examples
 #' \dontrun{

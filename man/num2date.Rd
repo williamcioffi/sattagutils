@@ -12,7 +12,7 @@ num2date(d, tz = "UTC", origin = "1970-01-01", ...)
 \item{tz, origin}{as expected by \code{\link[base]{as.POSIXct}}.}
 }
 \description{
-will convert a numeric vector (seconds since UNIX epoch) using \code{as.POSIXct}. methods for \code{\link[sattagutils]{sattagstream-class}} classes not implemeneted.
+will convert a numeric vector (seconds since UNIX epoch) using \code{as.POSIXct}. methods for \code{\link[sattagutils]{sattagstream}} classes not implemeneted.
 }
 \examples{
 num2date(574153200)
