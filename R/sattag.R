@@ -26,6 +26,7 @@ setClass("sattag",
 	directory = "character",
 	loadtime = "character",
 	nstreams = "numeric",
+	streamnames = "character",
 	streams = "list"
 	)
 )

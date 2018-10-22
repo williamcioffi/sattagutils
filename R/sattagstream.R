@@ -6,6 +6,7 @@
 
 setClass("sattagstream", 
 	slots = c(
+		streamname = "character",
 		filename = "character",
 		data = "data.frame"
 	)

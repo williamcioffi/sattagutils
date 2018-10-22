@@ -88,7 +88,7 @@ load_tag <- function(tag_dir, streams = NA) {
 		}
 		
 		# make a new stream object of the correct class
-		tmpdata <- new(paste0("stream_", stream_names[s]), filename = csvfnames[s], data = tmpstream)
+		tmpdata <- new(paste0("stream_", stream_names[s]), streamname = stream_names[s], filename = csvfnames[s], data = tmpstream)
 		# convert times to numeric appropraitely
 		tmpdata <- date2num(tmpdata)
 		# save to the list
@@ -97,7 +97,10 @@ load_tag <- function(tag_dir, streams = NA) {
 				},	# end try block / start catch
 				error = function(err) {
 					message(paste0(csvfpaths[s], ": ", err))
-				}, finally = {})
+				}, finally = {
+					# remove the stream name from the list if it didn't work
+					stream_names <- stream_names[-s]
+				})
 #				warning = function(war) {
 #					message(paste0(csvfpaths[s], ": ", war))
 #				}, finally = {}) # end catch
@@ -107,6 +110,7 @@ load_tag <- function(tag_dir, streams = NA) {
 	outtag@streams <- outdata
 	
 	outtag@nstreams <- length(outdata)
+	outtag@streamnames <- stream_names
 	outtag@DeployID <- outtag@streams$summary@data$DeployID[1]
 	outtag@Ptt <- as.character(outtag@streams$summary@data$Ptt[1])
 	outtag@earliestdata <- outtag@streams$summary@data$EarliestDataTime[1]
