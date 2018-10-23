@@ -23,7 +23,11 @@ load_tag <- function(tag_dir, streams = NA) {
 	streams <- tolower(streams)
 	
 	if(!is.na(streams)) {
-		if(!("summary" %in% streams)) warning("you don't seem to want the summary stream. note that load_tag excepts *-Summary.csv to populate some of the slots of sattag")
+		if(!("summary" %in% streams)) {
+			warning("you don't seem to want the summary stream. note that load_tag expects *-Summary.csv to populate some of the sattag metadata")
+		} else if(!("labels" %in% streams)) {
+			warning("you don't seem to want the labels stream. note that load_tag expects *-Labels.csv to populate some of the sattag metadata.")
+		}
 	}
 	
 	# grab all the file names and look for csv data streams
@@ -54,9 +58,18 @@ load_tag <- function(tag_dir, streams = NA) {
 		stream_names <- stream_names[desestreams]
 	}
 	
-	# create a tag object to hold output
-	outtag <- new("sattag")
+	# these are going to be the sattagstream
 	outdata <- list()
+	
+	# metadata for sattag
+	instrument 	<- character()
+	location 	<- character()
+	species 	<- character()
+	DeployID 	<- character()
+	Ptt 		<- character()
+	t_start 	<- numeric()
+	t_end 		<- numeric()
+	directory 	<- character()
 	
 	# loop through each stream
 	for(s in 1:length(csvfpaths)) {
@@ -78,22 +91,42 @@ load_tag <- function(tag_dir, streams = NA) {
 			rawsplit <- strsplit(rawlabels, ",") 
 			labels <- as.data.frame(do.call('rbind', rawsplit), stringsAsFactors = FALSE)
 			
-			outtag@instrument <- labels$V2[labels$V1 == "TagType"]
-			outtag@location <- labels$V2[labels$V1 == "Locality"]
-			outtag@species <- labels$V2[labels$V1 == "Species"]
+			# populate some metadata from labels if we haven't been here before
+			if(length(instrument) > 0 | length(location) > 0 | length(species)) {
+				warning("it appears there are multiple *-Labels.csv files in this directory. using the first one to populate meta data...")
+			} else {
+				instrument 	<- labels$V2[labels$V1 == "TagType"]
+				location 	<- labels$V2[labels$V1 == "Locality"]
+				species 	<- labels$V2[labels$V1 == "Species"]
+			}
 			
 			tmpstream <- labels
+		} else if(stream_names[s] == "summary") {
+			summarystream <- rcsv(path)
+			
+			# populate some metadata from summary if we haven't been here before
+			if(length(DeployID) > 0 | length(Ptt) > 0 | length(t_start) > 0 | length(t_end) > 0) {
+				warning("it appears there are multiple *-Summary.csv files in this directory. using the first one to populate meta data...")
+			} else {
+				DeployID 	<- summarystream$DeployID[1]
+				Ptt 		<- as.character(summarystream$Ptt[1])
+				t_start 	<- date2num(summarystream$EarliestDataTime[1])
+				t_end 		<- date2num(summarystream$LatestDataTime[1])
+			}
+			
+			tmpstream <- summarystream
+			
 		} else {
 			tmpstream <- rcsv(path)
 		}
 		
 		# make a new stream object of the correct class
-		tmpdata <- new(paste0("stream_", stream_names[s]), streamname = stream_names[s], filename = csvfnames[s], data = tmpstream)
+		tmpdata <- sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
 		# convert times to numeric appropraitely
 		tmpdata <- date2num(tmpdata)
+		
 		# save to the list
 		outdata[[s]] <- tmpdata
-		
 				},	# end try block / start catch
 				error = function(err) {
 					# remove the stream name from the list if it didn't work
@@ -106,15 +139,7 @@ load_tag <- function(tag_dir, streams = NA) {
 	}
 	
 	names(outdata) <- stream_names
-	outtag@streams <- outdata
-	
-	outtag@nstreams <- length(outdata)
-	outtag@streamnames <- stream_names
-	outtag@DeployID <- outtag@streams$summary@data$DeployID[1]
-	outtag@Ptt <- as.character(outtag@streams$summary@data$Ptt[1])
-	outtag@earliestdata <- outtag@streams$summary@data$EarliestDataTime[1]
-	outtag@latestdata <- outtag@streams$summary@data$LatestDataTime[1]
-	outtag@directory <- tag_dir
-	
-	outtag
+
+	# build a sattag object	
+	sattag(outdata, instrument = instrument, DeployID = DeployID, Ptt = Ptt, species = species, location = location, t_start = t_start, t_end = t_end, directory = directory)
 }

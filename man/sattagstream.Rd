@@ -8,7 +8,7 @@ sattagstream(type = character(), data = data.frame(),
   filename = character())
 }
 \arguments{
-\item{type}{character of stream type. currently permitted: \code{c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt")}.}
+\item{type}{character of stream type. subclasses exist for: c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt", "status", "summary"). anything else will become a generic sattagstream. if you want to add a stream type which requires special methods then you'll have to add it and write them. if you don't need the special methods the generic sattagstream will work fine.}
 
 \item{data}{this is a data frame from a wildlife computer portal downloaded csv data file.}
 
@@ -18,7 +18,7 @@ sattagstream(type = character(), data = data.frame(),
 an S4 object which extends \code{\link[sattagutils]{sattagstream-class}}
 }
 \description{
-\code{\link[sattagutils]{sattagstream-class}} should be considered an abstract class. use this constructor to assign the correct subclass (e.g., location, argos, beahvior, etc.).
+use this constructor to assign the correct subclass (e.g., location, argos, beahvior, etc.) to a new sattagstream object.
 }
 \details{
 i don't really expect you to use this function very often, but if you do want to make a stream by hand this is the perferred method. if you are importing streams from an exisiting tag you probably should be by using \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} to load a directory downloaded from the portal.

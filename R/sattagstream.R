@@ -15,8 +15,8 @@ setClass("sattagstream",
 
 #' constructor for sattagstreams
 #'
-#' \code{\link[sattagutils]{sattagstream-class}} should be considered an abstract class. use this constructor to assign the correct subclass (e.g., location, argos, beahvior, etc.).
-#' @param type character of stream type. currently permitted: \code{c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt")}.
+#' use this constructor to assign the correct subclass (e.g., location, argos, beahvior, etc.) to a new sattagstream object.
+#' @param type character of stream type. subclasses exist for: c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt", "status", "summary"). anything else will become a generic sattagstream. if you want to add a stream type which requires special methods then you'll have to add it and write them. if you don't need the special methods the generic sattagstream will work fine.
 #' @param data this is a data frame from a wildlife computer portal downloaded csv data file.
 #' @param filename the name of the file the data originally came from.
 #' @details i don't really expect you to use this function very often, but if you do want to make a stream by hand this is the perferred method. if you are importing streams from an exisiting tag you probably should be by using \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} to load a directory downloaded from the portal.
@@ -29,15 +29,18 @@ setClass("sattagstream",
 #' }
 
 sattagstream <- function(type = character(), data = data.frame(), filename = character()) {
-	legaltypes <- c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt")
+	subclassoptions <- c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt", "status", "summary")
 	
 	if(!hasArg(type)) stop("i need a type of stream to assign... if you don't want to assign a type to this stream than use new(\"sattagstream\", ...)...")
 	
 	type <- tolower(type)
-	if(!(type %in% legaltypes)) stop("that's not a type of stream that i know about...")
+	if(!(type %in% subclassoptions)) {
+		type <- "sattagstream"
+	} else {
+		type <- paste0("stream_", type)
+	}
 	
-	if(!hasArg(streamname)) streamname <- type
-	new(paste0("stream_", type), streamtype = type, data, filename = filename)
+	new(type, streamtype = type, data, filename = filename)
 }
 
 

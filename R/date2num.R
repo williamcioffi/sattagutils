@@ -27,34 +27,34 @@ setGeneric("date2num",
 
 #' @rdname date2num
 setMethod("date2num", "sattagstream", function(d, tz, format, ...) {
-	d@data$Date <- date2num(d@data$Date, tz = tz, format = format, ...)
+	d$Date <- date2num(d$Date, tz = tz, format = format, ...)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_all", function(d, tz, format = "%m/%d/%Y %H:%M:%S", ...) {
-	d@data$Loc..date <- date2num(d@data$Loc..date, tz = tz, format = format, ...)
-	d@data$Msg.Date  <- date2num(d@data$Msg.Date,  tz = tz, format = format, ...)
+	d$Loc..date <- date2num(d$Loc..date, tz = tz, format = format, ...)
+	d$Msg.Date  <- date2num(d$Msg.Date,  tz = tz, format = format, ...)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_behavior", function(d, tz, format, ...) {
-	d@data$Start <- date2num(d@data$Start, 	tz = tz, format = format, ...)
-	d@data$End <- 	date2num(d@data$End, 	tz = tz, format = format, ....)
+	d$Start <- date2num(d$Start, 	tz = tz, format = format, ...)
+	d$End <- 	date2num(d$End, 	tz = tz, format = format, ....)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_corrupt", function(d, tz, format, ...) {
-	d@data$Date <- date2num(d@data$Date, tz = tz, format = format, ...)
-	d@data$Possible.Timestamp <- date2num(d@data$Possible.Timestamp, tz = tz, format = format)
+	d$Date <- date2num(d$Date, tz = tz, format = format, ...)
+	d$Possible.Timestamp <- date2num(d$Possible.Timestamp, tz = tz, format = format)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_fastgps", function(d, tz, format, ...) {
-	d@data$Date <- date2num(paste(d@data$Time, d@data$Day), tz = tz, format = format, ...)
+	d$Date <- date2num(paste(d$Time, d$Day), tz = tz, format = format, ...)
 	d
 })
 
@@ -66,45 +66,45 @@ setMethod("date2num", "stream_labels", function(d, tz, format, ...) {
 
 #' @rdname date2num
 setMethod("date2num", "stream_rawargos", function(d, tz, format, ...) {
-	d@data$PassDate <- date2num(paste(d@data$PassTime, d@data$PassDate), tz = tz, format = format, ...)
-	d@data$MsgDate 	<- date2num(paste(d@data$MsgTime,  d@data$MsgDate),  tz = tz, format = format, ...)
+	d$PassDate <- date2num(paste(d$PassTime, d$PassDate), tz = tz, format = format, ...)
+	d$MsgDate 	<- date2num(paste(d$MsgTime,  d$MsgDate),  tz = tz, format = format, ...)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_rtc", function(d, tz, format, ...) {
-	d@data$TagDate  <- date2num(paste(d@data$TagTime,  d@data$TagDate),  tz = tz, format = format, ...)
-	d@data$RealDate <- date2num(paste(d@data$RealTime, d@data$RealDate), tz = tz, format = format, ...)
+	d$TagDate  <- date2num(paste(d$TagTime,  d$TagDate),  tz = tz, format = format, ...)
+	d$RealDate <- date2num(paste(d$RealTime, d$RealDate), tz = tz, format = format, ...)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_series", function(d, tz, format, ...) {
-	d@data$Date <- date2num(paste(d@data$Time, d@data$Day), tz = tz, format = format, ...)
+	d$Date <- date2num(paste(d$Time, d$Day), tz = tz, format = format, ...)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_seriesrange", function(d, tz, format, ...) {
-	d@data$Start <- date2num(d@data$Start, 	tz = tz, format = format, ...)
-	d@data$End 	 <-	date2num(d@data$End, 	tz = tz, format = format, ....)
+	d$Start <- date2num(d$Start, 	tz = tz, format = format, ...)
+	d$End 	 <-	date2num(d$End, 	tz = tz, format = format, ....)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_status", function(d, tz, format, ...) {
-	d@data$Received <- date2num(d@data$Received,	 tz = tz, format = format, ...)
-	d@data$RTC 		<- 	date2num(d@data$RTC, 	 tz = tz, format = format, ....)
+	d$Received <- date2num(d$Received,	 tz = tz, format = format, ...)
+	d$RTC 		<- 	date2num(d$RTC, 	 tz = tz, format = format, ....)
 	d
 })
 
 #' @rdname date2num
 setMethod("date2num", "stream_summary", function(d, tz, format, ...) {
-	d@data$EarliestXmitTime	<- date2num(d@data$EarliestXmitTime, tz = tz, format = format, ...)
-	d@data$LatestXmitTime	<- date2num(d@data$LatestXmitTime,	 tz = tz, format = format, ...)
-	d@data$EarliestDataTime <- date2num(d@data$EarliestDataTime, tz = tz, format = format, ...)
-	d@data$LatestDataTime	<- date2num(d@data$LatestDataTime,   tz = tz, format = format, ...)
-	# d@data$ReleaseDate # not sure how this is implemented?
-	# d@data$DeployDate # not sure how this is implemented?
+	d$EarliestXmitTime	<- date2num(d$EarliestXmitTime, tz = tz, format = format, ...)
+	d$LatestXmitTime	<- date2num(d$LatestXmitTime,	 tz = tz, format = format, ...)
+	d$EarliestDataTime <- date2num(d$EarliestDataTime, tz = tz, format = format, ...)
+	d$LatestDataTime	<- date2num(d$LatestDataTime,   tz = tz, format = format, ...)
+	# d$ReleaseDate # not sure how this is implemented?
+	# d$DeployDate # not sure how this is implemented?
 	d
 })
