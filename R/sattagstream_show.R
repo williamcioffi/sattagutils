@@ -6,10 +6,9 @@ NULL
 #' generic method for show.
 setMethod("show", "sattagstream", 
 	function(object) {
-		print(head(object@data))
+		print(head(object))
 		cat("------\n")
-		cat(paste0("stream type: ", class(object)[1], "\n"))
-		cat(paste0("stream name: ", object@streamname, "\n"))
-		cat(paste0("filename: ", object@filename, "\n"))
+		cat(paste0("stream type: ", streamtype(object), "\n"))
+		cat(paste0("filename: ", filename(object), "\n"))
 	}
 )
