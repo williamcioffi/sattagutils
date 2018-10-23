@@ -11,7 +11,17 @@
 setClass("sattagstream", 
 	slots = c(
 		streamname = "character",
-		filename = "character",
-		data = "data.frame"
-	)
+		filename = "character"
+	),
+	contains = "data.frame"
 )
+
+setGeneric("name", function(x) standardGeneric("name"))
+setMethod("name", "sattagstream", function(x) x@streamname)
+
+setGeneric("name<-", function(x, value) standardGeneric("name<-"))
+setMethod("name<-", "sattagstream", function(x, value) {
+	if(length(x@streamname) != length(value)) stop("that's the not the right number of names...")
+	x@streamname <- value
+	x
+})
