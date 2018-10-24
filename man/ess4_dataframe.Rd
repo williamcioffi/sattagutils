@@ -15,10 +15,21 @@ ess4_dataframe(..., stringsAsFactors = FALSE)
 an S4 class of \code{ess4_dataframe}.
 }
 \description{
-this would be the typical way to instantiate an ess4_dataframe.
+this would be the typical way to instantiate an ess4_dataframe, an S4 wrapper for data.frame.
+}
+\details{
+a well behaving S4 \code{data.frame} wrapper. i hope what you expect to happen happens. my main concern was that subsetting functions should return an S4 class instead of a \code{data.frame}. 
+
+i've implemented methods for \code{as.data.frame, $, [, [<-, cbind, rbind}, and \code{merge}. these methods are just simple wrappers for the S3 methods. 
+
+with the defaults and those definitions many methods work without fuss including \code{subset, na.omit, unique, $<-} and return the S4 object. 
+
+other methods you don't expect to return the same class as was inputted like: \code{duplicated, as.list, [[}, etc.
+
+finally, i think it makes sense to let some methods default to returning the underlying data.frame only and not the S4 class. for example, \code{edit}. in the applications i have in mind, i don't really want the user to be able to edit the S4 classes data 'by hand' in that way. and if you want that functionality you can always extend the class and add that functionality.
 }
 \examples{
-ess4_dataframe(a = rnorm(10), b = rnorm(10))
+testdf <- ess4_dataframe(a = rnorm(10), b = rnorm(10))
 }
 \seealso{
 \code{\link[sattagutils]{ess4_dataframe-class}}
