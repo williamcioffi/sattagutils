@@ -1,6 +1,7 @@
 #' an S4 class to represent a single data stream in a tag
 #'
 #' a parent class for specific sattag stream types. generally accessed from within a \code{\link[sattagutils]{sattag}}.
+#' @slot data is where the data.frame lives. i gotta do this because data.frames don't extend well. unless you have a better idea?
 #' @slot streamtype character of the stream type for convenience (e.g., argos, behavior, etc.).
 #' @slot filename the original filename from which the data stream was derrived. this will almost always be a text or csv file.
 #' @export
@@ -20,7 +21,7 @@ setClass("sattagstream",
 #' @param data this is a data frame from a wildlife computer portal downloaded csv data file.
 #' @param filename the name of the file the data originally came from.
 #' @details i don't really expect you to use this function very often, but if you do want to make a stream by hand this is the perferred method. if you are importing streams from an exisiting tag you probably should be by using \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} to load a directory downloaded from the portal.
-#' @return an S4 object which extends \code{\link[sattagutils]{sattagstream-class}}
+#' @return an S4 object of the class \code{\link[sattagutils]{sattagstream-class}} (or an extension of it)
 #' @export
 #' @examples
 #' \dontrun{
@@ -47,10 +48,10 @@ sattagstream <- function(type = character(), data = data.frame(), filename = cha
 #' get filename of a sattagstream
 #'
 #' use this function to get the filename of a \code{\link[sattagutils]{sattagstream-class}}. changing the source filename after construction is currently not supported.
+#' @family slot access functions
 #' @seealso \code{\link[sattagutils]{sattagstream}}
 #' @param x source filename for a csv data stream file.
 #' @export
-
 setGeneric("filename", function(x) standardGeneric("filename"))
 
 
@@ -58,10 +59,10 @@ setGeneric("filename", function(x) standardGeneric("filename"))
 #' get stream type of a sattagstream
 #'
 #' use this function to get the stream type of a \code{\link[sattagutils]{sattagstream-class}}. changing the stream type after construction is currently not supported.
+#' @family slot access functions
 #' @seealso \code{\link[sattagutils]{sattagstream}}
 #' @param x stream type.
 #' @export
-
 setGeneric("streamtype", function(x) standardGeneric("streamtype"))
 
 #' @describeIn streamtype get the streamtype of a sattagstream

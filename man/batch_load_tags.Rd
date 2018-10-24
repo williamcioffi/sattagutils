@@ -4,20 +4,22 @@
 \alias{batch_load_tags}
 \title{batch load sat tags}
 \usage{
-batch_load_tags(data_dir, tags_dir = NA, streams = NA)
+batch_load_tags(data_dir, tags_dir = NA, ignore = NA, streams = NA)
 }
 \arguments{
 \item{data_dir}{character points to a directory of sat tags}
 
 \item{tags_dir}{character vector of tag directory names to include or NA defaults to every directory in \code{data_dir}}
 
-\item{streams}{character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} is expected to populate some of the slots of \code{sattag}.}
+\item{ignore}{character vector of directories to ignore or NA defaults not to ignore any directories.}
+
+\item{streams}{character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} and \code{*-Labels.csv} are expected to populate some of the slots of \code{sattag-class}.}
 }
 \value{
-a list of \code{\link[sattagutils]{sattag}} S4 objects.
+an S4 object of class \code{\link[sattagutils]{tagstack}}
 }
 \description{
-load sat tags from a directory containing directories downloaded from the portal
+load sat tags from a directory containing directories downloaded from the wildlife computers portal.
 }
 \examples{
 \dontrun{

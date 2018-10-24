@@ -15,7 +15,7 @@ sattagstream(type = character(), data = data.frame(),
 \item{filename}{the name of the file the data originally came from.}
 }
 \value{
-an S4 object which extends \code{\link[sattagutils]{sattagstream-class}}
+an S4 object of the class \code{\link[sattagutils]{sattagstream-class}} (or an extension of it)
 }
 \description{
 use this constructor to assign the correct subclass (e.g., location, argos, beahvior, etc.) to a new sattagstream object.

@@ -48,48 +48,76 @@ sattag <- function(data = list(), instrument = character(), DeployID = character
 }
 
 #' get DeployID
+#'
+#' function to extract DeployID.
+#' @family slot access functions
 #' @export
 setGeneric("DeployID", function(x) standardGeneric("DeployID"))
 
 #' get instrument
+#'
+#' function to extract instrument type (e.g., SPOT6, MK10-A, etc).
+#' @family slot access functions
+#' @export
 setGeneric("instrument", function(x) standardGeneric("instrument"))
 
 #' get Ptt
+#'
+#' function to extract Ptt.
+#' @family slot access functions
+#' @return a character representation of the Ptt. why this and not numeric?
+#' @export
 setGeneric("Ptt", function(x) standardGeneric("Ptt"))
 
 #' get species
+#'
+#' function to extract species as defined in *-Labels.csv.
+#' @family slot access functions
+#' @export
 setGeneric("species", function(x) standardGeneric("species"))
 
 #' get location
+#'
+#' function to extract study location as defined in *-Labels.csv.
+#' @family slot access functions
+#' @export
 setGeneric("location", function(x) standardGeneric("location"))
 
 #' get tagdir
+#'
+#' function to extract source directory from which the tag was loaded.
+#' @family slot access functions
+#' @export
 setGeneric("tagdir", function(x) standardGeneric("tagdir"))
 
 #' get loadtime
+#'
+#' function to extract time a tag was loaded into R originally based on when \code{intialize()} was called.
+#' @family slot access functions
+#' @export
 setGeneric("loadtime", function(x) standardGeneric("loadtime"))
 
 
 
-#' get DeployID
+#' @describeIn DeployID method for sattag
 setMethod("DeployID", "sattag", function(x) x@DeployID)
 
-#' get instrument
+#' @describeIn instrument method for sattag
 setMethod("instrument", "sattag", function(x) x@instrument)
 
-#' get Ptt
+#' @describeIn Ptt method for sattag
 setMethod("Ptt", "sattag", function(x) x@Ptt)
 
-#' get species
+#' @describeIn species method for sat tag
 setMethod("species", "sattag", function(x) x@species)
 
-#' get location
+#' @describeIn location method for sattag
 setMethod("location", "sattag", function(x) x@location)
 
-#' get tagdir
+#' @describeIn tagdir method for sattag
 setMethod("tagdir", "sattag", function(x) x@directory)
 
-#' get loadtime
+#' @describeIn loadtime method for sattag
 setMethod("loadtime", "sattag", function(x) x@loadtime)
 
 #' @describeIn streamtype return a vector of stream types of all sattagstreams contained in a sattag
