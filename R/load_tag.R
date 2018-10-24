@@ -141,5 +141,5 @@ load_tag <- function(tag_dir, streams = NA) {
 	names(outdata) <- stream_names
 
 	# build a sattag object	
-	sattag(outdata, instrument = instrument, DeployID = DeployID, Ptt = Ptt, species = species, location = location, t_start = t_start, t_end = t_end, directory = directory)
+	sattag(outdata, instrument = instrument, DeployID = DeployID, Ptt = Ptt, species = species, location = location, t_start = t_start, t_end = t_end, directory = tag_dir)
 }

@@ -71,6 +71,33 @@ also, beware if you open any data stream csvs in excel and re-save, the dates wi
 
 this methods may become defunct if wildlife updates their conventions and will have to be updated.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{sattagstream}: for generic sattagstreams
+
+\item \code{stream_all}: for *-All.csv
+
+\item \code{stream_behavior}: for *-Behavior.csv
+
+\item \code{stream_corrupt}: for *-Corrupt.csv
+
+\item \code{stream_fastgps}: for *-FastGPS.csv
+
+\item \code{stream_labels}: for *-Labels.csv
+
+\item \code{stream_rawargos}: for *-RawArgos.csv
+
+\item \code{stream_rtc}: for *-RTC.csv
+
+\item \code{stream_series}: for *-Series.csv
+
+\item \code{stream_seriesrange}: for *-SeriesRange.csv
+
+\item \code{stream_status}: for *-Status.csv
+
+\item \code{stream_summary}: for *-Summary.csv
+}}
+
 \examples{
 date2num("1988-03-12 07:00:00", tz = "UTC", format = "\%Y-\%m-\%d \%H:\%M:\%S")
 }

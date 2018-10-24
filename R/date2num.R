@@ -25,80 +25,80 @@ setGeneric("date2num",
 	}
 )
 
-#' @rdname date2num
+#' @describeIn date2num for generic sattagstreams
 setMethod("date2num", "sattagstream", function(d, tz, format, ...) {
 	d$Date <- date2num(d$Date, tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-All.csv
 setMethod("date2num", "stream_all", function(d, tz, format = "%m/%d/%Y %H:%M:%S", ...) {
 	d$Loc..date <- date2num(d$Loc..date, tz = tz, format = format, ...)
 	d$Msg.Date  <- date2num(d$Msg.Date,  tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Behavior.csv
 setMethod("date2num", "stream_behavior", function(d, tz, format, ...) {
 	d$Start <- date2num(d$Start, 	tz = tz, format = format, ...)
 	d$End <- 	date2num(d$End, 	tz = tz, format = format, ....)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Corrupt.csv
 setMethod("date2num", "stream_corrupt", function(d, tz, format, ...) {
 	d$Date <- date2num(d$Date, tz = tz, format = format, ...)
 	d$Possible.Timestamp <- date2num(d$Possible.Timestamp, tz = tz, format = format)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-FastGPS.csv
 setMethod("date2num", "stream_fastgps", function(d, tz, format, ...) {
 	d$Date <- date2num(paste(d$Time, d$Day), tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Labels.csv
 setMethod("date2num", "stream_labels", function(d, tz, format, ...) {
 	warning("There aren't any dates in the labels streams")
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-RawArgos.csv
 setMethod("date2num", "stream_rawargos", function(d, tz, format, ...) {
 	d$PassDate <- date2num(paste(d$PassTime, d$PassDate), tz = tz, format = format, ...)
 	d$MsgDate 	<- date2num(paste(d$MsgTime,  d$MsgDate),  tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-RTC.csv
 setMethod("date2num", "stream_rtc", function(d, tz, format, ...) {
 	d$TagDate  <- date2num(paste(d$TagTime,  d$TagDate),  tz = tz, format = format, ...)
 	d$RealDate <- date2num(paste(d$RealTime, d$RealDate), tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Series.csv
 setMethod("date2num", "stream_series", function(d, tz, format, ...) {
 	d$Date <- date2num(paste(d$Time, d$Day), tz = tz, format = format, ...)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-SeriesRange.csv
 setMethod("date2num", "stream_seriesrange", function(d, tz, format, ...) {
 	d$Start <- date2num(d$Start, 	tz = tz, format = format, ...)
 	d$End 	 <-	date2num(d$End, 	tz = tz, format = format, ....)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Status.csv
 setMethod("date2num", "stream_status", function(d, tz, format, ...) {
 	d$Received <- date2num(d$Received,	 tz = tz, format = format, ...)
 	d$RTC 		<- 	date2num(d$RTC, 	 tz = tz, format = format, ....)
 	d
 })
 
-#' @rdname date2num
+#' @describeIn date2num for *-Summary.csv
 setMethod("date2num", "stream_summary", function(d, tz, format, ...) {
 	d$EarliestXmitTime	<- date2num(d$EarliestXmitTime, tz = tz, format = format, ...)
 	d$LatestXmitTime	<- date2num(d$LatestXmitTime,	 tz = tz, format = format, ...)

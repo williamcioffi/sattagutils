@@ -48,6 +48,7 @@ sattag <- function(data = list(), instrument = character(), DeployID = character
 }
 
 #' get DeployID
+#' @export
 setGeneric("DeployID", function(x) standardGeneric("DeployID"))
 
 #' get instrument
@@ -86,7 +87,7 @@ setMethod("species", "sattag", function(x) x@species)
 setMethod("location", "sattag", function(x) x@location)
 
 #' get tagdir
-setMethod("tagdir", "sattag", function(x) x@tagdir)
+setMethod("tagdir", "sattag", function(x) x@directory)
 
 #' get loadtime
 setMethod("loadtime", "sattag", function(x) x@loadtime)
