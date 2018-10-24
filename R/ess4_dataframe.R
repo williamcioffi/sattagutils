@@ -94,3 +94,9 @@ setMethod("[<-", "ess4_dataframe", function(x, i, j, ..., value) {
 	
 	return(x)
 })
+
+
+#' wrapper for S3 method
+# setMethod("merge", "ess4_dataframe", function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all, sort = TRUE, suffixes = c(".x", ".y"), no.dups = TRUE, incomparables = NULL, ...) {
+	
+# })
