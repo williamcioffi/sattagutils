@@ -3,20 +3,10 @@
 \docType{class}
 \name{es4dataframe-class}
 \alias{es4dataframe-class}
-\alias{as.data.frame,es4dataframe-method}
 \title{an S4 data.frame}
-\usage{
-\S4method{as.data.frame}{es4dataframe}(x, row.names = NULL,
-  option = FALSE, ..., stringsAsFactors = FALSE)
-}
 \description{
 call me hadley.
 }
-\section{Methods (by generic)}{
-\itemize{
-\item \code{as.data.frame}: convert back into an S3 \code{dataframe}.
-}}
-
 \seealso{
 \code{\link[sattagutils]{es4dataframe}}
 }

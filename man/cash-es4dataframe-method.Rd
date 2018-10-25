@@ -3,10 +3,10 @@
 \docType{methods}
 \name{$,es4dataframe-method}
 \alias{$,es4dataframe-method}
-\title{wrapper for S3 method}
+\title{wrapper for S3 methods}
 \usage{
 \S4method{$}{es4dataframe}(x, name)
 }
 \description{
-wrapper for S3 method
+wrapper for S3 methods
 }
