@@ -91,6 +91,19 @@ setMethod("date2num", "stream_seriesrange", function(d, tz, format, ...) {
 	d
 })
 
+#' @describeIn date2num for *-Locations.csv
+setMethod("date2num", "stream_locations", function(d, tz, format, ...) {
+	tmpdate <- d$Date
+	datesplit <- strsplit(tmpdate, " ")
+	times <- sapply(datesplit, "[[", 1)
+	days <- sapply(datesplit, "[[", 2)
+	trunctimes <- sapply(strsplit(times, "\\."), "[[", 1)
+	
+	d$originaldate <- tmpdate
+	d$Date <- date2num(paste(trunctimes, days), tz = tz, format = format, ...)
+	d
+})
+
 #' @describeIn date2num for *-Status.csv
 setMethod("date2num", "stream_status", function(d, tz, format, ...) {
 	d$Received <- date2num(d$Received,	 tz = tz, format = format, ...)

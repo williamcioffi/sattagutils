@@ -1,3 +1,6 @@
+#' @include ess4_dataframe.R
+NULL
+
 #' an S4 class to represent a single data stream in a tag
 #'
 #' a parent class for specific sattag stream types. generally accessed from within a \code{\link[sattagutils]{sattag}}.
@@ -11,7 +14,7 @@ setClass("sattagstream",
 		streamtype = "character",
 		filename = "character"
 	),
-	contains = "data.frame"
+	contains = "ess4_dataframe"
 )
 
 #' constructor for sattagstreams

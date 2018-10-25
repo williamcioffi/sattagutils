@@ -11,11 +11,11 @@ LazyData: true
 Collate: 
     'batch_load_tags.R'
     'dataframe_test_hasa.R'
+    'ess4_dataframe.R'
     'sattagstream.R'
     'sattagstream_extends.R'
     'date2num.R'
     'dateseq.R'
-    'ess4_dataframe.R'
     'getstream.R'
     'isfunctions.R'
     'latlond.hav.R'

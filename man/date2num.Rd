@@ -13,6 +13,7 @@
 \alias{date2num,stream_rtc-method}
 \alias{date2num,stream_series-method}
 \alias{date2num,stream_seriesrange-method}
+\alias{date2num,stream_locations-method}
 \alias{date2num,stream_status-method}
 \alias{date2num,stream_summary-method}
 \title{translate character dates to numeric dates}
@@ -47,6 +48,9 @@ date2num(d, tz = "UTC", format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
 \S4method{date2num}{stream_seriesrange}(d, tz = "UTC",
+  format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
+
+\S4method{date2num}{stream_locations}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
 \S4method{date2num}{stream_status}(d, tz = "UTC",
@@ -92,6 +96,8 @@ this methods may become defunct if wildlife updates their conventions and will h
 \item \code{stream_series}: for *-Series.csv
 
 \item \code{stream_seriesrange}: for *-SeriesRange.csv
+
+\item \code{stream_locations}: for *-Locations.csv
 
 \item \code{stream_status}: for *-Status.csv
 
