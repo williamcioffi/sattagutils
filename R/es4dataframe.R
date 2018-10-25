@@ -34,7 +34,7 @@ es4dataframe <- function(..., stringsAsFactors = FALSE) {
 }
 
 
-#' @describeIn es4dataframe convert back into an S3 \code{dataframe}.
+
 setMethod("as.data.frame", "es4dataframe", function(x, row.names = NULL, option = FALSE, ..., stringsAsFactors = FALSE) {
 	as.data.frame(x@.Data, row.names = x@row.names, col.names = names(x), stringsAsFactors = stringsAsFactors)
 })
