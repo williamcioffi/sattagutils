@@ -10,10 +10,11 @@ a parent class for specific sattag stream types. generally accessed from within 
 \section{Slots}{
 
 \describe{
-\item{\code{data}}{is where the data.frame lives. i gotta do this because data.frames don't extend well. unless you have a better idea?}
-
 \item{\code{streamtype}}{character of the stream type for convenience (e.g., argos, behavior, etc.).}
 
 \item{\code{filename}}{the original filename from which the data stream was derrived. this will almost always be a text or csv file.}
 }}
 
+\seealso{
+extends \code{\link[sattagutils]{es4dataframe}}.
+}

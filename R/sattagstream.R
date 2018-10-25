@@ -1,10 +1,10 @@
-#' @include ess4_dataframe.R
+#' @include es4dataframe.R
 NULL
 
 #' an S4 class to represent a single data stream in a tag
 #'
 #' a parent class for specific sattag stream types. generally accessed from within a \code{\link[sattagutils]{sattag}}.
-#' @slot data is where the data.frame lives. i gotta do this because data.frames don't extend well. unless you have a better idea?
+#' @seealso extends \code{\link[sattagutils]{es4dataframe}}.
 #' @slot streamtype character of the stream type for convenience (e.g., argos, behavior, etc.).
 #' @slot filename the original filename from which the data stream was derrived. this will almost always be a text or csv file.
 #' @export
@@ -14,7 +14,7 @@ setClass("sattagstream",
 		streamtype = "character",
 		filename = "character"
 	),
-	contains = "ess4_dataframe"
+	contains = "es4dataframe"
 )
 
 #' constructor for sattagstreams

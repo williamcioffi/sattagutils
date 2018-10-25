@@ -10,13 +10,11 @@ Encoding: UTF-8
 LazyData: true
 Collate: 
     'batch_load_tags.R'
-    'dataframe_test_hasa.R'
-    'ess4_dataframe.R'
+    'es4dataframe.R'
     'sattagstream.R'
     'sattagstream_extends.R'
     'date2num.R'
     'dateseq.R'
-    'getstream.R'
     'isfunctions.R'
     'latlond.hav.R'
     'load_tag.R'
