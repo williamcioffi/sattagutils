@@ -4,6 +4,7 @@
 #' @family tag stream loaders
 #' @param tag_dir a path to a tag directory containg csv data streams downloaded from the portal.
 #' @param streams a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.
+#' @param stream_delim character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.
 #' @return a \code{\link[sattagutils]{sattag}} S4 object.
 #' @export
 #' @examples
@@ -11,9 +12,9 @@
 #' tag1 <- load_tag("~/path/to/tags/tag1")
 #' }
 
-load_tag <- function(tag_dir, streams = NA) {
+load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 	# constants
-	STREAM_DELIM <- "-"	# assuming a standard wildlife computer download
+	STREAM_DELIM <- stream_delim 
 	
 	# need at least a valid tag diretory to proceed
 	if(!hasArg(tag_dir)) stop("i need a tag directory to look for streams...")
@@ -60,6 +61,7 @@ load_tag <- function(tag_dir, streams = NA) {
 	
 	# these are going to be the sattagstream
 	outdata <- list()
+	outpaths <- character()
 	
 	# metadata for sattag
 	instrument 	<- character()
@@ -127,10 +129,13 @@ load_tag <- function(tag_dir, streams = NA) {
 		
 		# save to the list
 		outdata[[s]] <- tmpdata
+		# save to the names
+		outpaths <- c(outpaths, csvfnames[s])
+		
 				},	# end try block / start catch
 				error = function(err) {
-					# remove the stream name from the list if it didn't work
-					stream_names <- stream_names[-s]
+					# # remove the stream name from the list if it didn't work
+					# stream_names <- stream_names[-s]
 					message(paste0(csvfpaths[s], ": ", err))
 				}, finally = {})
 #				warning = function(war) {
@@ -138,7 +143,7 @@ load_tag <- function(tag_dir, streams = NA) {
 #				}, finally = {}) # end catch
 	}
 	
-	names(outdata) <- stream_names
+	names(outdata) <- outpaths
 
 	# build a sattag object	
 	sattag(outdata, instrument = instrument, DeployID = DeployID, Ptt = Ptt, species = species, location = location, t_start = t_start, t_end = t_end, directory = tag_dir)
