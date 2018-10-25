@@ -112,8 +112,8 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			} else {
 				DeployID 	<- summarystream$DeployID[1]
 				Ptt 		<- as.character(summarystream$Ptt[1])
-				t_start 	<- date2num(summarystream$EarliestDataTime[1])
-				t_end 		<- date2num(summarystream$LatestDataTime[1])
+				t_start 	<- date2num(summarystream$EarliestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
+				t_end 		<- date2num(summarystream$LatestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
 			}
 			
 			tmpstream <- summarystream

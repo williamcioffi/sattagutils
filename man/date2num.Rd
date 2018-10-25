@@ -18,7 +18,7 @@
 \alias{date2num,stream_summary-method}
 \title{translate character dates to numeric dates}
 \usage{
-date2num(d, tz = "UTC", format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
+date2num(d, ...)
 
 \S4method{date2num}{sattagstream}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
@@ -62,6 +62,8 @@ date2num(d, tz = "UTC", format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 \arguments{
 \item{d}{either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream}}.}
 
+\item{...}{any other good stuff you want to pass to \code{as.POSIXct}.}
+
 \item{tz, format}{as expected by \code{\link[base]{as.POSIXct}}.}
 }
 \description{
@@ -79,7 +81,7 @@ this methods may become defunct if wildlife updates their conventions and will h
 \itemize{
 \item \code{sattagstream}: for generic sattagstreams
 
-\item \code{stream_all}: for *-All.csv
+\item \code{stream_all}: for *-All.csv. note the different time format.
 
 \item \code{stream_behavior}: for *-Behavior.csv
 
@@ -101,7 +103,7 @@ this methods may become defunct if wildlife updates their conventions and will h
 
 \item \code{stream_status}: for *-Status.csv
 
-\item \code{stream_summary}: for *-Summary.csv
+\item \code{stream_summary}: for *-Summary.csv note: not sure how to implement ReleaseDate or DeployDate...
 }}
 
 \examples{
