@@ -4,7 +4,8 @@
 \alias{batch_load_tags}
 \title{batch load sat tags}
 \usage{
-batch_load_tags(data_dir, tags_dir = NA, ignore = NA, streams = NA)
+batch_load_tags(data_dir, tags_dir = NA, ignore = NA, streams = NA,
+  stream_delim = "-")
 }
 \arguments{
 \item{data_dir}{character points to a directory of sat tags}
@@ -14,6 +15,8 @@ batch_load_tags(data_dir, tags_dir = NA, ignore = NA, streams = NA)
 \item{ignore}{character vector of directories to ignore or NA defaults not to ignore any directories.}
 
 \item{streams}{character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} and \code{*-Labels.csv} are expected to populate some of the slots of \code{sattag-class}.}
+
+\item{stream_delim}{character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.}
 }
 \value{
 an S4 object of class \code{\link[sattagutils]{tagstack}}
