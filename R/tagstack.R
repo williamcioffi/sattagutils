@@ -33,6 +33,14 @@ tagstack <- function(data = list(), directory = character()) {
 #' @export
 tagstackdir <- function(x) x@directory
 
+#' definition for the subset operator
+#'
+#' what i want this to do is return a tagstack as opposed to [[ which should return a tag (and it does by default).
+setMethod("[", "tagstack", function(x, i, j, ..., drop) {
+	x@.Data <- x@.Data[i]
+	x
+})
+
 #' @describeIn DeployID method for tagstack
 setMethod("DeployID", "tagstack", function(x) sapply(x, function(s) DeployID(s)))
 
