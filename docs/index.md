@@ -1,5 +1,7 @@
 ## sattagutils
 
+[repository](http://github.com/williamcioffi/sattagutils)
+
 to install:
 ```{r}
 library(devtools)
