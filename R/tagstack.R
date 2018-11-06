@@ -54,6 +54,35 @@ setMethod("tagdir", "tagstack", function(x) sapply(x, function(s) tagdir(s)))
 #' @describeIn loadtime method for tagstack
 setMethod("loadtime", "tagstack", function(x) sapply(x, function(s) loadtime(s)))
 
+#' @describeIn tag_st method for tagstack
+setMethod("tag_st", "tagstack", function(x) sapply(x, function(s) tag_st(s)))
+
+#' @describeIn tag_en method for tagstack
+setMethod("tag_en", "tagstack", function(x) sapply(x, function(s) tag_en(s)))
+
+#' @describeIn tag_st method for tagstack
+setMethod("tag_st<-", "tagstack", function(x, value) {
+	if(length(x) != length(value)) stop("i need the same number of start times as there are tags...")
+	if(!all(is.numeric(value))) stop("time must be numeric...")
+	
+	for(i in 1:length(x)) {
+		tag_st(x[[i]]) <- value[i]
+	}
+	
+	x
+})
+
+setMethod("tag_en<-", "tagstack", function(x, value) {
+	if(length(x) != length(value)) stop("i need the same number of start times as there are tags...")
+	if(!all(is.numeric(value))) stop("time must be numeric...")
+	
+	for(i in 1:length(x)) {
+		tag_en(x[[i]]) <- value[i]
+	}
+	
+	x
+})
+
 #' @describeIn streamtype return a vector of stream types of all sattagstreams contained in a tagstack
 setMethod("streamtype", "tagstack", function(x) lapply(x, function(s) streamtype(s)))
 

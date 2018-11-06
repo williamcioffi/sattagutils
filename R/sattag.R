@@ -97,6 +97,31 @@ setGeneric("tagdir", function(x) standardGeneric("tagdir"))
 #' @export
 setGeneric("loadtime", function(x) standardGeneric("loadtime"))
 
+#' get start time of tag
+#'
+#' function to extract the data start time for a particular tag. if \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} created the tag object then this is set from the \code{EarliestDataTime} in the \code{summary} stream.
+#' @family slot access functions
+#' @export
+setGeneric("tag_st", function(x) standardGeneric("tag_st"))
+
+#' get end time of tag
+#'
+#' function to extract the data end time for a particular tag. if \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} created the tag object then this is set from the \code{LatestDataTime} in the \code{summary} stream.
+#' @family slot access functions
+#' @export
+setGeneric("tag_en", function(x) standardGeneric("tag_en"))
+
+#' set start time of tag
+#'
+#' function to set the data end time for a particular tag. if \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} created the tag object then this is initially set from the \code{EarliestDataTime} in the \code{summary} stream.
+#' @export
+setGeneric("tag_st<-", function(x, value) standardGeneric("tag_st<-"))
+
+#' set start time of tag
+#'
+#' function to set the data end time for a particular tag. if \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{batch_load_tags}} created the tag object then this is initially set from the \code{LatestDataTime} in the \code{summary} stream.
+#' @export
+setGeneric("tag_en<-", function(x, value) standardGeneric("tag_en<-"))
 
 
 #' @describeIn DeployID method for sattag
@@ -119,6 +144,30 @@ setMethod("tagdir", "sattag", function(x) x@directory)
 
 #' @describeIn loadtime method for sattag
 setMethod("loadtime", "sattag", function(x) x@loadtime)
+
+#' @describeIn tag_st method for sattag
+setMethod("tag_st", "sattag", function(x) x@t_start)
+
+#' @describeIn tag_en method for sattag
+setMethod("tag_en", "sattag", function(x) x@t_end)
+
+#' @describeIn tag_st method for sattag
+setMethod("tag_st<-", "sattag", function(x, value) {
+	if(length(value) != 1) stop("i can only have one start time...")
+	if(!is.numeric(value)) stop("time must be numeric...")
+	
+	x@t_start <- value
+	x
+})
+
+#' @describeIn tag_en method for sattag
+setMethod("tag_en<-", "sattag", function(x, value) {
+	if(length(value) != 1) stop("i can only have one start time...")
+	if(!is.numeric(value)) stop("time must be numeric...")
+	
+	x@t_end <- value
+	x
+})
 
 #' @describeIn streamtype return a vector of stream types of all sattagstreams contained in a sattag
 setMethod("streamtype", "sattag", function(x) sapply(x, function(s) streamtype(s)))

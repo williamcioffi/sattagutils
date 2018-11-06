@@ -6,7 +6,7 @@
 \alias{sattagutils-package}
 \title{sattagutils: utilities for manipulating wildlife computer sat tags}
 \description{
-A set of functions and classes to assist with loading, manipulating, running diagnostics, and manipulating, wildlife computer sat tag output. Geared primarily toward mk10-* tags and the data output obtained from the wildlife computers portal, but could be extended to be useful for other types of tags. Also includes functions for processing CLS Goniometer received messages back into a WC-DAP readable format. See github.com/william/cioffi/goniomonitor for a shiny app to visualize CLS Goniometer data in the field.
+A set of functions and classes to assist with loading, manipulating, running diagnostics, and manipulating, wildlife computer sat tag output. Geared primarily toward mk10-* tags and the data output obtained from the wildlife computers portal, but could be extended to be useful for other types of tags. Also includes functions for processing CLS Goniometer received messages back into a WC-DAP readable format. See github.com/williamcioffi/goniomonitor for a shiny app to visualize CLS Goniometer data in the field.
 }
 \details{
 you probably want to start by looking at \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{sattag-class}}.
