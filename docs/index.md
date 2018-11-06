@@ -1,6 +1,6 @@
 ## sattagutils
 
-[repository](https://github.com/williamcioffi/sattagutils) | [home](https://williamcioffi.github.io)
+[repository](https://github.com/williamcioffi/sattagutils) | [io home](https://williamcioffi.github.io)
 
 ### to install:
 ```{r}
