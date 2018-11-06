@@ -12,7 +12,7 @@ output:
 
 ## sattagutils
 
-[repository](http://github.com/williamcioffi/sattagutils)
+[repository](https://github.com/williamcioffi/sattagutils) | [home](https://williamcioffi.github.io)
 
 ### to install:
 ```{r}
