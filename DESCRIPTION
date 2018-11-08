@@ -26,6 +26,7 @@ Collate:
     'sattag_show.R'
     'sattagstream_show.R'
     'sattagutils.R'
+    'ser2beh.R'
     'tagstack.R'
     'torad.R'
     'wcsv.R'
