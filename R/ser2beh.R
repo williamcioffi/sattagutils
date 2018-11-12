@@ -3,7 +3,8 @@
 #' a simple downsampling which takes series data stream as an input and creates an estimate of what the behavior stream would have looked like. tries to interpolate surfacing times for more accurate duration estimates.
 #' @param s a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.
 #' @param surface_threshold_metersused by the peak finding algorithm to determine if a peak is close enough to the surface to represent a real surfacing event. default 25 is for me. you will need ot pick something that makes sense for your species.
-#' @param vrate_meters_per_second. this is the assumed mean speed to interpolate surfacing times. default 1.4 is for Ziphius cavirostris. Appears to work well empiracally and is very similar to reported vert decent speeds reported in Tyack (2006). Probably should implement dfferent acent and decent rates in the code.
+#' @param vrate_ascent_meters_per_second. this is the assumed mean vertical accent rate to interpolate surfacing times. default 0.7 is for Ziphius cavirostris (Tyack et al. 2006).
+#' @param vrate_decent_meters_per_second. this is the assumed mean vertical decent rate to interpolate surfacing times. default 1.5 for Ziphius cavirostris (Tyack et al. 2006)
 #' @param dive_definition_threshold_meters would be from the behavior settings you want to emulate. this is the threshold to qualify as a behavior dive.
 #' @param period sampling period of input series data
 #' @references Tyack, P. L., Johnson, M., Soto, N. A., Sturlese, A., & Madsen, P. T. (2006). Extreme diving of beaked whales. Journal of Experimental Biology, 209(21), 4238–4253. https://doi.org/10.1242/jeb.02505
@@ -12,20 +13,29 @@
 ser2beh <- function(
 	s,
 	surface_threshold_meters = 25, 
-	vrate_meters_per_second = 1.4, #Tyack has 1.5 for decent 0.7 for acent fix this
+	vrate_ascent_meters_per_second = 0.7,
+	vrate_decent_meters_per_second = 1.5,
 	dive_definition_threshold_meters = 50,
 	period
 ) {
+	
+	
+	# error checking
+	if(!is.sattagstream(s)) {
+		stop("i need a sattagstream (series)... try ?sattagstream...")
+	} else if(streamtype(s) != "stream_series") {
+		stop("i need a series stream...")
+	}
 		
 	###
 	# x-intercept function
-	# need to crank VRATE down when near surface?
+	#
 	xint <- function(i, direction = "forward") {
 		increment <- i+1
-		VR <- -VRATE
+		VR <- -VRATE_ASCENT
 		if(direction == "reverse") {
 			increment <- i-1
-			VR <- -VR
+			VR <- VRATE_DECENT
 		}
 		yint <- d[increment] - VR * tt[increment]
 		-yint / VR
@@ -38,7 +48,8 @@ ser2beh <- function(
 	# used to determine if a peak is close enough to the surface
 	# to represent a real surfacing event
 	SURFACE_THRESHOLD_METERS <- surface_threshold_meters
-	VRATE <- vrate_meters_per_second
+	VRATE_ASCENT <- vrate_ascent_meters_per_second
+	VRATE_DECENT <- vrate_decent_meters_per_second
 	
 	# This is the behavior dive defintion threshold which determines
 	# whether a wet/dry determined dive should be processed and saved
@@ -311,5 +322,11 @@ ans <- readline("press return to continue")
 		warning("no extractable dives")
 	}
 	
-	beh_extrap
+	fname <- NULL
+	if(is.sattagstream(s)) fname <- filename(s)
+	beh_extrap$Ptt <- Ptt(s)
+	beh_extrap$DeployID <- DeployID(s)
+	
+	sattagtream("stream_behavior", beh_extrap, filename = fname)
 }
+
