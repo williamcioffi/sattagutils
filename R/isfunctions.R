@@ -19,6 +19,6 @@ is.sattag <- function(obj) {
 
 #' @rdname isfunctions
 #' @export
-is.stream <- function(obj) {
+is.sattagstream <- function(obj) {
 	inherits(obj, "sattagstream")
 }
