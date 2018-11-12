@@ -88,7 +88,8 @@ setMethod("[", "es4dataframe", function(x, i, j, ..., drop) {
 	} else if(class(dfout) == "list") {
 		x@.Data <- dfout
 		x@names <- names(dfout)
-		x@row.names <- as.character(i)
+		
+		x@row.names <- row.names(dfin)[i]
 		
 		return(x)
 	} else {
