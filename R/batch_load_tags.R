@@ -49,7 +49,7 @@ batch_load_tags <- function(
 	}
 	
 	if(all(!is.na(ignore))) {
-		desedirs <- !(dnames %in% tags_dir)
+		desedirs <- !(dnames %in% ignore)
 		if(all(!desedirs)) stop("i don't think there are any tag directories in here...")
 		
 		dnames <- dnames[desedirs]
