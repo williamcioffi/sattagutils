@@ -47,7 +47,6 @@ sattagstream <- function(type = character(), data = data.frame(), filename = cha
 	new(type, streamtype = type, data, filename = filename)
 }
 
-
 #' get filename of a sattagstream
 #'
 #' use this function to get the filename of a \code{\link[sattagutils]{sattagstream-class}}. changing the source filename after construction is currently not supported.
@@ -56,8 +55,6 @@ sattagstream <- function(type = character(), data = data.frame(), filename = cha
 #' @param x source filename for a csv data stream file.
 #' @export
 setGeneric("filename", function(x) standardGeneric("filename"))
-
-
 
 #' get stream type of a sattagstream
 #'
@@ -73,3 +70,10 @@ setMethod("streamtype", "sattagstream", function(x) x@streamtype)
 
 #' @describeIn filename get the source filename of a sattagstream
 setMethod("filename", "sattagstream", function(x) x@filename)
+
+#' @describeIn Ptt get the Ptt
+setMethod("Ptt", "sattagstream", function(x) x$Ptt[1])
+
+#' @describeIn DeployID get the DeployID
+setMethod("DeployID", "sattagstream", function(x) x$DeployID[1])
+
