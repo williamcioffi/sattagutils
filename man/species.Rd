@@ -18,7 +18,7 @@ function to extract species as defined in *-Labels.csv.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sat tag
+\item \code{sattag}: method for sattag
 
 \item \code{tagstack}: method for tagstack
 }}

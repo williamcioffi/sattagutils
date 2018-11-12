@@ -3,12 +3,12 @@
 \name{isfunctions}
 \alias{isfunctions}
 \alias{is.sattag}
-\alias{is.stream}
+\alias{is.sattagstream}
 \title{is functions for sattag and sattagstream}
 \usage{
 is.sattag(obj)
 
-is.stream(obj)
+is.sattagstream(obj)
 }
 \description{
 check to see if an object is a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils]{sattagstream}}

@@ -8,5 +8,5 @@
 \S4method{[}{sattag}(x, i, j, ..., drop = TRUE)
 }
 \description{
-whae i want this to do is return a sattag as opposed to [[ which should return a stream (and it does by default).
+what i want this to do is return a sattag as opposed to [[ which should return a stream (and it does by default).
 }

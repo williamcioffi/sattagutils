@@ -1,3 +1,6 @@
+#' @include sattagstream.R
+NULL
+
 #' downsample series data to faux behavior data
 #' 
 #' a simple downsampling which takes series data stream as an input and creates an estimate of what the behavior stream would have looked like. tries to interpolate surfacing times for more accurate duration estimates.
@@ -21,12 +24,10 @@ ser2beh <- function(
 	
 	
 	# error checking
-	if(!is.sattagstream(s)) {
-		stop("i need a sattagstream (series)... try ?sattagstream...")
-	} else if(streamtype(s) != "stream_series") {
-		stop("i need a series stream...")
-	}
-		
+	if(is.sattagstream(s) & streamtype(s) != "stream_series") {
+		stop("if you're gonna use a sattagstream it's gotta be a series...")
+	}		
+	
 	###
 	# x-intercept function
 	#
@@ -324,8 +325,8 @@ ans <- readline("press return to continue")
 	
 	fname <- NULL
 	if(is.sattagstream(s)) fname <- filename(s)
-	beh_extrap$Ptt <- Ptt(s)
-	beh_extrap$DeployID <- DeployID(s)
+	beh_extrap$Ptt <- s$Ptt[1]
+	beh_extrap$DeployID <- s$DeployID[1]
 	
 	sattagtream("stream_behavior", beh_extrap, filename = fname)
 }

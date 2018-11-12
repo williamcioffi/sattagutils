@@ -141,7 +141,7 @@ setMethod("instrument", "sattag", function(x) x@instrument)
 #' @describeIn Ptt method for sattag
 setMethod("Ptt", "sattag", function(x) x@Ptt)
 
-#' @describeIn species method for sat tag
+#' @describeIn species method for sattag
 setMethod("species", "sattag", function(x) x@species)
 
 #' @describeIn location method for sattag

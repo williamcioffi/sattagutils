@@ -5,8 +5,9 @@
 \title{downsample series data to faux behavior data}
 \usage{
 ser2beh(s, surface_threshold_meters = 25,
-  vrate_meters_per_second = 1.4, dive_definition_threshold_meters = 50,
-  period)
+  vrate_ascent_meters_per_second = 0.7,
+  vrate_decent_meters_per_second = 1.5,
+  dive_definition_threshold_meters = 50, period)
 }
 \arguments{
 \item{s}{a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.}
@@ -17,7 +18,9 @@ ser2beh(s, surface_threshold_meters = 25,
 
 \item{surface_threshold_metersused}{by the peak finding algorithm to determine if a peak is close enough to the surface to represent a real surfacing event. default 25 is for me. you will need ot pick something that makes sense for your species.}
 
-\item{vrate_meters_per_second.}{this is the assumed mean speed to interpolate surfacing times. default 1.4 is for Ziphius cavirostris. Appears to work well empiracally and is very similar to reported vert decent speeds reported in Tyack (2006). Probably should implement dfferent acent and decent rates in the code.}
+\item{vrate_ascent_meters_per_second.}{this is the assumed mean vertical accent rate to interpolate surfacing times. default 0.7 is for Ziphius cavirostris (Tyack et al. 2006).}
+
+\item{vrate_decent_meters_per_second.}{this is the assumed mean vertical decent rate to interpolate surfacing times. default 1.5 for Ziphius cavirostris (Tyack et al. 2006)}
 }
 \description{
 a simple downsampling which takes series data stream as an input and creates an estimate of what the behavior stream would have looked like. tries to interpolate surfacing times for more accurate duration estimates.

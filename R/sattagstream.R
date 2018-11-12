@@ -70,10 +70,3 @@ setMethod("streamtype", "sattagstream", function(x) x@streamtype)
 
 #' @describeIn filename get the source filename of a sattagstream
 setMethod("filename", "sattagstream", function(x) x@filename)
-
-#' @describeIn Ptt get the Ptt
-setMethod("Ptt", "sattagstream", function(x) x$Ptt[1])
-
-#' @describeIn DeployID get the DeployID
-setMethod("DeployID", "sattagstream", function(x) x$DeployID[1])
-
