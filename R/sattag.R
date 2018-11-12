@@ -126,7 +126,7 @@ setGeneric("tag_en<-", function(x, value) standardGeneric("tag_en<-"))
 
 #' definition for the subset operator [
 #'
-#' whae i want this to do is return a sattag as opposed to [[ which should return a stream (and it does by default).
+#' what i want this to do is return a sattag as opposed to [[ which should return a stream (and it does by default).
 setMethod("[", "sattag", function(x, i, j, ..., drop) {
 	x@.Data <- x@.Data[i]
 	x
