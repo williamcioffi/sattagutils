@@ -7,3 +7,9 @@
 library(devtools)
 install_github("williamcioffi/sattagutils")
 ```
+### the basics:
+you probably want to start with:
+```{r}
+?sattagutils
+```
+
