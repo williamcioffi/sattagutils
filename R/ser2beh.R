@@ -328,6 +328,6 @@ ans <- readline("press return to continue")
 	beh_extrap$Ptt <- s$Ptt[1]
 	beh_extrap$DeployID <- s$DeployID[1]
 	
-	sattagstream("stream_behavior", beh_extrap, filename = fname)
+	sattagstream("behavior", beh_extrap, filename = fname)
 }
 
