@@ -2,6 +2,7 @@
 
 [repository](https://github.com/williamcioffi/sattagutils) | [io home](https://williamcioffi.github.io)
 
+a collection of utils for manipulating wildlife computers sat tag data.
 ### to install:
 ```{r}
 library(devtools)
