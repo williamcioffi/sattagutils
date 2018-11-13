@@ -110,7 +110,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			if(length(DeployID) > 0 | length(Ptt) > 0 | length(t_start) > 0 | length(t_end) > 0) {
 				warning("it appears there are multiple *-Summary.csv files in this directory. using the first one to populate meta data...")
 			} else {
-				DeployID 	<- summarystream$DeployID[1]
+				DeployID 	<- as.character(summarystream$DeployID[1])
 				Ptt 		<- as.character(summarystream$Ptt[1])
 				t_start 	<- date2num(summarystream$EarliestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
 				t_end 		<- date2num(summarystream$LatestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
