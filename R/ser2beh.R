@@ -116,7 +116,7 @@ ser2beh <- function(
 	}
 	
 	# destory a peak
-	destroyapeak <- function(surf_pt) {
+	destroyapeak <- function(surf_pt, surf_st, surf_en) {
 		pts <- locator()
 					
 		xx <- pts$x
@@ -125,10 +125,12 @@ ser2beh <- function(
 		for(q in 1:length(xx)) {
 			dis <- which.min(abs(s$Date - xx))
 			surf_pt[dis] <- FALSE
+			surf_st[dis] <- FALSE
+			surf_en[dis] <- FALSE
 			abline(v = s$Date[dis], lty = 2, col = "red")
 		}
 		
-		surf_pt
+		list(surf_pt = surf_pt, surf_st = surf_st, surf_en = surf_en)
 	}
 	# end: helper functions for the menu
 	###
@@ -142,7 +144,10 @@ ser2beh <- function(
 		if(choice == 1) {
 			surf_pt <- addapeak(surf_pt)
 		} else if(choice == 2) {
-			surf_pt <- destroyapeak(surf_pt)
+			surfl <- destroyapeak(surf_pt, surf_st, surf_en)
+			surf_pt <- surfl$surf_pt
+			surf_st <- surfl$surf_st
+			surf_en <- surfl$surf_en
 		}
 	}
 	# end: menu
