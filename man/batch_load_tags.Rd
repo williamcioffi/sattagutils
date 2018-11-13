@@ -26,7 +26,7 @@ load sat tags from a directory containing directories downloaded from the wildli
 }
 \examples{
 \dontrun{
-tags <- load_tag("~/path/to/tags/")
+tags <- batch_load_tags("~/path/to/tags/")
 }
 }
 \seealso{

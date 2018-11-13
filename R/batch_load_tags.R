@@ -11,7 +11,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' tags <- load_tag("~/path/to/tags/")
+#' tags <- batch_load_tags("~/path/to/tags/")
 #' }
 
 batch_load_tags <- function(
