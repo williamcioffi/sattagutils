@@ -6,18 +6,18 @@ NULL
 #' a simple downsampling which takes series data stream as an input and creates an estimate of what the behavior stream would have looked like. tries to interpolate surfacing times for more accurate duration estimates.
 #' @param s a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.
 #' @param surface_threshold_metersused by the peak finding algorithm to determine if a peak is close enough to the surface to represent a real surfacing event. default 25 is for me. you will need ot pick something that makes sense for your species.
-#' @param vrate_ascent_meters_per_second. this is the assumed mean vertical accent rate to interpolate surfacing times. default 0.7 is for Ziphius cavirostris (Tyack et al. 2006).
-#' @param vrate_decent_meters_per_second. this is the assumed mean vertical decent rate to interpolate surfacing times. default 1.5 for Ziphius cavirostris (Tyack et al. 2006)
+#' @param vrate_ascent_meters_per_second, vrate_decent_meters_per_second these are the vertical ascent and decent rates used to interpolate surfacing times. defaults are for Ziphius cavirostris (see notes). 
 #' @param dive_definition_threshold_meters would be from the behavior settings you want to emulate. this is the threshold to qualify as a behavior dive.
 #' @param period sampling period of input series data
+#' @note i've set the vertical ascent and decent rates the same for Ziphius cavirostris (1.4 m/s). This is based on some experimentationwith known surfacings from behavior data, vertical rates from series data, and analysis of dtags by Tyack et al. (2006). Though the ascent rates are much slower for Z. cavirostris after deep dives than the decent rates, there is actually no difference in the last several hundred meters and the rate is much faster.
 #' @references Tyack, P. L., Johnson, M., Soto, N. A., Sturlese, A., & Madsen, P. T. (2006). Extreme diving of beaked whales. Journal of Experimental Biology, 209(21), 4238–4253. https://doi.org/10.1242/jeb.02505
 #' @export
 
 ser2beh <- function(
 	s,
 	surface_threshold_meters = 25, 
-	vrate_ascent_meters_per_second = 0.7,
-	vrate_decent_meters_per_second = 1.5,
+	vrate_ascent_meters_per_second = 1.4,
+	vrate_decent_meters_per_second = 1.4,
 	dive_definition_threshold_meters = 50,
 	period
 ) {
