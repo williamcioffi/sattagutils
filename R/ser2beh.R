@@ -91,54 +91,65 @@ ser2beh <- function(
 	surf_st <- depdiff_1 == -1 & depdiff_2 == 0 & s$Depth[-nrow(s)] < SURFACE_THRESHOLD_METERS
 	surf_en <- depdiff_1 == 0 & depdiff_2 ==  1 & s$Depth[-nrow(s)] < SURFACE_THRESHOLD_METERS
 	
-# take a look
-plot(s$Date, -s$Depth, pch = 16, cex = .5, axes = FALSE)
-lines(s$Date, -s$Depth)
-abline(v = s$Date[surf_pt], lty = 2, col = "grey50")
-abline(v = s$Date[surf_st], lty = 2, col = "green")
-abline(v = s$Date[surf_en], lty = 2, col = "purple")
+	# take a look
+	plot(s$Date, -s$Depth, pch = 16, cex = .5, axes = FALSE)
+	lines(s$Date, -s$Depth)
+	abline(v = s$Date[surf_pt], lty = 2, col = "grey50")
+	abline(v = s$Date[surf_st], lty = 2, col = "green")
+	abline(v = s$Date[surf_en], lty = 2, col = "purple")
 
-	miss <- "y"
-	while(miss != "n") {
-		miss <- readline("did i miss a peak? (y/n)")
-		if(miss == "n") break
-		
-		if(miss == "y") {
-			pts <- locator()
-			
-			xx <- pts$x
-			# add these
-			for(q in 1:length(xx)) {
-				dis <- which.min(abs(s$Date - xx[q]))
-				surf_pt[dis] <- TRUE
-				abline(v = s$Date[dis], lty = 1, col = "black")
-			}
+	###
+	# helper functions for the menu
+	#add a peak
+	addapeak <- function(surf_pt) {
+		pts <- locator()
+					
+		xx <- pts$x
+		# add these
+		for(q in 1:length(xx)) {
+			dis <- which.min(abs(s$Date - xx[q]))
+			surf_pt[dis] <- TRUE
+			abline(v = s$Date[dis], lty = 1, col = "black")
 		}
+		
+		surf_pt
 	}
 	
-	
-	kill <- "y"
-	while(kill != "n") {
-		kill <- readline("do i need to kill a peak? (y/n)")
-		if(kill == "n") break
+	# destory a peak
+	destroyapeak <- function(surf_pt) {
+		pts <- locator()
+					
+		xx <- pts$x
+		#remove these
+		add_these <- vector()
+		for(q in 1:length(xx)) {
+			dis <- which.min(abs(s$Date - xx))
+			surf_pt[dis] <- FALSE
+			abline(v = s$Date[dis], lty = 2, col = "red")
+		}
 		
-		if(kill == "y") {
-			pts <- locator()
-			
-			xx <- pts$x
-			#remove these
-			add_these <- vector()
-			for(q in 1:length(xx)) {
-				dis <- which.min(abs(s$Date - xx))
-				surf_pt[dis] <- FALSE
-				abline(v = s$Date[dis], lty = 2, col = "red")
-			}
+		surf_pt
+	}
+	# end: helper functions for the menu
+	###
+
+	###
+	# menu
+	choice <- 4
+	while(choice != 3) {
+		choice <- menu(c("add a peak", "destroy a peak", "done"))
+		
+		if(choice == 1) {
+			surf_pt <- addapeak(surf_pt)
+		} else if(choice == 2) {
+			surf_pt <- destroyapeak(surf_pt)
 		}
 	}
+	# end: menu
+	###	
 	
 	###
 	# extrapolate to surface time
-	
 	d <- -s$Depth
 	tt <- s$Date
 	
