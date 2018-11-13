@@ -20,6 +20,7 @@ Collate:
     'load_tag.R'
     'matchtimes.R'
     'num2date.R'
+    'plot_series.R'
     'rcsv.R'
     'sattag.R'
     'sattag_init.R'
