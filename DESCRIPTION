@@ -23,6 +23,7 @@ Collate:
     'num2date.R'
     'plot_series.R'
     'rcsv.R'
+    'resample_series.R'
     'sattag.R'
     'sattag_init.R'
     'sattag_show.R'
