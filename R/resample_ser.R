@@ -5,7 +5,7 @@
 #' @param sampling_period desired sampling period in minutes (sorry).
 #' @export
 
-resample_series <- function(
+resample_ser <- function(
 	s, # series data expectes to have a column date added in numeric format
 	sampling_period # desired sampling period in minutes (sorry)
 ) {

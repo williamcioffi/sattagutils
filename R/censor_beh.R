@@ -6,7 +6,7 @@
 #' @param duration the minimum duration required to qualify as a dive in seconds.
 #' @export
 
-censor_tag <- function(b1, depth = 50, duration = 33*60) {
+censor_beh <- function(b1, depth = 50, duration = 33*60) {
 	depthresh <- depth
 	timthresh <- duration
 	

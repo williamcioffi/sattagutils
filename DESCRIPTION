@@ -10,7 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Collate: 
     'batch_load_tags.R'
-    'censor_tag.R'
+    'censor_beh.R'
     'es4dataframe.R'
     'sattagstream.R'
     'sattagstream_extends.R'
@@ -23,7 +23,7 @@ Collate:
     'num2date.R'
     'plot_series.R'
     'rcsv.R'
-    'resample_series.R'
+    'resample_ser.R'
     'sattag.R'
     'sattag_init.R'
     'sattag_show.R'
