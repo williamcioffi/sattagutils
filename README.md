@@ -6,13 +6,16 @@ a collection of utils to help with manupulating wildlife computers sat tags (pri
 ## notes
 ### need to bring over
 - plot\_dives2
-- censor\_tag2
+- ~~censor\_tag2~~
 - find\_gaps2
 - plot\_status
 - plot\_corrupt
 ### other to dos?
 
-- should load\_tag be able to read the wch and figure out the settings? and then write the relevant metadata to appropraite slots in those matching sattagstreams? if there is no wch file would it alternatively be able to parse an htm file? if there aren't either then those slots would just be NA? NULL? empty? I am thinking about things like:
+- should load\_tag be able to read the wch and figure out the settings? 
 	- sampling period for series
 	- min depth and duration for behavior dive qual
  
+	(the wch file is mostly in hex so would have to figure this out)
+	- should also look for htm if wch isn't available?
+
