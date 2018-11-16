@@ -4,7 +4,7 @@ NULL
 #' downsample series data to faux behavior data
 #' 
 #' a simple downsampling which takes series data stream as an input and creates an estimate of what the behavior stream would have looked like. tries to interpolate surfacing times for more accurate duration estimates.
-#' @param s a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.
+#' @param s a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}, numeric \code{DRange}.
 #' @param surface_threshold_metersused by the peak finding algorithm to determine if a peak is close enough to the surface to represent a real surfacing event. default 25 is for me. you will need ot pick something that makes sense for your species.
 #' @param vrate_ascent_meters_per_second, vrate_decent_meters_per_second these are the vertical ascent and decent rates used to interpolate surfacing times. defaults are for Ziphius cavirostris (see notes). 
 #' @param dive_definition_threshold_meters would be from the behavior settings you want to emulate. this is the threshold to qualify as a behavior dive.

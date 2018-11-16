@@ -10,7 +10,7 @@ ser2beh(s, surface_threshold_meters = 25,
   dive_definition_threshold_meters = 50, period)
 }
 \arguments{
-\item{s}{a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.}
+\item{s}{a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}, numeric \code{DRange}.}
 
 \item{vrate_ascent_meters_per_second, }{vrate_decent_meters_per_second these are the vertical ascent and decent rates used to interpolate surfacing times. defaults are for Ziphius cavirostris (see notes).}
 
