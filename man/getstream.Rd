@@ -20,7 +20,7 @@ getstream(x, type)
 either a \code{tagstack} or \code{sattag} depending on input.
 }
 \description{
-function to get a particular streamtype from a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils{tagstack}]}.
+function to get a particular streamtype from a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils]{tagstack}}.
 }
 \section{Methods (by class)}{
 \itemize{
