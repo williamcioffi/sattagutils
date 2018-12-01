@@ -123,6 +123,13 @@ setGeneric("tag_st<-", function(x, value) standardGeneric("tag_st<-"))
 #' @export
 setGeneric("tag_en<-", function(x, value) standardGeneric("tag_en<-"))
 
+#' get a stream
+#' 
+#' function to get a particular streamtype from a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils{tagstack}]}.
+#' @param type streamtype to extract
+#' @return either a \code{tagstack} or \code{sattag} depending on input.
+#' @export
+setGeneric("getstream", function(x, type) standardGeneric("getstream"))
 
 #' definition for the subset operator [
 #'
