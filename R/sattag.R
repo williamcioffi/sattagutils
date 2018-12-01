@@ -180,6 +180,9 @@ setMethod("tag_en<-", "sattag", function(x, value) {
 #' @describeIn streamtype return a vector of stream types of all sattagstreams contained in a sattag
 setMethod("streamtype", "sattag", function(x) sapply(x, function(s) streamtype(s)))
 
+#' @describeIn getstream return all streams of streamtype type
+setMethod("getstream", "sattag", function(x, type) x[streamtype(x) == type])
+
 #' @describeIn filename return a vector of source filenames of all sattagstreams contained in a sattag
 setMethod("filename", "sattag", function(x) sapply(x, function(s) filename(s)))
 

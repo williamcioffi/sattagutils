@@ -97,6 +97,18 @@ setMethod("streamtype", "tagstack", function(x) lapply(x, function(s) streamtype
 #' @describeIn filename return a vector of source filenames of all sattagstreams contained in a tagstack
 setMethod("filename", "tagstack", function(x) lapply(x, function(s) filename(s)))
 
+#' @describeIn getstream return a tagstack of all streams of type
+setMethod("getstream", "tagstack", function(x, type) {
+  streams <- streamtype(x)
+  picks <- lapply(streams, function(s) s == type)
+  out <- x
+  for(i in 1:length(picks))
+    if(any(picks[[i]])) {
+      out[[i]] <- out[[i]][picks[[i]]]
+    }
+  out
+})
+
 #' show tagstack
 setMethod("show", "tagstack", function(object) {
 	cat(paste0("tagstack of ", length(object), " tags\n"))
