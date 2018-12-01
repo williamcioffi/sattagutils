@@ -33,4 +33,4 @@ Collate:
     'tagstack.R'
     'torad.R'
     'wcsv.R'
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
