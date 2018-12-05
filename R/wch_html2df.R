@@ -140,16 +140,17 @@ FASTLOC_FIELDS <- c(
 MONTHS <- c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
 # tiny helper function
-grab_a_field <- function(fieldname, htm_split) {
+grab_a_field <- function(fieldname, htm_split, cleanlab = TRUE, cleanval = TRUE) {
 	lab_ind <- grep(fieldname, htm_split)
 	val_ind <- lab_ind + 1
 	
 	val_tmp <- htm_split[val_ind]
 	val_tmp <- trimws(gsub("&nbsp", "", val_tmp))
-	val_tmp <- gsub(",", ";", val_tmp)
+	
+	if(cleanval) val_tmp <- gsub(",", ";", val_tmp)
 	
 	lab_tmp <- htm_split[lab_ind]
-	lab_tmp <- clean_lab(lab_tmp)
+	if(cleanlab) lab_tmp <- clean_lab(lab_tmp)
 	
 	list(val = val_tmp, lab = lab_tmp)
 }
@@ -204,8 +205,9 @@ read_a_wch_htm <- function(file) {
 		
 		if(SIMPLE_FIELDS[i] == "Wet/Dry$") {
 			outtmp <- cbind("wet_dry_archive_period" = ff$val[1])
-		} else if(SIMPLE_FIELDS[i]== "<strong>Depth</strong") {
-			val <- strsplit(ff$val, split = ": |;")[[1]]
+		} else if(SIMPLE_FIELDS[i]== "<strong>Depth</strong>") {
+			val <- strsplit(grab_a_field(SIMPLE_FIELDS[i], htm_split, cleanval = FALSE)$val, split = ": |;")[[1]]
+print(val)
 			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])	
 		} else if(SIMPLE_FIELDS[i] == "Transmit hours") {
 			outtmp <- cbind(ff$val[length(ff$val)])
