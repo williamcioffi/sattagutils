@@ -207,11 +207,18 @@ read_a_wch_htm <- function(file) {
 			outtmp <- cbind("wet_dry_archive_period" = ff$val[1])
 		} else if(SIMPLE_FIELDS[i]== "<strong>Depth</strong>") {
 			val <- strsplit(grab_a_field(SIMPLE_FIELDS[i], htm_split, cleanval = FALSE)$val, split = ": |;")[[1]]
-print(val)
 			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])	
 		} else if(SIMPLE_FIELDS[i] == "Transmit hours") {
 			outtmp <- cbind(ff$val[length(ff$val)])
 			colnames(outtmp) <- ff$lab[length(ff$lab)]
+		} else if(SIMPLE_FIELDS[i] == "Generation of time-series messages") {
+		  if(length(ff$val) == 0) {
+		    lab <- ff$lab
+		    ff<- grab_a_field("Generation of time-series \\(TS\\) messages", htm_split)
+		    ff$lab <- lab
+		  }
+		  outtmp <- cbind(ff$val[length(ff$val)])
+		  colnames(outtmp) <- ff$lab[length(ff$lab)]
 		} else {
 			outtmp <- cbind(ff$val[1])
 			colnames(outtmp) <- ff$lab[1]
