@@ -32,5 +32,6 @@ Collate:
     'ser2beh.R'
     'tagstack.R'
     'torad.R'
+    'wch_html2df.R'
     'wcsv.R'
 RoxygenNote: 6.1.1
