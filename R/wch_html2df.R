@@ -85,7 +85,7 @@ SIMPLE_FIELDS <- c(
 	"Status",
 # when to transmit
 	"Initially transmit for these hours regardless of settings below",
-	# "Transmit hours"
+	"Transmit hours"
 # transmit days
 	# same as collection days above will have to parse it there
 # daily transmit allowance
@@ -110,7 +110,7 @@ grab_a_field <- function(fieldname, htm_split) {
 
 ### tester
 
-dir <- "/Volumes/cioffi/BRS_DATA_20181025_DO_NOT_EDIT_DO_NOT_OPEN_IN_EXCEL/0_ALLBRSHTML_WCH/"
+dir <- "~/Desktop/sandbox/0_ALLBRSHTML_WCH/"
 
 read_dir_wch_htm <- function(dir) {
 	allfiles <- list.files(dir)
@@ -153,8 +153,8 @@ read_a_wch_htm <- function(file) {
 			val <- strsplit(ff$val, split = ": |;")[[1]]
 			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])
 		} else {
-			outtmp <- cbind(ff$val)
-			colnames(outtmp) <- ff$lab
+			outtmp <- cbind(ff$val[1])
+			colnames(outtmp) <- ff$lab[1]
 		}
 		
 		out <- cbind(out, outtmp)
