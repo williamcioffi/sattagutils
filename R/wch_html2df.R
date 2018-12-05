@@ -6,6 +6,22 @@
 #' @return a \code{data.frame}. if multiple input files than each row is a new file. columns correspond to fields.
 #' @export
 
+wch_html2df <- function(dir, file) {
+	if(!missing(file) & !missing(dir)) stop("you gave me both a single file and a dir...")
+	if(missing(file) & missing(dir)) stop("you didn't give me either a single file or a dir...")
+	
+	if(missing(dir)) {
+		if(!file.exists(file)) stop("i can't find that file...")
+		out <- read_a_wch_htm(file)
+	} else if(missing(file)) {
+		if(!dir.exists(dir)) stop("i can't find that dir...")
+		out <- read_dir_wch_htm(dir)
+	}
+	
+	out
+}
+
+# constants
 SIMPLE_FIELDS <- c(
 	# host settings
 	"MK10Host version",
@@ -94,6 +110,33 @@ SIMPLE_FIELDS <- c(
 	# "<strong>Depth</strong>"
 )
 
+FASTLOC_FIELDS <- c(
+# fastloc settings
+	"Fastloc sampling interval",
+	"Deployment Latitude",
+	"Deployment Longitude",
+	"Deployment Altitude",
+	"Transmit hours", # second one
+#Fastloc Collection Days
+	# months (first one)
+#Fastloc Control
+	"Maximum successful Fastloc attempts",
+	"Maximum failed Fastloc attempts",
+	"Overall maximum Fastloc attempts",
+	"Supress Fastloc after good haulout location",
+	"Abort Fastloc processing if tag measures wet on next wakeup",
+	"Always transmit latest location message",
+#Fastloc Internal Parameters
+	"^Mode$",
+	"^Offset$",
+	"^Span$",
+	"^Autotune$",
+	"^Threshold$",
+	"^Hardware$",
+	"^Software$",
+	"^Serial Number$"
+)
+
 MONTHS <- c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
 # tiny helper function
@@ -105,13 +148,24 @@ grab_a_field <- function(fieldname, htm_split) {
 	val_tmp <- trimws(gsub("&nbsp", "", val_tmp))
 	val_tmp <- gsub(",", ";", val_tmp)
 	
-	list(val = val_tmp, lab = htm_split[lab_ind])
+	lab_tmp <- htm_split[lab_ind]
+	lab_tmp <- clean_lab(lab_tmp)
+	
+	list(val = val_tmp, lab = lab_tmp)
 }
 
-### tester
+# tinier helper function
+clean_lab <- function(lab) {
+	lab <- gsub("'", "", lab)
+	lab <- gsub(",", "", lab)
+	lab <- gsub(" ", "_", lab)
+	lab <- gsub("-", "_", lab)
+	lab <- gsub("\\^", "", lab)
+	lab <- gsub("\\$", "", lab)
+	lab
+}
 
-dir <- "~/Desktop/sandbox/0_ALLBRSHTML_WCH/"
-
+# read an entire directory
 read_dir_wch_htm <- function(dir) {
 	allfiles <- list.files(dir)
 	files <- allfiles[grepl("*.htm$", allfiles)]
@@ -123,15 +177,16 @@ read_dir_wch_htm <- function(dir) {
 		df[[i]] <- read_a_wch_htm(file.path(dir, files[i]))
 	}
 	
-	df
+	do.call('rbind', df)
 }
 
+# read a single wch report htm file
 read_a_wch_htm <- function(file) {
 	htm_lines <- readLines(file)
 	htm <- paste(htm_lines, collapse = "")
 	htm_split <- strsplit(htm, split = "<td>|</td>|</tr>")[[1]]
 	
-	isfastloc <- any(grepl("fastloc", htm_split, ignore.case = TRUE))
+	isfastloc <- any(grepl("Fastloc Settings", htm_split))
 	
 	# get the tags serial number
 	f0 <- grab_a_field("Tag\'s Serial Number", htm_split)
@@ -151,7 +206,10 @@ read_a_wch_htm <- function(file) {
 			outtmp <- cbind("wet_dry_archive_period" = ff$val[1])
 		} else if(SIMPLE_FIELDS[i]== "<strong>Depth</strong") {
 			val <- strsplit(ff$val, split = ": |;")[[1]]
-			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])
+			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])	
+		} else if(SIMPLE_FIELDS[i] == "Transmit hours") {
+			outtmp <- cbind(ff$val[length(ff$val)])
+			colnames(outtmp) <- ff$lab[length(ff$lab)]
 		} else {
 			outtmp <- cbind(ff$val[1])
 			colnames(outtmp) <- ff$lab[1]
@@ -160,18 +218,42 @@ read_a_wch_htm <- function(file) {
 		out <- cbind(out, outtmp)
 	}
 	
-	# is a fastloc tag?
+	# add fastloc particular fields or make NA
+	for(i in 1:length(FASTLOC_FIELDS)) {
+		if(isfastloc) {
+			ff <- grab_a_field(FASTLOC_FIELDS[i], htm_split)
+		} else {
+			ff <- list(lab = clean_lab(FASTLOC_FIELDS[i]), val = NA)
+		}
+			
+		if(FASTLOC_FIELDS[i] == "Transmit hours") {
+			ff$lab <- paste("Fastloc", ff$lab[1], sep = "_")
+			ff$val <- ff$val[1]
+		} else if(FASTLOC_FIELDS[i] %in% FASTLOC_FIELDS[12:19]) {
+			ff$lab <- paste("Fastloc", ff$lab, sep = "_")
+		}
+		
+		outtmp <- cbind(ff$val[1])
+		colnames(outtmp) <- ff$lab[1]
+		out <- cbind(out, outtmp)
+	}
 	
 	# add collection transmit and transmit allowance
 	monthout <- cbind()
 	for(i in 1:length(MONTHS)) {
-		ff <- grab_a_field(MONTHS[i], htm_split)
-		outtmp <- cbind(ff$val[1], ff$val[2], ff$val[3])
-		colnames(outtmp) <- paste0(c("collection_days_", "transmit_days_", "daily_transmit_allowance_"), tolower(MONTHS[i]))
+		if(isfastloc) {
+			val <- grab_a_field(MONTHS[i], htm_split)$val
+		} else {
+			val <- c(NA, grab_a_field(MONTHS[i], htm_split)$val)
+		}
+		
+		outtmp <- cbind(val[1], val[2], val[3], val[4])
+		colnames(outtmp) <- paste0(c("fastloc_collection_days_", "collection_days_", "transmit_days_", "daily_transmit_allowance_"), tolower(MONTHS[i]))
 		monthout <- cbind(monthout, outtmp)
 	}
 	
-	oo <- c(seq(1, ncol(monthout), by = 3), seq(2, ncol(monthout), by = 3), seq(3, ncol(monthout), by = 3))
+		oo <- c(seq(1, ncol(monthout), by = 4), seq(2, ncol(monthout), by = 4), seq(3, ncol(monthout), by = 4), seq(4, ncol(monthout), by = 4))
+		
 	out <- cbind(out, monthout[, oo, drop = FALSE])
 	out
 }
