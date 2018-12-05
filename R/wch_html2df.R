@@ -101,13 +101,13 @@ SIMPLE_FIELDS <- c(
 	"Status",
 # when to transmit
 	"Initially transmit for these hours regardless of settings below",
-	"Transmit hours"
+	"Transmit hours",
 # transmit days
 	# same as collection days above will have to parse it there
 # daily transmit allowance
 	# same as collection days above will have to parse it there
 # channel settings
-	# "<strong>Depth</strong>"
+	"<strong>Depth</strong>"
 )
 
 FASTLOC_FIELDS <- c(
