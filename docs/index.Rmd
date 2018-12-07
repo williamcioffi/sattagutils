@@ -1,0 +1,25 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+[repository](https://github.com/williamcioffi/sattagutils) | [io home](https://williamcioffi.github.io)
+
+a collection of utils for manipulating wildlife computers sat tag data.
+
+**WARNING**: use at your own risk. still in active development things are changing.
+
+### to install:
+```{r, eval = FALSE}
+library(devtools)
+install_github("williamcioffi/sattagutils")
+```
+### the basics:
+you probably want to start with:
+```{r, eval = FALSE}
+?sattagutils
+?load_tag
+?batch_load_tags
+```
+
