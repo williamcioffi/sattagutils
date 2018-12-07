@@ -1,11 +1,10 @@
 ---
-output:
-    html_document:
-        keep_md: true 
+output: html_document
 ---
 
 [repository](https://github.com/williamcioffi/sattagutils) | [monitorgonio](https://williamcioffi.github.io/monitorgonio) |  [io home](https://williamcioffi.github.io)
 
+### sattagutils
 a collection of utils for manipulating wildlife computers sat tag data.
 
 **WARNING**: use at your own risk. still in active development things are changing.
