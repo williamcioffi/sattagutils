@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    html_preview: false
+output: github_document
 ---
 
 [repository](https://github.com/williamcioffi/sattagutils) | [io home](https://williamcioffi.github.io)
