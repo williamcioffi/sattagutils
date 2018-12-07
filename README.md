@@ -17,7 +17,3 @@ a collection of utils to help with manupulating wildlife computers sat tags (pri
 - deal with the channel settings other than depth
 - bug associated with series field on series tags
 
-```r
-plot(rnorm(10))
-```
-
