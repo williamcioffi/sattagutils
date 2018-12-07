@@ -11,8 +11,7 @@ a collection of utils for manipulating wildlife computers sat tag data.
 
 ### to install:
 ```{r, eval = FALSE}
-library(devtools)
-install_github("williamcioffi/sattagutils")
+devtools::install_github("williamcioffi/sattagutils")
 ```
 ### the basics:
 you probably want to start with:
