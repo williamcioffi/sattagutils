@@ -9,7 +9,7 @@ are changing.
 
 ### to install:
 
-``` r
+```r
 library(devtools)
 install_github("williamcioffi/sattagutils")
 ```
@@ -18,7 +18,7 @@ install_github("williamcioffi/sattagutils")
 
 you probably want to start with:
 
-``` r
+```r
 ?sattagutils
 ?load_tag
 ?batch_load_tags
