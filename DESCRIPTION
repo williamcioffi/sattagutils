@@ -3,7 +3,7 @@ Title: utilities for manipulating wildlife computer sat tags
 Version: 0.0.0.9000
 Date: 2018-10-21
 Authors@R: person("William R.", "Cioffi", email = "wrc14@duke.edu", role = c("aut", "cre"))
-Description: A set of functions and classes to assist with loading, manipulating, running diagnostics, and manipulating, wildlife computer sat tag output. Geared primarily toward mk10-* tags and the data output obtained from the wildlife computers portal, but could be extended to be useful for other types of tags. Also includes functions for processing CLS Goniometer received messages back into a WC-DAP readable format. See github.com/williamcioffi/goniomonitor for a shiny app to visualize CLS Goniometer data in the field.
+Description: A set of functions and classes to assist with loading, manipulating, running diagnostics, and manipulating, wildlife computer sat tag output. Geared primarily toward mk10-* tags and the data output obtained from the wildlife computers portal, but could be extended to be useful for other types of tags. Also includes functions for processing CLS Goniometer received messages back into a WC-DAP readable format. See https://williamcioffi.github.io/goniomonitor for a shiny app to visualize CLS Goniometer data in the field.
 Depends: R (>= 3.4.4)
 License: GPL (>= 2)
 Encoding: UTF-8
