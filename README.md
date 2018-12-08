@@ -1,6 +1,7 @@
 # sattagutils
 a collection of utils to help with manupulating wildlife computers sat tags (primarily mk10s)
-**waring:** under active dev... things will change.
+
+**warning:** under active dev... things will change.
 
 [tutorial](https://williamcioffi.github.io/sattagutils) on some basic features. _there is no tutorial right now basically. need to add one along with some sample sattags to run the tutorial on._
 
