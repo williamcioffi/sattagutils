@@ -46,7 +46,7 @@ SIMPLE_FIELDS <- c(
 	"External Temperature$",
 	"Depth Sensor Temperature$",
 	"Battery Voltage$",
-	# "Wet/Dry$", # complex field
+	"Wet/Dry$",
 	"Wet/Dry Threshold",
 	"Sampling Mode",
 	"Automatic Correction of Depth Transducer Drift",
@@ -68,6 +68,11 @@ SIMPLE_FIELDS <- c(
 	"Do not create new Histogram-style messages if a tag is continuously",
 # time-series Messages
 	"Generation of time-series messages",
+  "Time interval between TS samples",
+  "Channels sampled",
+  "Start with",
+  "then Duty Cyle with", # this is a typo in the html report... will they fix it? this code will break then
+  "^and$",
 # dive and timeline defintion
 	"Depth reading to determine start and end of dive",
 	"Ignore dives shallower than",
@@ -78,7 +83,11 @@ SIMPLE_FIELDS <- c(
 # stomach temperature messages
 	"Generation of stomach temperature messages",
 #Haulout Defintion
-	# this one doesn't follow the pattern not sure how to capture it without knowing the options... check on that later
+  "A minute is &quot;dry&quot; if Wet/Dry sensor is dry for any <span class=\"style10\">value</span> seconds in a minute",
+  "Enter haulout state after <span class=\"style10\">value</span> consecutive dry minutes",
+  "Exit haulout state if wet for any <span class=\"style10\">value</span> seconds in a minute",
+  "Pause transmissions if haulout exceeds",
+  "Transmit every eighth day if transmissions are paused",
 	# transmission control
 	"Transmit data collected over these last days",
 #Collection Days
@@ -146,10 +155,14 @@ grab_a_field <- function(fieldname, htm_split, cleanlab = TRUE, cleanval = TRUE)
 	
 	val_tmp <- htm_split[val_ind]
 	val_tmp <- trimws(gsub("&nbsp", "", val_tmp))
+
+	lab_tmp <- fieldname
+	
+	if(length(lab_ind) > 0) {
+	  lab_tmp <- htm_split[lab_ind]
+	}
 	
 	if(cleanval) val_tmp <- gsub(",", ";", val_tmp)
-	
-	lab_tmp <- htm_split[lab_ind]
 	if(cleanlab) lab_tmp <- clean_lab(lab_tmp)
 	
 	list(val = val_tmp, lab = lab_tmp)
@@ -157,6 +170,9 @@ grab_a_field <- function(fieldname, htm_split, cleanlab = TRUE, cleanval = TRUE)
 
 # tinier helper function
 clean_lab <- function(lab) {
+  lab <- gsub("<span class=\"style10\">", "", lab)
+  lab <- gsub("</span>", "", lab)
+  lab <- gsub("&quot;", "", lab)
 	lab <- gsub("'", "", lab)
 	lab <- gsub(",", "", lab)
 	lab <- gsub(" ", "_", lab)
