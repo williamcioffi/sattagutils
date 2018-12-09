@@ -205,11 +205,14 @@ read_a_wch_htm <- function(file) {
 	htm_split <- strsplit(htm, split = "<td>|</td>|</tr>")[[1]]
 	
 	isfastloc <- any(grepl("Fastloc Settings", htm_split))
-	
+
+	# start out and put the filename in the first column
+	out <- cbind(basename(file))
+	colnames(out) <- "wch_filename"
+
 	# get the tags serial number
 	f0 <- grab_a_field("Tag\'s Serial Number", htm_split)
-	out <- cbind(f0$val)
-	colnames(out) <- f0$lab
+	out <- cbind(out, "Tags_Serial_Number" = f0$val)
 		
 	# get the ptt numbers
 	f1 <- grab_a_field("Argos Ptt number", htm_split)
