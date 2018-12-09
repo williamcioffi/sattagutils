@@ -17,5 +17,5 @@ a collection of utils to help with manupulating wildlife computers sat tags (pri
 - what a terrible name
 - deal with the haulout setting
 - deal with the channel settings other than depth
-- bug associated with series field on series tags
+- ~~bug associated with series field on series tags~~
 
