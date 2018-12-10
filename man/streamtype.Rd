@@ -36,9 +36,10 @@ use this function to get the stream type of a \code{\link[sattagutils]{sattagstr
 
 Other slot access functions: \code{\link{DeployID}},
   \code{\link{Ptt}}, \code{\link{filename}},
-  \code{\link{instrument}}, \code{\link{loadtime}},
-  \code{\link{location}}, \code{\link{species}},
-  \code{\link{tag_en}}, \code{\link{tag_st}},
-  \code{\link{tagdir}}, \code{\link{tagstackdir}}
+  \code{\link{getstream}}, \code{\link{instrument}},
+  \code{\link{loadtime}}, \code{\link{location}},
+  \code{\link{species}}, \code{\link{tag_en}},
+  \code{\link{tag_st}}, \code{\link{tagdir}},
+  \code{\link{tagstackdir}}
 }
 \concept{slot access functions}

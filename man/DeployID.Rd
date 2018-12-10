@@ -25,10 +25,11 @@ function to extract DeployID.
 
 \seealso{
 Other slot access functions: \code{\link{Ptt}},
-  \code{\link{filename}}, \code{\link{instrument}},
-  \code{\link{loadtime}}, \code{\link{location}},
-  \code{\link{species}}, \code{\link{streamtype}},
-  \code{\link{tag_en}}, \code{\link{tag_st}},
-  \code{\link{tagdir}}, \code{\link{tagstackdir}}
+  \code{\link{filename}}, \code{\link{getstream}},
+  \code{\link{instrument}}, \code{\link{loadtime}},
+  \code{\link{location}}, \code{\link{species}},
+  \code{\link{streamtype}}, \code{\link{tag_en}},
+  \code{\link{tag_st}}, \code{\link{tagdir}},
+  \code{\link{tagstackdir}}
 }
 \concept{slot access functions}

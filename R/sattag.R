@@ -128,6 +128,7 @@ setGeneric("tag_en<-", function(x, value) standardGeneric("tag_en<-"))
 #' function to get a particular streamtype from a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils]{tagstack}}.
 #' @param type streamtype to extract
 #' @return either a \code{tagstack} or \code{sattag} depending on input.
+#' @family slot access functions
 #' @export
 setGeneric("getstream", function(x, type) standardGeneric("getstream"))
 

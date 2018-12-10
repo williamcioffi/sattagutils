@@ -35,10 +35,11 @@ use this function to get the filename of a \code{\link[sattagutils]{sattagstream
 \code{\link[sattagutils]{sattagstream}}
 
 Other slot access functions: \code{\link{DeployID}},
-  \code{\link{Ptt}}, \code{\link{instrument}},
-  \code{\link{loadtime}}, \code{\link{location}},
-  \code{\link{species}}, \code{\link{streamtype}},
-  \code{\link{tag_en}}, \code{\link{tag_st}},
-  \code{\link{tagdir}}, \code{\link{tagstackdir}}
+  \code{\link{Ptt}}, \code{\link{getstream}},
+  \code{\link{instrument}}, \code{\link{loadtime}},
+  \code{\link{location}}, \code{\link{species}},
+  \code{\link{streamtype}}, \code{\link{tag_en}},
+  \code{\link{tag_st}}, \code{\link{tagdir}},
+  \code{\link{tagstackdir}}
 }
 \concept{slot access functions}

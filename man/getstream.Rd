@@ -29,3 +29,13 @@ function to get a particular streamtype from a \code{\link[sattagutils]{sattag}}
 \item \code{tagstack}: return a tagstack of all streams of type
 }}
 
+\seealso{
+Other slot access functions: \code{\link{DeployID}},
+  \code{\link{Ptt}}, \code{\link{filename}},
+  \code{\link{instrument}}, \code{\link{loadtime}},
+  \code{\link{location}}, \code{\link{species}},
+  \code{\link{streamtype}}, \code{\link{tag_en}},
+  \code{\link{tag_st}}, \code{\link{tagdir}},
+  \code{\link{tagstackdir}}
+}
+\concept{slot access functions}
