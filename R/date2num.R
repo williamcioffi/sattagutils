@@ -21,8 +21,8 @@ NULL
 #' date2num("1988-03-12 07:00:00", tz = "UTC", format = "%Y-%m-%d %H:%M:%S")
 
 setGeneric("date2num",
-	function(d, ...) {
-		as.numeric(as.POSIXct(d, ...))
+	function(d, tz = "UTC", ...) {
+		as.numeric(as.POSIXct(d, tz = tz, ...))
 	}
 )
 
