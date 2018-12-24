@@ -5,7 +5,7 @@
 #' @examples
 #' \dontrun{
 #'	tag1 <- load_tag("path/to/tags/tag1")
-#'	s1 <- getStream(tag1, 1)
+#'	s1 <- tag1[[1]] 
 #'
 #'	c(is.stream(s1), is.tag(s1), is.sattag(tag1), is.stream(tag1))
 #'	}
