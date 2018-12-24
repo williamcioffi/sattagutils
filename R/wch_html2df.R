@@ -284,6 +284,6 @@ read_a_wch_htm <- function(file) {
 		oo <- c(seq(1, ncol(monthout), by = 4), seq(2, ncol(monthout), by = 4), seq(3, ncol(monthout), by = 4), seq(4, ncol(monthout), by = 4))
 		
 	out <- cbind(out, monthout[, oo, drop = FALSE])
-	out
+	as.data.frame(out, stringsAsFactors = FALSE)
 }
  
