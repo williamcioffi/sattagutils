@@ -5,6 +5,10 @@ a collection of utils to help with manupulating wildlife computers sat tags (pri
 
 [tutorial](https://williamcioffi.github.io/sattagutils) on some basic features. _there is no tutorial right now but comming soon._
 
+## contributing
+
+Send me an email if you'd like to [contribute](CONTRIBUTING.md).
+
 ## notes / to do
 ### need to bring over
 - plot\_dives2
