@@ -18,7 +18,7 @@
 \alias{date2num,stream_summary-method}
 \title{translate character dates to numeric dates}
 \usage{
-date2num(d, ...)
+date2num(d, tz = "UTC", ...)
 
 \S4method{date2num}{sattagstream}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
@@ -62,9 +62,9 @@ date2num(d, ...)
 \arguments{
 \item{d}{either a character vector of dates or an object of a class which extends \code{\link[sattagutils]{sattagstream}}.}
 
-\item{...}{any other good stuff you want to pass to \code{as.POSIXct}.}
-
 \item{tz, format}{as expected by \code{\link[base]{as.POSIXct}}.}
+
+\item{...}{any other good stuff you want to pass to \code{as.POSIXct}.}
 }
 \description{
 convert character dates to numeric dates (seconds since UNIX epoch by default).
