@@ -107,7 +107,7 @@ setMethod("getstream", "tagstack", function(x, type, collapse = FALSE) {
       out[[i]] <- out[[i]][picks[[i]]]
     }
   
-  if(collapse == TRUE) {
+  if(collapse) {
   	out <- do.call('rbind', lapply(out, function(l) do.call('rbind', l)))
   	row.names(out) <- 1:nrow(out)
   
