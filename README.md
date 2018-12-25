@@ -7,7 +7,9 @@ a collection of utils to help with manupulating wildlife computers sat tags (pri
 
 ## contributing
 
-Send me an email at wrc14 [at] duke.edu if you'd like to [contribute](CONTRIBUTING.md).
+start here if you'd like to [contribute](CONTRIBUTING.md).
+
+if you have questions feel free to drop me a line at wrc14 [at] duke.edu
 
 ## notes / to do
 ### need to bring over
