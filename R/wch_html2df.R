@@ -52,11 +52,12 @@ SIMPLE_FIELDS <- c(
 	"Sampling Mode",
 	"Automatic Correction of Depth Transducer Drift",
 # Data to transmit settings
+# histogram selection
 	"Histogram Data sampling interval",
-	"Dive Maximum Depth",
+	"Dive Maximum Depth \\(m\\)",
 	"Dive Duration",
-	"Time-at-Temperature",
-	"Time-at-Depth",
+	"Time-at-Temperature \\(C\\)",
+	"Time-at-Depth \\(m\\)",
 	"20-min time-line",
 	"Hourly % time-line \\(low resolution\\)",
 	"Hourly % time-line \\(high resolution\\)",
@@ -120,6 +121,19 @@ SIMPLE_FIELDS <- c(
 	"<strong>Depth</strong>"
 )
 
+HISTO_FIELDS <- c(
+  "Dive Maximum Depth \\(m\\)",
+  "Dive Duration",
+  "Time-at-Temperature \\(C\\)",
+  "Time-at-Depth \\(m\\)",
+  "20-min time-line",
+  "Hourly % time-line \\(low resolution\\)",
+  "Hourly % time-line \\(high resolution\\)",
+  "Dry/Deep/Neither time-lines",
+  "PAT-style depth-temperature profiles",
+  "Light-level locations"
+)
+
 FASTLOC_FIELDS <- c(
 # fastloc settings
 	"Fastloc sampling interval",
@@ -180,6 +194,8 @@ clean_lab <- function(lab) {
 	lab <- gsub("-", "_", lab)
 	lab <- gsub("\\^", "", lab)
 	lab <- gsub("\\$", "", lab)
+	lab <- gsub("\\\\\\(", "(", lab)
+	lab <- gsub("\\\\\\)", ")", lab)
 	lab
 }
 
@@ -225,7 +241,7 @@ read_a_wch_htm <- function(file) {
 		
 		if(SIMPLE_FIELDS[i] == "Wet/Dry$") {
 			outtmp <- cbind("wet_dry_archive_period" = ff$val[1])
-		} else if(SIMPLE_FIELDS[i]== "<strong>Depth</strong>") {
+		} else if(SIMPLE_FIELDS[i] == "<strong>Depth</strong>") {
 			val <- strsplit(grab_a_field(SIMPLE_FIELDS[i], htm_split, cleanval = FALSE)$val, split = ": |;")[[1]]
 			outtmp <- cbind("depth_channel" = val[2], "depth_range" = val[4], "depth_resolution" = val[6], "depth_ADaddress" = val[8], "depth_settling_delay" = val[10])	
 		} else if(SIMPLE_FIELDS[i] == "Transmit hours") {
@@ -239,6 +255,9 @@ read_a_wch_htm <- function(file) {
 		  }
 		  outtmp <- cbind(ff$val[length(ff$val)])
 		  colnames(outtmp) <- ff$lab[length(ff$lab)]
+		} else if(SIMPLE_FIELDS[i]  %in% HISTO_FIELDS) {
+		  outtmp <- cbind(ff$val[1])
+		  colnames(outtmp) <- clean_lab(SIMPLE_FIELDS[i])
 		} else {
 			outtmp <- cbind(ff$val[1])
 			colnames(outtmp) <- ff$lab[1]
@@ -284,6 +303,7 @@ read_a_wch_htm <- function(file) {
 		oo <- c(seq(1, ncol(monthout), by = 4), seq(2, ncol(monthout), by = 4), seq(3, ncol(monthout), by = 4), seq(4, ncol(monthout), by = 4))
 		
 	out <- cbind(out, monthout[, oo, drop = FALSE])
-	as.data.frame(out, stringsAsFactors = FALSE)
+	out <- as.data.frame(out, stringsAsFactors = FALSE)
+  out
 }
  
