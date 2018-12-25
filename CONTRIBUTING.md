@@ -15,3 +15,7 @@
 
 - if additional changes are needed push them to your fork and the pull request will update automatically
 
+## style
+
+- use base R. I know I'm a dinosauR, but also I'd like to cut down on dependencies.
+
