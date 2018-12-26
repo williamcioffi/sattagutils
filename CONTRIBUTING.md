@@ -1,21 +1,18 @@
-# contributing to sattagutils
+# Contributing to sattagutils
 
-## issues
+## Issues
+
 -  please include a minimal reproducible example when filing an issue.
 
-## pull requests
+## Pull requests
  
-- create a branch
+1. Create a branch on your fork.
+2. Make changes. Limit your your pull request in scope to addressing one issue or feature request.
+3. Push the branch to your fork.
+4. Open a pull request.
+5. We can discuss if neccessary. Changes pushed to your fork will update the pull request automatically.
 
-- make changes. limit your pull request in scope to addressing one issue or feature request.
-
-- push the branch to your fork
-
-- open a pull request
-
-- if additional changes are needed push them to your fork and the pull request will update automatically
-
-## style
+## Style
 
 - use base R. I know I'm a dinosauR, but also I'd like to cut down on dependencies.
 
