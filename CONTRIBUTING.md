@@ -16,3 +16,7 @@
 
 - use base R. I know I'm a dinosauR, but also I'd like to cut down on dependencies.
 
+## help
+
+- [sync your fork](https://help.github.com/articles/syncing-a-fork/#platform-linux)
+
