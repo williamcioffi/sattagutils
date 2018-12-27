@@ -22,3 +22,4 @@ setMethod("show", "sattag",
 		cat(paste0("loaded on: ", object@loadtime, "\n"))
 	}
 )
+

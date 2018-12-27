@@ -191,16 +191,19 @@ setMethod("streamtype", "sattag", function(x) sapply(x, function(s) streamtype(s
 
 #' @describeIn getstream return all streams of streamtype type
 setMethod("getstream", "sattag", function(x, type, collapse = FALSE) {
-  x[streamtype(x) == type]
+  x <- x[streamtype(x) == type]
 
   if(collapse) {
-  	x <- do.call('rbind', x)
-  	row.names(x) <- 1:nrow(x)
-  	
-  	type <- strsplit(type, split = "_")[[1]][1]
-  	x <- sattagstream(type, data = x, filename = "called from getstream")
+    fnames <- filename(x)
+    names(fnames) <- NULL
+
+    x <- do.call('rbind', x)
+    row.names(x) <- 1:nrow(x)
+
+    type <- strsplit(type, split = "_")[[1]][2]
+    x <- sattagstream(type, data = x, filename = fnames)
   }
-  x
+x
 })
 
 #' @describeIn filename return a vector of source filenames of all sattagstreams contained in a sattag
