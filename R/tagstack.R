@@ -98,7 +98,7 @@ setMethod("streamtype", "tagstack", function(x) lapply(x, function(s) streamtype
 setMethod("filename", "tagstack", function(x) lapply(x, function(s) filename(s)))
 
 #' @describeIn getstream return a tagstack of all streams of type
-setMethod("getstream", "tagstack", function(x, type, collapse = FALSE) {
+setMethod("getstream", "tagstack", function(x, type, squash = FALSE) {
   streams <- streamtype(x)
   picks <- lapply(streams, function(s) s == type)
   out <- x
@@ -107,7 +107,7 @@ setMethod("getstream", "tagstack", function(x, type, collapse = FALSE) {
       out[[i]] <- out[[i]][picks[[i]]]
     }
   
-  if(collapse) {
+  if(squash) {
     fnames <- do.call('c', filename(out))
     names(fnames) <- NULL
 

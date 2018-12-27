@@ -127,11 +127,11 @@ setGeneric("tag_en<-", function(x, value) standardGeneric("tag_en<-"))
 #' 
 #' function to get a particular streamtype from a \code{\link[sattagutils]{sattag}} or \code{\link[sattagutils]{tagstack}}.
 #' @param type streamtype to extract
-#' @param collapse boolean defaults to FALSE. If TRUE, will return a single sattagstream.
+#' @param squash boolean defaults to FALSE. If TRUE, will return a single sattagstream.
 #' @return either a \code{tagstack} or \code{sattag} depending on input.
 #' @family slot access functions
 #' @export
-setGeneric("getstream", function(x, type, collapse = FALSE) standardGeneric("getstream"))
+setGeneric("getstream", function(x, type, squash = FALSE) standardGeneric("getstream"))
 
 #' definition for the subset operator [
 #'
@@ -190,10 +190,10 @@ setMethod("tag_en<-", "sattag", function(x, value) {
 setMethod("streamtype", "sattag", function(x) sapply(x, function(s) streamtype(s)))
 
 #' @describeIn getstream return all streams of streamtype type
-setMethod("getstream", "sattag", function(x, type, collapse = FALSE) {
+setMethod("getstream", "sattag", function(x, type, squash = FALSE) {
   x <- x[streamtype(x) == type]
 
-  if(collapse) {
+  if(squash) {
     fnames <- filename(x)
     names(fnames) <- NULL
 
