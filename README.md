@@ -11,18 +11,3 @@ start here if you'd like to [contribute](CONTRIBUTING.md).
 
 if you have questions feel free to drop me a line at wrc14 [at] duke.edu
 
-## notes / to do
-### need to bring over
-- plot\_dives2
-- ~~censor\_tag2~~
-- find\_gaps2
-- plot\_status
-- plot\_corrupt
-### make tutorial
-### wch\_html2df
-- what a terrible name
-- ~~deal with the haulout setting~~
-- deal with stomach temperature
-- deal with the channel settings other than depth
-- ~~bug associated with series field on series tags~~
-
