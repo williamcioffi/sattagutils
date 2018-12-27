@@ -79,7 +79,19 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		
 				tryCatch({	# start try block
 		# special considerations for these stream types
-		if(stream_names[s] == "rawargos") {
+	  if(stream_names[s] == "behavior") {
+	    # some behavior has a bunch of extra columns. it is supposed to be 17. but sometimes it is 29. 
+	    # Blanks of Number, Shape, DepthMin, DepthMax, DurationMin, DurationMax are repeated twice right before Shallow and Deep.
+	    # This is crazy but easy to fix as long as it remains consistent.
+	    tmpstream <- rcsv(path)
+	    
+	    if(ncol(tmpstream) == 29) {
+	      warning("i'm detecting blank columns in the behavior stream. i'm getting rid of them but you might want to double check your input and output to make sure everything worked as expeceted... if anything looks odd please report this at https://github.com/williamcioffi/sattagutils/issues the file format may have changed...")
+	      tmpstream <- tmpstream[, c(1:15, 28:29)]
+	    }
+	    
+      if(ncol(tmpstream) != 17 & ncol(tmpstream) != 29) warning(paste0("i was expecting either 17 or 29 columns in behavior stream, but i saw ", ncol(tmpstream), ".", " you might want to double check your input files... and report this at https://github.com/williamcioffi/sattagutils/issues the file format might have changed..."))
+	  } else if(stream_names[s] == "rawargos") {
 			# RAWARGOS always has 4 lines that don't follow the csv format at the end
 			tmpstream <- rcsv(text = paste0(head(readLines(path), -4)), comment.char = "")
 		} else if(stream_names[s] == "fastgps") {
