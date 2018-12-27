@@ -114,7 +114,6 @@ setMethod("getstream", "tagstack", function(x, type, collapse = FALSE) {
     out <- do.call('rbind', lapply(out, function(l) do.call('rbind', l)))
     row.names(out) <- 1:nrow(out)
 
-    type <- strsplit(type, split = "_")[[1]][2]
     out <- sattagstream(type, data = out, filename = fnames)
   }
   out

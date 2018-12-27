@@ -24,7 +24,7 @@ ser2beh <- function(
 	
 	
 	# error checking
-	if(is.sattagstream(s) & streamtype(s) != "stream_series") {
+	if(is.sattagstream(s) & streamtype(s) != "series") {
 		stop("if you're gonna use a sattagstream it's gotta be a series...")
 	}		
 	
