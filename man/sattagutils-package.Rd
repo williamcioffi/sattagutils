@@ -11,8 +11,16 @@ A set of functions and classes to assist with loading, manipulating, running dia
 \details{
 you probably want to start by looking at \code{\link[sattagutils]{load_tag}} or \code{\link[sattagutils]{sattag-class}}.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/williamcioffi/sattagutils}
+  \item Report bugs at \url{https://github.com/williamcioffi/sattagutils/issues}
+}
+
+}
 \author{
-\strong{Maintainer}: William R. Cioffi \email{wrc14@duke.edu}
+\strong{Maintainer}: William R. Cioffi \email{wrc14@duke.edu} (000-0003-1182-8578)
 
 }
 \keyword{internal}

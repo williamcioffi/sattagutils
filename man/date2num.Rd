@@ -4,18 +4,17 @@
 \name{date2num}
 \alias{date2num}
 \alias{date2num,sattagstream-method}
-\alias{date2num,stream_all-method}
-\alias{date2num,stream_behavior-method}
-\alias{date2num,stream_corrupt-method}
-\alias{date2num,stream_fastgps-method}
-\alias{date2num,stream_labels-method}
-\alias{date2num,stream_rawargos-method}
-\alias{date2num,stream_rtc-method}
-\alias{date2num,stream_series-method}
-\alias{date2num,stream_seriesrange-method}
-\alias{date2num,stream_locations-method}
-\alias{date2num,stream_status-method}
-\alias{date2num,stream_summary-method}
+\alias{date2num,all-method}
+\alias{date2num,behavior-method}
+\alias{date2num,corrupt-method}
+\alias{date2num,fastgps-method}
+\alias{date2num,rawargos-method}
+\alias{date2num,rtc-method}
+\alias{date2num,series-method}
+\alias{date2num,seriesrange-method}
+\alias{date2num,locations-method}
+\alias{date2num,status-method}
+\alias{date2num,summary-method}
 \title{translate character dates to numeric dates}
 \usage{
 date2num(d, tz = "UTC", ...)
@@ -23,40 +22,37 @@ date2num(d, tz = "UTC", ...)
 \S4method{date2num}{sattagstream}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_all}(d, tz = "UTC",
+\S4method{date2num}{all}(d, tz = "UTC",
   format = "\%m/\%d/\%Y \%H:\%M:\%S", ...)
 
-\S4method{date2num}{stream_behavior}(d, tz = "UTC",
+\S4method{date2num}{behavior}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_corrupt}(d, tz = "UTC",
+\S4method{date2num}{corrupt}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_fastgps}(d, tz = "UTC",
+\S4method{date2num}{fastgps}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_labels}(d, tz = "UTC",
+\S4method{date2num}{rawargos}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_rawargos}(d, tz = "UTC",
+\S4method{date2num}{rtc}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_rtc}(d, tz = "UTC",
+\S4method{date2num}{series}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_series}(d, tz = "UTC",
+\S4method{date2num}{seriesrange}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_seriesrange}(d, tz = "UTC",
+\S4method{date2num}{locations}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_locations}(d, tz = "UTC",
+\S4method{date2num}{status}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 
-\S4method{date2num}{stream_status}(d, tz = "UTC",
-  format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
-
-\S4method{date2num}{stream_summary}(d, tz = "UTC",
+\S4method{date2num}{summary}(d, tz = "UTC",
   format = "\%H:\%M:\%S \%d-\%b-\%Y", ...)
 }
 \arguments{
@@ -71,7 +67,7 @@ convert character dates to numeric dates (seconds since UNIX epoch by default).
 }
 \details{
 methods are defined for converting objects of a class which extends \code{sattagstream}.
-note that the date formats and column names are inconsistent in the data streams download from the portal. for example, note the odd capitalization patterns in \code{*-All.csv} (and ambiguous date format). method is not fully implemented for \code{stream_summary} because i've never seen the date format for \code{ReleaseDate} and \code{DeployDate}.
+note that the date formats and column names are inconsistent in the data streams download from the portal. for example, note the odd capitalization patterns in \code{*-All.csv} (and ambiguous date format). method is not fully implemented for \code{summary} because i've never seen the date format for \code{ReleaseDate} and \code{DeployDate}.
 
 also, beware if you open any data stream csvs in excel and re-save, the dates will likely be put into an absurb ambiguous form. additionally, seconds tend to be obliterated.
 
@@ -81,29 +77,27 @@ this methods may become defunct if wildlife updates their conventions and will h
 \itemize{
 \item \code{sattagstream}: for generic sattagstreams
 
-\item \code{stream_all}: for *-All.csv. note the different time format.
+\item \code{all}: for *-All.csv. note the different time format.
 
-\item \code{stream_behavior}: for *-Behavior.csv
+\item \code{behavior}: for *-Behavior.csv
 
-\item \code{stream_corrupt}: for *-Corrupt.csv
+\item \code{corrupt}: for *-Corrupt.csv
 
-\item \code{stream_fastgps}: for *-FastGPS.csv
+\item \code{fastgps}: for *-FastGPS.csv
 
-\item \code{stream_labels}: for *-Labels.csv
+\item \code{rawargos}: for *-RawArgos.csv
 
-\item \code{stream_rawargos}: for *-RawArgos.csv
+\item \code{rtc}: for *-RTC.csv
 
-\item \code{stream_rtc}: for *-RTC.csv
+\item \code{series}: for *-Series.csv
 
-\item \code{stream_series}: for *-Series.csv
+\item \code{seriesrange}: for *-SeriesRange.csv
 
-\item \code{stream_seriesrange}: for *-SeriesRange.csv
+\item \code{locations}: for *-Locations.csv
 
-\item \code{stream_locations}: for *-Locations.csv
+\item \code{status}: for *-Status.csv
 
-\item \code{stream_status}: for *-Status.csv
-
-\item \code{stream_summary}: for *-Summary.csv note: not sure how to implement ReleaseDate or DeployDate...
+\item \code{summary}: for *-Summary.csv note: not sure how to implement ReleaseDate or DeployDate...
 }}
 
 \examples{
