@@ -79,7 +79,19 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		
 				tryCatch({	# start try block
 		# special considerations for these stream types
-		if(stream_names[s] == "rawargos") {
+	  if(stream_names[s] == "behavior") {
+	    # some behavior has a bunch of extra columns. it is supposed to be 17. but sometimes it is 29. 
+	    # Blanks of Number, Shape, DepthMin, DepthMax, DurationMin, DurationMax are repeated twice right before Shallow and Deep.
+	    # This is crazy but easy to fix as long as it remains consistent.
+	    tmpstream <- rcsv(path)
+	    
+	    if(ncol(tmpstream) == 29) {
+	      warning(paste0(path, ": i'm detecting blank columns in the behavior stream. this is a known oddity of the file format, but you still might want to double check and make sure everything looks ok in your output. if something looks amiss please report it at https://github.com/williamcioffi/sattagutils/issues the file format may have changed..."))
+	      tmpstream <- tmpstream[, c(1:15, 28:29)]
+	    }
+	    
+      if(ncol(tmpstream) != 17 & ncol(tmpstream) != 29) warning(paste0(path, ": i was expecting either 17 or 29 columns in behavior stream, but i saw ", ncol(tmpstream), ".", " you might want to double check your input files... and report this at https://github.com/williamcioffi/sattagutils/issues the file format might have changed..."))
+	  } else if(stream_names[s] == "rawargos") {
 			# RAWARGOS always has 4 lines that don't follow the csv format at the end
 			tmpstream <- rcsv(text = paste0(head(readLines(path), -4)), comment.char = "")
 		} else if(stream_names[s] == "fastgps") {
@@ -95,7 +107,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			
 			# populate some metadata from labels if we haven't been here before
 			if(length(instrument) > 0 | length(location) > 0 | length(species)) {
-				warning("it appears there are multiple *-Labels.csv files in this directory. using the first one to populate meta data...")
+				warning(paste0(path, ": it appears there are multiple *-Labels.csv files in this directory. using the first one to populate meta data..."))
 			} else {
 				instrument 	<- labels$V2[labels$V1 == "TagType"]
 				location 	<- labels$V2[labels$V1 == "Locality"]
@@ -108,7 +120,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			
 			# populate some metadata from summary if we haven't been here before
 			if(length(DeployID) > 0 | length(Ptt) > 0 | length(t_start) > 0 | length(t_end) > 0) {
-				warning("it appears there are multiple *-Summary.csv files in this directory. using the first one to populate meta data...")
+				warning(paste0(path, ": it appears there are multiple *-Summary.csv files in this directory. using the first one to populate meta data..."))
 			} else {
 				DeployID 	<- as.character(summarystream$DeployID[1])
 				Ptt 		<- as.character(summarystream$Ptt[1])
@@ -124,8 +136,12 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		
 		# make a new stream object of the correct class
 		tmpdata <- sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
+		
 		# convert times to numeric appropraitely
-		tmpdata <- date2num(tmpdata)
+		# don't do this for labels since there aren't any dates
+		if(stream_names[s] != "labels") {
+		  tmpdata <- date2num(tmpdata)
+		}
 		
 		# save to the list
 		outdata[[s]] <- tmpdata

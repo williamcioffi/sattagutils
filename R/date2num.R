@@ -59,11 +59,11 @@ setMethod("date2num", "fastgps", function(d, tz = "UTC", format = "%H:%M:%S %d-%
 	d
 })
 
-#' @describeIn date2num for *-Labels.csv
-setMethod("date2num", "labels", function(d, tz = "UTC", format = "%H:%M:%S %d-%b-%Y", ...) {
-	warning("There aren't any dates in the labels streams")
-	d
-})
+# #' @describeIn date2num for *-Labels.csv
+# setMethod("date2num", "labels", function(d, tz = "UTC", format = "%H:%M:%S %d-%b-%Y", ...) {
+# 	warning("There aren't any dates in the labels streams")
+# 	d
+# })
 
 #' @describeIn date2num for *-RawArgos.csv
 setMethod("date2num", "rawargos", function(d, tz = "UTC", format = "%H:%M:%S %d-%b-%Y", ...) {
