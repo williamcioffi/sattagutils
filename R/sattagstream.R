@@ -40,8 +40,6 @@ sattagstream <- function(type = character(), data = data.frame(), filename = cha
 	type <- tolower(type)
 	if(!(type %in% subclassoptions)) {
 		type <- "sattagstream"
-	} else {
-		type <- paste0("stream_", type)
 	}
 	
 	new(type, streamtype = type, data, filename = filename)

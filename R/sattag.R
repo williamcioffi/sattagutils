@@ -200,7 +200,6 @@ setMethod("getstream", "sattag", function(x, type, collapse = FALSE) {
     x <- do.call('rbind', x)
     row.names(x) <- 1:nrow(x)
 
-    type <- strsplit(type, split = "_")[[1]][2]
     x <- sattagstream(type, data = x, filename = fnames)
   }
 x

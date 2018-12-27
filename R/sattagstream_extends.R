@@ -7,7 +7,7 @@ NULL
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_all", 			contains = "sattagstream")
+setClass("all", 			contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -15,7 +15,7 @@ setClass("stream_all", 			contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_argos", 		contains = "sattagstream")
+setClass("argos", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -23,7 +23,7 @@ setClass("stream_argos", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_behavior", 		contains = "sattagstream")
+setClass("behavior", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -31,7 +31,7 @@ setClass("stream_behavior", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_corrupt", 		contains = "sattagstream")
+setClass("corrupt", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -39,7 +39,7 @@ setClass("stream_corrupt", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_fastgps", 		contains = "sattagstream")
+setClass("fastgps", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -47,7 +47,7 @@ setClass("stream_fastgps", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_histos", 		contains = "sattagstream")
+setClass("histos", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -55,7 +55,7 @@ setClass("stream_histos", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_labels", 		contains = "sattagstream")
+setClass("labels", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -63,7 +63,7 @@ setClass("stream_labels", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_locations", 	contains = "sattagstream")
+setClass("locations", 	contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -71,7 +71,7 @@ setClass("stream_locations", 	contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_minmaxdepth",	contains = "sattagstream")
+setClass("minmaxdepth",	contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -79,7 +79,7 @@ setClass("stream_minmaxdepth",	contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_rawargos", 		contains = "sattagstream")
+setClass("rawargos", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -87,7 +87,7 @@ setClass("stream_rawargos", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_rtc", 			contains = "sattagstream")
+setClass("rtc", 			contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -95,7 +95,7 @@ setClass("stream_rtc", 			contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_series", 		contains = "sattagstream")
+setClass("series", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -103,7 +103,7 @@ setClass("stream_series", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_seriesrange", 	contains = "sattagstream")
+setClass("seriesrange", 	contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -111,7 +111,7 @@ setClass("stream_seriesrange", 	contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_sst", 			contains = "sattagstream")
+setClass("sst", 			contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -119,7 +119,7 @@ setClass("stream_sst", 			contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_status", 		contains = "sattagstream")
+setClass("status", 		contains = "sattagstream")
 
 #' an S4 class which extends sattagstream
 #'
@@ -127,4 +127,4 @@ setClass("stream_status", 		contains = "sattagstream")
 #' @seealso \code{\link[sattagutils]{sattag-class}} 
 #' @seealso \code{\link[sattagutils]{sattagstream-class}}
 #' @family sattagstream types
-setClass("stream_summary", 		contains = "sattagstream")
+setClass("summary", 		contains = "sattagstream")
