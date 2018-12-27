@@ -7,16 +7,16 @@
 \alias{getstream,tagstack-method}
 \title{get a stream}
 \usage{
-getstream(x, type, collapse = FALSE)
+getstream(x, type, squash = FALSE)
 
-\S4method{getstream}{sattag}(x, type, collapse = FALSE)
+\S4method{getstream}{sattag}(x, type, squash = FALSE)
 
-\S4method{getstream}{tagstack}(x, type, collapse = FALSE)
+\S4method{getstream}{tagstack}(x, type, squash = FALSE)
 }
 \arguments{
 \item{type}{streamtype to extract}
 
-\item{collapse}{boolean defaults to FALSE. If TRUE, will return a single sattagstream.}
+\item{squash}{boolean defaults to FALSE. If TRUE, will return a single sattagstream.}
 }
 \value{
 either a \code{tagstack} or \code{sattag} depending on input.
