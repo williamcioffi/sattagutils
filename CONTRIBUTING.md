@@ -2,7 +2,8 @@
 
 ## Issues
 
--  please include a minimal reproducible example when filing an issue.
+- please include a minimal reproducible example when filing an issue (bug report).
+- it's probably a good idea to file your idea in issues before starting on a pull request.
 
 ## Pull requests
  
