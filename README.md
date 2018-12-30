@@ -1,6 +1,8 @@
 # sattagutils
 A collection of utils to help with manupulating Wildlife Computers sat tags (primarily SPLASH10).
 
+[sattagutils_extras](https://github.com/williamcioffi/sattagutils_extras) is a set of dependency heavy add-ons for sattagutils.
+
 ## Obligatory warning
 This package is under active dev... things will change.
 
