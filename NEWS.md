@@ -2,4 +2,4 @@
 
 ## NEW FEATURES
 
-- inital beta release
+- inital beta release (not on cran)
