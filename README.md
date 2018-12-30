@@ -1,13 +1,23 @@
 # sattagutils
-a collection of utils to help with manupulating wildlife computers sat tags (primarily mk10s)
+A collection of utils to help with manupulating Wildlife Computers sat tags (primarily SPLASH10).
 
-**warning:** under active dev... things will change.
+## Obligatory warning
+This package is under active dev... things will change.
 
-[tutorial](https://williamcioffi.github.io/sattagutils) on some basic features. _there is no tutorial right now but comming soon._
+## Quick Guide
+_there is no tutorial right now but comming soon._
 
-## contributing
+For now you can install:
+```r
+devtools::install_github("williamcioffi/sattagutils")
+```
 
-start here if you'd like to [contribute](CONTRIBUTING.md).
+And you probably want to start with:
+```r
+?sattagutils
+?load_tag
+?batch_load_tags
+```
+## Contributing
 
-if you have questions feel free to drop me a line at wrc14 [at] duke.edu
-
+Start here if you'd like to [contribute](CONTRIBUTING.md). If you have questions feel free to drop me a line at wrc14 [at] duke.edu
