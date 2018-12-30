@@ -4,6 +4,10 @@ A collection of utils to help with manupulating Wildlife Computers sat tags (pri
 ## Obligatory warning
 This package is under active dev... things will change.
 
+## Contributing
+
+Start here if you'd like to [contribute](CONTRIBUTING.md). If you have questions feel free to drop me a line at wrc14 [at] duke.edu
+
 ## Quick Guide
 _there is no tutorial right now but comming soon._
 
@@ -18,6 +22,3 @@ And you probably want to start with:
 ?load_tag
 ?batch_load_tags
 ```
-## Contributing
-
-Start here if you'd like to [contribute](CONTRIBUTING.md). If you have questions feel free to drop me a line at wrc14 [at] duke.edu
