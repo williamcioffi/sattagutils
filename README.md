@@ -11,7 +11,7 @@ This package is under active dev... things will change.
 Start here if you'd like to [contribute](CONTRIBUTING.md). If you have questions feel free to drop me a line at wrc14 [at] duke.edu
 
 ## Quick Guide
-_there is no tutorial right now but comming soon._
+_There is no tutorial right now but comming soon._ Some background chitchat is posted at https://williamcioffi.github.io/sattagutils.
 
 For now you can install:
 ```r
