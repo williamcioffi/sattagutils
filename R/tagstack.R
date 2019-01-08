@@ -115,7 +115,7 @@ setMethod("getstream", "tagstack", function(x, type, squash = FALSE) {
   # if there weren't any matching streams over the whole tagstack throw an error.
   if(length(kill) == length(out)) {
     stop(paste0("i didn't find any ", type, " streams..."))
-  } else {
+  } else if(length(kill) > 0) {
     out[[kill]] <- NULL 
   }
   
