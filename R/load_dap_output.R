@@ -8,7 +8,7 @@
 #' @export
 #' @examples 
 #' \dontrun{
-#' gonio <- load_gonio_output("path/to/tags")
+#' tag <- load_dap_output("path/to/dap/csvs/")
 #' }
 
 load_dap_output <- function(data_dir, stream_delim = '-') {
