@@ -1,6 +1,7 @@
 # CHANGES IN sattagutils VERSION 0.1.0-beta.2
 
 ## NEW FEATURES
+- `load\_dap\_output` function for loading a directory with DAP / Argos Message Decoder output and returning a tagstack
 
 ## MAJOR CHANGES
 
