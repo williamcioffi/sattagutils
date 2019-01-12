@@ -16,7 +16,7 @@ an S4 object of class \code{\link[sattagutils]{tagstack}}
 load a directory of output csv's created by Argos\ Message\ Decoder.exe into a sane tagstack.
 }
 \details{
-This functions expects there to be multiple tags concatenated into the same csv files and so returns a tagstack. This isn't a problem if there is only one tag, but it will since return a tagstack of length of 1. You can always delist it later. Basically this function just calls \code{\link[sattagutils]{load_tag}} and then deals with the fallout to get things into a nice tagstack. This function also expects ptts to be unique, which should be the case for a batch of tags running at the same time, but isn't neccessarily true for all time. Nevertheless, the user can't neccessarily be relied upon to always have \code{DeployID} set so perhaps this is the most reasonable first pass?
+This functions expects there to be multiple tags concatenated into the same csv files and so returns a tagstack. This isn't a problem if there is only one tag, but it will since return a tagstack of length of 1. You can always un-nest it later. Basically this function just calls \code{\link[sattagutils]{load_tag}} and then deals with the fallout to get things into a nice tagstack. This function also expects Ptts to be unique, which should be the case for a batch of tags running at the same time, but isn't neccessarily true for all time. Nevertheless, the user can't neccessarily be relied upon to always have \code{DeployID} set so perhaps this is the most reasonable first pass?
 }
 \examples{
 \dontrun{
