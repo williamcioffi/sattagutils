@@ -58,21 +58,22 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
               src_stream[, 'original'] <- source_lab
             }
             
-            combined_stream_tmp <- rbind(tar_stream, src_stream)
-            
-            # remove duplicates
-            if(remove_duplicates) {
-# write a function find_duplicates_stream()
-# should be aware of stream type
-# so it makes a reasonable key
-print("removing duplicates not implemented yet")
-            }
-            
-            target_stack[[cur_tar_index]][[tar_stream_matches[p]]] <- sattagstream(
-              data = combined_stream_tmp,
+            # make a new sattagstream object
+            # with the combined stream
+            combined_stream_tmp <- sattagstream(
+              data = rbind(tar_stream, src_stream),
               type = streamtype(tar_stream),
               filename = c(tar_stream@filename, src_stream@filename)
             )
+            
+            # remove duplicates
+            if(remove_duplicates) {
+              dups <- duplicated_sattagstream(combined_stream_tmp)
+              combined_stream_tmp <- combined_stream_tmp[!dups, ]
+            }
+            
+            # copy the stream back into the right place in the target stack
+            target_stack[[cur_tar_index]][[tar_stream_matches[p]]] <- combined_stream_tmp
           }
         }
       }
