@@ -62,7 +62,7 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
             
             # remove duplicates
             if(remove_duplicates) {
-# write a function remove_duplicates_stream()
+# write a function find_duplicates_stream()
 # should be aware of stream type
 # so it makes a reasonable key
 print("removing duplicates not implemented yet")
