@@ -4,6 +4,7 @@
 - `load\_dap\_output` function for loading a directory with DAP / Argos Message Decoder output and returning a tagstack
 - `merge_stacks` function for merging two tagstacks together and combining matching sattagstreams where possible.
 - `duplicated_sattagstream` used by `merge_stacks` to look for duplicates in different streamtypes
+- `sort_by_message` a function for sorting behavior sattagstreams while respecting messages.
 
 ## MAJOR CHANGES
 
