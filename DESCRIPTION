@@ -36,6 +36,7 @@ Collate:
     'sattagstream_show.R'
     'sattagutils.R'
     'ser2beh.R'
+    'sort_by_message.R'
     'tagstack.R'
     'torad.R'
     'wch_html2df.R'

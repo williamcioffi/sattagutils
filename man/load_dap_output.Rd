@@ -20,6 +20,6 @@ This functions expects there to be multiple tags concatenated into the same csv 
 }
 \examples{
 \dontrun{
-gonio <- load_gonio_output("path/to/tags")
+tag <- load_dap_output("path/to/dap/csvs/")
 }
 }
