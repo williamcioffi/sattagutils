@@ -200,7 +200,7 @@ setMethod("getstream", "sattag", function(x, type, squash = FALSE) {
     x <- do.call('rbind', x)
     row.names(x) <- 1:nrow(x)
 
-    x <- sattagstream(type, data = x, filename = fnames)
+    x <- sattagstream(type, data = x, filename = as.character(fnames))
   }
 x
 })
