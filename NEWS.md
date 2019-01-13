@@ -11,6 +11,7 @@
 
 ## BUG FIXES
 - getstream no longer throws an error when run on a tagstack if some of the tags are missing the stream entirely. (issue #23)
+- getstream no longer throws an error when `squash == TRUE` for streams with multiple filenames (possibly merged with `merge_stacks`. (issue #34)
 
 # INITIAL RELEASE sattagutils VERSION 0.1.0-beta
 
