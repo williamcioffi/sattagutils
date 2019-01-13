@@ -9,7 +9,7 @@ sort_by_message <- function(beh) {
   if(streamtype(beh) != "behavior") stop("beh must be a behavior sattagstream...")
   
   msgid <- cumsum(beh$What == "Message")
-  nmsg <- length(unique(umsgid))
+  nmsg <- length(unique(msgid))
   
   msgorder <- order(beh$Start[beh$What == "Message"])
   runlen <- rle(msgid)$lengths
@@ -27,3 +27,4 @@ sort_by_message <- function(beh) {
   oo <- unlist(msgsort[msgorder])
   beh[oo, ]
 }
+
