@@ -9,6 +9,7 @@
 ## MAJOR CHANGES
 
 ## MINOR CHANGES
+- `plot_series` `show_gaps = TRUE` looks more like `plot_dives2` now.
 
 ## BUG FIXES
 - getstream no longer throws an error when run on a tagstack if some of the tags are missing the stream entirely. (issue #23)
