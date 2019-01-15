@@ -116,7 +116,7 @@ setMethod("getstream", "tagstack", function(x, type, squash = FALSE) {
   if(length(kill) == length(out)) {
     stop(paste0("i didn't find any ", type, " streams..."))
   } else if(length(kill) > 0) {
-    out[[kill]] <- NULL 
+    out[kill] <- NULL 
   }
   
   if(squash) { # if everything got nulled above this will throw an error
