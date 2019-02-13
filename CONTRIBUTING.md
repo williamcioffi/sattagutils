@@ -10,7 +10,7 @@
 Pull requests should be made to the dev branch.
 
 1. Create a branch on your fork.
-2. Make changes. Limit your your pull request in scope to addressing one issue or feature request.
+2. Make changes. Limit your pull request in scope to addressing one issue or feature request.
 3. Merge dev back into your branch to try to head off conflicts.
 4. Push the branch to your fork.
 5. Open a pull request.
