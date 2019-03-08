@@ -15,7 +15,7 @@ dateseq <- function(d, hours = FALSE) {
 	mind <- min(d, na.rm = TRUE)
 	maxd <- max(d, na.rm = TRUE)
 
-	std <- trunc(mind / unit) * unit
+	std <- ceiling(mind / unit) * unit
 	end <- ceiling(maxd / unit) * unit
 	
 	seq(std, end, by = unit)
