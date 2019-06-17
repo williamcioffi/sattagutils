@@ -4,7 +4,7 @@ A collection of utils to help with manupulating Wildlife Computers sat tags (pri
 [sattagutils_extras](https://github.com/williamcioffi/sattagutils_extras) is a set of dependency heavy add-ons for sattagutils.
 
 ## Obligatory warning
-This package is under active dev... things will change.
+This package is under active dev... things will change. **NOTE:** Currently you're best best is to install the "dev" branch. 
 
 ## Contributing
 
@@ -15,7 +15,7 @@ _There is no tutorial right now but comming soon._ Some background chitchat is p
 
 For now you can install:
 ```r
-devtools::install_github("williamcioffi/sattagutils")
+devtools::install_github("williamcioffi/sattagutils", ref = "dev")
 ```
 
 And you probably want to start with:
