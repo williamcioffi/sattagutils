@@ -71,7 +71,19 @@ setMethod("as.data.frame", "es4dataframe", function(x, row.names = NULL, option 
 #' wrapper for S3 methods
 setMethod("$", "es4dataframe", function(x, name) {
 	x <- as.data.frame(x)
-	getS3method("$", "data.frame")(x, name)
+	# is this a horrific error in R 3.6?
+	# getS3method("$", "data.frame")(x, name)
+	
+	a <- x[[name]]
+	if (!is.null(a))
+	  return(a)
+	a <- x[[name, exact = FALSE]]
+	if (!is.null(a) && getOption("warnPartialMatchDollar", default = FALSE)) {
+	  names <- names(x)
+	  warning(gettextf("Partial match of '%s' to '%s' in data frame",
+	                   name, names[pmatch(name, names)]))
+	}
+	return(a)
 })
 
 #' wrapper for S3 method
