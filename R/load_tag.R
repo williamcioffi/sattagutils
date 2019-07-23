@@ -18,7 +18,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 	
 	# need at least a valid tag diretory to proceed
 	if(!hasArg(tag_dir)) stop("i need a tag directory to look for streams...")
-	if(!file.exists(tag_dir)) stop(tag_dir, ": i don't think that tag directory exists...")
+	if(!dir.exists(tag_dir)) stop(tag_dir, ": i don't think that tag directory exists...")
 	
 	# reminder the user if they excluded summary they might loose some fields.
 	streams <- tolower(streams)
