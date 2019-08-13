@@ -42,7 +42,7 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
         # if a stream is in the source but not the target just copy that stream over
         src_streamtype <- streamtype(cur_src[[n]])
         if(!(src_streamtype %in% streamtype(target_stack[[cur_tar_index]]))) {
-          k <- length(cur_tar) + 1
+          k <- length(target_stack) + 1
           target_stack[[cur_tar_index]][[k]] <- cur_src[[n]]
         } else {
           tar_stream_matches <- which(streamtype(target_stack[[cur_tar_index]]) == src_streamtype)
