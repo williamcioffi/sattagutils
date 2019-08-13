@@ -39,16 +39,20 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
       
       # go stream by stream
       for(n in 1:length(cur_src)) {
+cat(i, "\n")
+cat(n, "\n")
+cat(cur_tar_index, "\n")
         # if a stream is in the source but not the target just copy that stream over
         src_streamtype <- streamtype(cur_src[[n]])
         if(!(src_streamtype %in% streamtype(target_stack[[cur_tar_index]]))) {
-          k <- length(target_stack) + 1
+          k <- length(target_stack[[cur_tar_index]]) + 1
           target_stack[[cur_tar_index]][[k]] <- cur_src[[n]]
         } else {
           tar_stream_matches <- which(streamtype(target_stack[[cur_tar_index]]) == src_streamtype)
           
           # do the same to each of the matches
           for(p in 1:length(tar_stream_matches)) {
+
             tar_stream <- target_stack[[cur_tar_index]][[tar_stream_matches[p]]]
             src_stream <- cur_src[[n]]
             
@@ -71,7 +75,7 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
               dups <- duplicated_sattagstream(combined_stream_tmp)
               combined_stream_tmp <- combined_stream_tmp[!dups, ]
             }
-            
+
             # copy the stream back into the right place in the target stack
             target_stack[[cur_tar_index]][[tar_stream_matches[p]]] <- combined_stream_tmp
           }
