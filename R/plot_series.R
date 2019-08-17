@@ -17,7 +17,7 @@ plot_series <- function(s, show_gaps = TRUE, new = TRUE, points = TRUE, lines = 
   if(nrow(s) < 2) stop("i need two points to figure out what the sampling period is...") # i guess the series sattagstream should know what its sampling period is
   
   if(missing(ylim)) {
-    ylim <- c(min(-s$Depth), 10)
+    ylim <- c(min(-s$Depth, na.rm = TRUE), 10)
   }
   
   if(show_gaps) {
