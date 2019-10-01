@@ -27,6 +27,7 @@ Collate:
     'matchtimes.R'
     'merge_stacks.R'
     'num2date.R'
+    'paginate_series.R'
     'plot_series.R'
     'rcsv.R'
     'resample_ser.R'
