@@ -7,6 +7,8 @@
 load_dap_output(data_dir, stream_delim = "-")
 }
 \arguments{
+\item{data_dir}{the directory path to your data}
+
 \item{stream_delim}{a character which defaults to \code{"-"}. This is what Argos\ Message\ Decoder.exe puts between the tag identifier and the stream name in the csv filenames.}
 }
 \value{
