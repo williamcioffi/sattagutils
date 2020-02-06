@@ -1,3 +1,24 @@
+# CHANGES IN sattagutils VERSION 0.2.0
+
+## NEW FEATURES
+- `load\_dap_output` load a directory of output csv created by DAP
+- `merge\_stacks` merge two tagstacks together with overlapping sets of tags and streams
+- `paginate\_series` menu based navigation through a series datastream for inspection
+- `sort\_by\_messsage` sort behavior streams by start time keeping messages together
+- `has_stream` check to see if a tagstack of sattag has a stream
+- `duplicated\_sattagstream` find duplicates aware that some columns might be different
+
+## MAJOR CHANGES
+- see above added functions
+
+## MINOR CHANGES
+- updated description
+- custom citation
+
+## BUG FIXES
+- changed `file.exists()` which works on \*nix for dirs `dir.exists()` for windows compatability (issue #40)
+
+
 # CHANGES IN sattagutils VERSION 0.1.0-beta.2
 
 ## NEW FEATURES
