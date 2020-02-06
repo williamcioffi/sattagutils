@@ -8,8 +8,10 @@
 #' @export
 #' @examples
 #' # use it just like write.table but without the worry
+#' \dontrun{
 #' x <- data.frame(x1 = rnorm(10), x2 = rnorm(10))
 #' wcsv(x, "file.csv")
+#' }
 
 wcsv <- function(..., sep = ',', row.names = FALSE) {
 	write.table(..., sep = sep, row.names = row.names)

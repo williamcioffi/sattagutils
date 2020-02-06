@@ -4,14 +4,16 @@
 \alias{plot_series}
 \title{plotting function for series datastream.}
 \usage{
-plot_series(s, show_gaps = FALSE, new = TRUE, points = TRUE,
+plot_series(s, show_gaps = TRUE, new = TRUE, points = TRUE,
   lines = TRUE, pch = 16, cex = 0.5, col.lines = "black",
-  col.points = "black", ...)
+  col.points = "black", col.gaps = col.lines, ylim,
+  gap_plotting_buffer = 0.15, ylab = "Depth (meters)", xlab = "",
+  axes = TRUE, ...)
 }
 \arguments{
 \item{s}{a series data stream or a dataframe approximating one. requires columns numeric \code{Date}, numeric \code{Depth}.right now also requires to have at least 2 rows that is so i can calculate the sampling period. see readme for more information about this.}
 
-\item{show_gaps}{boolean defaults to FALSE. if TRUE pink rectangles will show the data gaps}
+\item{show_gaps}{boolean defaults to TRUE. If TRUE, will print blocks at the top of the plotting area to indicate data gaps.}
 
 \item{new}{boolean defaults to TRUE. draw a new plot if this is TRUE otherwise draw on whatever you have up.}
 

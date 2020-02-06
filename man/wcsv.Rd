@@ -21,8 +21,10 @@ please don't use write_csv or any of that other nonesense, it breaks everyone's 
 }
 \examples{
 # use it just like write.table but without the worry
+\dontrun{
 x <- data.frame(x1 = rnorm(10), x2 = rnorm(10))
 wcsv(x, "file.csv")
+}
 }
 \seealso{
 Other sensible csv functions: \code{\link{rcsv}}

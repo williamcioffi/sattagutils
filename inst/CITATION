@@ -1,0 +1,14 @@
+citHeader("To cite sattagutils in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "sattagutils: utils for manupulating sat tag output",
+  author   = "William R. Cioffi",
+  year     = "2020",
+  note     = "R package version 0.2.0",
+  url      = "https://github.com/williamcioffi/sattagutils",
+# doi      = "",
+  textVersion = paste(
+    "Cioffi WR (2020). sattagutils: utils for manupulating sat tag output. R package version 0.2.0. https://github.com/williamcioffi/sattagutils."
+  )
+)

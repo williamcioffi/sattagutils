@@ -102,12 +102,24 @@ setMethod("getstream", "tagstack", function(x, type, squash = FALSE) {
   streams <- streamtype(x)
   picks <- lapply(streams, function(s) s == type)
   out <- x
-  for(i in 1:length(picks))
+  kill <- vector()
+  for(i in 1:length(picks)) {
     if(any(picks[[i]])) {
       out[[i]] <- out[[i]][picks[[i]]]
+    } else {
+      kill <- c(kill, i) # can't find any streams then remember which to kill at end
     }
+  }
   
-  if(squash) {
+  # go back and remove any index that had no matching streams
+  # if there weren't any matching streams over the whole tagstack throw an error.
+  if(length(kill) == length(out)) {
+    stop(paste0("i didn't find any ", type, " streams..."))
+  } else if(length(kill) > 0) {
+    out[kill] <- NULL 
+  }
+  
+  if(squash) { # if everything got nulled above this will throw an error
     fnames <- do.call('c', filename(out))
     names(fnames) <- NULL
 

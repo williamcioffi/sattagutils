@@ -11,7 +11,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' tags <- batch_load_tags("~/path/to/tags/")
+#' tags <- batch_load_tags("path/to/tags/")
 #' }
 
 batch_load_tags <- function(
@@ -23,8 +23,8 @@ batch_load_tags <- function(
 ) {
 	
 	# need at least a valid data_dir to proceed
-	if(!hasArg(data_dir)) stop("i need a data directory to look for tags...")
-	if(!file.exists(data_dir)) stop(data_dir, ": i don't think that data directory exists...")
+	if(!hasArg(data_dir)) stop("I need a data directory to look for tags...")
+	if(!dir.exists(data_dir)) stop(data_dir, ": i don't think that data directory exists...")
 	
 	streams <- tolower(streams)
 	
