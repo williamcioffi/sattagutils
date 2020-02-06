@@ -9,7 +9,6 @@
 - `duplicated\_sattagstream` find duplicates aware that some columns might be different
 
 ## MAJOR CHANGES
-- see above added functions
 
 ## MINOR CHANGES
 - updated description
