@@ -9,6 +9,6 @@ citEntry(
   url      = "https://github.com/williamcioffi/sattagutils",
 # doi      = "",
   textVersion = paste(
-    "Cioffi WR (2020). sattagutils: a collection of utils to help with manupulating sat tag output. R package version 0.2.0. https://github.com/williamcioffi/sattagutils."
+    "Cioffi WR (2020). sattagutils: utils for manupulating sat tag output. R package version 0.2.0. https://github.com/williamcioffi/sattagutils."
   )
 )
