@@ -4,8 +4,13 @@
 \alias{batch_load_tags}
 \title{batch load sat tags}
 \usage{
-batch_load_tags(data_dir, tags_dir = NA, ignore = NA, streams = NA,
-  stream_delim = "-")
+batch_load_tags(
+  data_dir,
+  tags_dir = NA,
+  ignore = NA,
+  streams = NA,
+  stream_delim = "-"
+)
 }
 \arguments{
 \item{data_dir}{character points to a directory of sat tags}
@@ -30,6 +35,7 @@ tags <- batch_load_tags("path/to/tags/")
 }
 }
 \seealso{
-Other tag stream loaders: \code{\link{load_tag}}
+Other tag stream loaders: 
+\code{\link{load_tag}()}
 }
 \concept{tag stream loaders}

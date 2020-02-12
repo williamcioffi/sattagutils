@@ -27,6 +27,7 @@ latlond.hav(-6.72, 147, -4.67, -174.52)
 \url{https://www.movable-type.co.uk/scripts/latlong.html}
 }
 \seealso{
-Other distance functions: \code{\link{torad}}
+Other distance functions: 
+\code{\link{torad}()}
 }
 \concept{distance functions}

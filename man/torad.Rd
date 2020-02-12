@@ -19,6 +19,7 @@ convert degrees to radians
 torad(180)
 }
 \seealso{
-Other distance functions: \code{\link{latlond.hav}}
+Other distance functions: 
+\code{\link{latlond.hav}()}
 }
 \concept{distance functions}

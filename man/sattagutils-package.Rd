@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: William R. Cioffi \email{wrc14@duke.edu} (000-0003-1182-8578)
+\strong{Maintainer}: William R. Cioffi \email{wrc14@duke.edu} (\href{https://orcid.org/000-0003-1182-8578}{ORCID})
 
 }
 \keyword{internal}

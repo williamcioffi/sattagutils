@@ -25,6 +25,7 @@ tag1 <- load_tag("~/path/to/tags/tag1")
 }
 }
 \seealso{
-Other tag stream loaders: \code{\link{batch_load_tags}}
+Other tag stream loaders: 
+\code{\link{batch_load_tags}()}
 }
 \concept{tag stream loaders}

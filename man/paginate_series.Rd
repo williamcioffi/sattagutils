@@ -4,8 +4,14 @@
 \alias{paginate_series}
 \title{a pagination tool for plotting series datastream.}
 \usage{
-paginate_series(s, increment = 4 * 48, time = "samples", xaxt = "n",
-  las = 1, ...)
+paginate_series(
+  s,
+  increment = 4 * 48,
+  time = "samples",
+  xaxt = "n",
+  las = 1,
+  ...
+)
 }
 \arguments{
 \item{s}{a series data stream or a dataframe approximating one. gets passed to  \code{\link[sattagutils]{plot_series}}.}

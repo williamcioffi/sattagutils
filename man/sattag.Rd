@@ -4,10 +4,17 @@
 \alias{sattag}
 \title{constructor for sattag}
 \usage{
-sattag(data = list(), instrument = character(),
-  DeployID = character(), Ptt = character(), species = character(),
-  location = character(), t_start = numeric(), t_end = numeric(),
-  directory = character())
+sattag(
+  data = list(),
+  instrument = character(),
+  DeployID = character(),
+  Ptt = character(),
+  species = character(),
+  location = character(),
+  t_start = numeric(),
+  t_end = numeric(),
+  directory = character()
+)
 }
 \arguments{
 \item{data}{this should be a list of \code{\link[sattagutils]{sattagstreams-class}}.}

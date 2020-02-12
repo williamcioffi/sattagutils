@@ -44,4 +44,4 @@ Collate:
     'torad.R'
     'wch_html2df.R'
     'wcsv.R'
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

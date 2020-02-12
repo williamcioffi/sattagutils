@@ -28,6 +28,7 @@ rcsv("file.csv")
 }
 }
 \seealso{
-Other sensible csv functions: \code{\link{wcsv}}
+Other sensible csv functions: 
+\code{\link{wcsv}()}
 }
 \concept{sensible csv functions}
