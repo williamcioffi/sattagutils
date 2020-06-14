@@ -58,10 +58,6 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
       # if a stream is in the source but not the target just copy that stream over
         src_streamtype <- streamtype(cur_src[[n]])
         
-print(cur_src[[n]]$DeployID[1])
-print(src_streamtype)
-print(streamtype(target_stack[[cur_tar_index]]))
-        
         if(!(src_streamtype %in% streamtype(target_stack[[cur_tar_index]]))) {
           k <- length(target_stack[[cur_tar_index]]) + 1
           if(identify_original) cur_src[[n]][, 'original'] <- source_lab
