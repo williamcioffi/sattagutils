@@ -8,7 +8,7 @@ setMethod("show", "sattag",
 	function(object) {
 		streamfnames <- filename(object)
 		streamindices <- 1:length(streamfnames)	
-		streams <- paste0(sprintf("%02d", streamindices), "- ", streamfnames)	
+		streams <- paste(sprintf("%02d", streamindices), "-", streamfnames)	
 		streams <- paste(streams, collapse = "\n")
 		cat(paste0("sattag type: ", object@instrument, "\n"))
 		cat(paste0("species: ", object@species, "\n"))
