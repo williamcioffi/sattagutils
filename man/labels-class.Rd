@@ -12,15 +12,21 @@ corresponds to the *-Labels.csv data stream. this csv file appears to be missing
 
 \code{\link[sattagutils]{sattagstream-class}}
 
-Other sattagstream types: \code{\link{all-class}},
-  \code{\link{argos-class}}, \code{\link{behavior-class}},
-  \code{\link{corrupt-class}}, \code{\link{fastgps-class}},
-  \code{\link{histos-class}},
-  \code{\link{locations-class}},
-  \code{\link{minmaxdepth-class}},
-  \code{\link{rawargos-class}}, \code{\link{rtc-class}},
-  \code{\link{series-class}},
-  \code{\link{seriesrange-class}}, \code{\link{sst-class}},
-  \code{\link{status-class}}, \code{\link{summary-class}}
+Other sattagstream types: 
+\code{\link{all-class}},
+\code{\link{argos-class}},
+\code{\link{behavior-class}},
+\code{\link{corrupt-class}},
+\code{\link{fastgps-class}},
+\code{\link{histos-class}},
+\code{\link{locations-class}},
+\code{\link{minmaxdepth-class}},
+\code{\link{rawargos-class}},
+\code{\link{rtc-class}},
+\code{\link{series-class}},
+\code{\link{seriesrange-class}},
+\code{\link{sst-class}},
+\code{\link{status-class}},
+\code{\link{summary-class}}
 }
 \concept{sattagstream types}

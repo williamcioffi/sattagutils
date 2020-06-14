@@ -4,9 +4,15 @@
 \alias{merge_stacks}
 \title{merge tagstacks}
 \usage{
-merge_stacks(target_stack, source_stack, by = "Ptt",
-  remove_duplicates = FALSE, identify_original = FALSE,
-  target_lab = "target", source_lab = "source")
+merge_stacks(
+  target_stack,
+  source_stack,
+  by = "Ptt",
+  remove_duplicates = FALSE,
+  identify_original = FALSE,
+  target_lab = "target",
+  source_lab = "source"
+)
 }
 \arguments{
 \item{by}{the name of the \code{sattag} slot to base the merge on. Should be \code{"Ptt"} or \code{"DeployID"}. Defaults to \code{"Ptt"}.}

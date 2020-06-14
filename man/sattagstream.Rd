@@ -4,8 +4,7 @@
 \alias{sattagstream}
 \title{constructor for sattagstreams}
 \usage{
-sattagstream(type = character(), data = data.frame(),
-  filename = character())
+sattagstream(type = character(), data = data.frame(), filename = character())
 }
 \arguments{
 \item{type}{character of stream type. subclasses exist for: \code{c("all", "argos", "behavior", "corrupt", "fastgps", "histos", "labels", "locations", "minmaxdepth", "rawargos", "rtc", "series", "seriesrange", "stt", "status", "summary")}. anything else will become a generic sattagstream. if you want to add a stream type which requires special methods then you'll have to add it and write them. if you don't need the special methods the generic sattagstream will work fine.}

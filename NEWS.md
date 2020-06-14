@@ -1,3 +1,16 @@
+# CHANGES IN sattagutils VERSION 0.2.1
+
+## MINOR CHANGES
+- new version of roxygen
+- `load_tag` (and therefore `batch_load_tags`) won't load in an empty datastream instead throws a warning. This matters for instance for `merge_stacks` which is trying to add values to an empty data stream when `identify_original = TRUE` see below (and issue #61).
+- `tagstack`s display numbering in `show` (issue #62)
+- `sattag` show is also changed to match the aesthetic of `tagstack`
+- updated `duplicated_sattagstream` help page
+
+## BUG FIXES
+- quick fix for issue #50. When using `merge_stacks` every tag for every stream has a source column added when `identify_original = TRUE`. see code for details, i think i've covered most of the reasonable cases, but there might be a few that slip by where you want something different. hit up the issues if so.
+
+
 # CHANGES IN sattagutils VERSION 0.2.0
 
 ## NEW FEATURES

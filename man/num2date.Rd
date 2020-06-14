@@ -20,6 +20,7 @@ num2date(574153200)
 \seealso{
 \code{\link[base]{as.POSIXct}}
 
-Other date manipulators: \code{\link{date2num}}
+Other date manipulators: 
+\code{\link{date2num}()}
 }
 \concept{date manipulators}

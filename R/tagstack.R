@@ -135,6 +135,7 @@ setMethod("getstream", "tagstack", function(x, type, squash = FALSE) {
 setMethod("show", "tagstack", function(object) {
 	cat(paste0("tagstack of ", length(object), " tags\n"))
 	cat("-----\n")
-	cat(paste(Ptt(object), "-", DeployID(object), "-", sapply(object, function(tag) length(tag)), "streams", collapse = "\n"))
+  tagindices <- 1:length(object)
+	cat(paste(sprintf("%02d", tagindices), "-", Ptt(object), "-", DeployID(object), "-", sapply(object, function(tag) length(tag)), "streams", collapse = "\n"))
 })
 
