@@ -5,7 +5,7 @@ citEntry(
   title    = "sattagutils: utils for manupulating sat tag output",
   author   = "William R. Cioffi",
   year     = "2020",
-  note     = "R package version 0.2.0",
+  note     = "R package version 0.2.1",
   url      = "https://github.com/williamcioffi/sattagutils",
   doi      = "10.5281/zenodo.3893441",
   textVersion = paste(
