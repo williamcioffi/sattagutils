@@ -13,7 +13,16 @@
 
 merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicates = FALSE, identify_original = FALSE, target_lab = "target", source_lab = "source") {
   if(!(by %in% c("Ptt", "DeployID"))) stop("by must be either \'Ptt\' or \'DeployID\'...")
- 
+  
+  # make a source column
+  if(identify_original) {
+    for(stag in 1:length(target_stack)) {
+      for(strm in 1:length(target_stack[[stag]])) {
+        target_stack[[stag]][[strm]][, 'original'] <- target_lab
+      }
+    }
+  }
+  
   # make a key based on 'by'
   if(by == "Ptt") {
     target_key <- Ptt(target_stack)
@@ -28,6 +37,13 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
     # if a tag is in the source but not the target just copy that tag over
     if(!(source_key[i] %in% target_key)) {
       k <- length(target_stack) + 1
+      # add original column to every stream of the tag
+      if(identify_original) {
+        for(p in 1:length(source_stack[[i]])) {
+          source_stack[[i]][[p]][, 'original'] <- source_lab
+        }
+      }
+      # copy it over
       target_stack[[k]] <- source_stack[[i]]
     } else {
       cur_src <- source_stack[[i]]
@@ -41,8 +57,14 @@ merge_stacks <- function(target_stack, source_stack, by = "Ptt", remove_duplicat
       for(n in 1:length(cur_src)) {
       # if a stream is in the source but not the target just copy that stream over
         src_streamtype <- streamtype(cur_src[[n]])
+        
+print(cur_src[[n]]$DeployID[1])
+print(src_streamtype)
+print(streamtype(target_stack[[cur_tar_index]]))
+        
         if(!(src_streamtype %in% streamtype(target_stack[[cur_tar_index]]))) {
           k <- length(target_stack[[cur_tar_index]]) + 1
+          if(identify_original) cur_src[[n]][, 'original'] <- source_lab
           target_stack[[cur_tar_index]][[k]] <- cur_src[[n]]
         } else {
           tar_stream_matches <- which(streamtype(target_stack[[cur_tar_index]]) == src_streamtype)
