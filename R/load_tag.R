@@ -133,21 +133,21 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		} else {
 			tmpstream <- rcsv(path)
 		}
-		
-		# make a new stream object of the correct class
-		tmpdata <- sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
-		
-		# convert times to numeric appropraitely
-		# don't do this for labels since there aren't any dates
-		if(stream_names[s] != "labels") {
-		  tmpdata <- date2num(tmpdata)
-		}
-		
-		# save to the list
-		outdata[[s]] <- tmpdata
-		# save to the names
-		outpaths <- c(outpaths, csvfnames[s])
-		
+    
+    # make a new stream object of the correct class
+    tmpdata <- sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
+    
+    # convert times to numeric appropraitely
+    # don't do this for labels since there aren't any dates
+    if(stream_names[s] != "labels") {
+      tmpdata <- date2num(tmpdata)
+    }
+    
+    # save to the list
+    outdata[[s]] <- tmpdata
+    # save to the names
+    outpaths <- c(outpaths, csvfnames[s])
+  
 				},	# end try block / start catch
 				error = function(err) {
 					# # remove the stream name from the list if it didn't work
@@ -160,7 +160,14 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 	}
 	
 	names(outdata) <- outpaths
-
-	# build a sattag object	
+  
+  # do some final checks
+  outdata <- outdata[sapply(outdata, nrow) > 0]
+  if(length(outdata) < 1) warning(paste0(tag_dir, ": i can't seem to find any suitable data..."))
+	if(length(outdata) < length(outpaths)) {
+    warning(paste0(paste(outpaths[!(outpaths %in% names(outdata))], collapse = ', '), ": i can't seem to find any data..."))
+  }
+  
+  # build a sattag object	
 	sattag(outdata, instrument = instrument, DeployID = DeployID, Ptt = Ptt, species = species, location = location, t_start = t_start, t_end = t_end, directory = tag_dir)
 }
