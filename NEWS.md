@@ -1,3 +1,12 @@
+# CHANGES IN sattagutils VERSION 0.2.2
+
+## MINOR CHANGES
+
+## MAJOR CHANGES
+
+## BUG FIXES
+
+
 # CHANGES IN sattagutils VERSION 0.2.1
 
 ## MINOR CHANGES
