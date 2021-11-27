@@ -137,10 +137,10 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		  
 		  tmpstream <- sattagutils::rcsv(path)
 		  col_labs <- names(tmpstream)
-		  if(!("Tilt"               %in% col_labs)) tmpstream[, 'Tilt'] <- NA
-		  if(!("S11"                %in% col_labs)) tmpstream[, 'Tilt'] <- NA
-		  if(!("ReleaseWetDry"      %in% col_labs)) tmpstream[, 'Tilt'] <- NA
-		  if(!("ReleaseTemperature" %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  if(!("Tilt" %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  if(!("S11" %in% col_labs)) tmpstream[, 'S11'] <- NA
+		  if(!("ReleaseWetDry" %in% col_labs)) tmpstream[, 'ReleaseWetDry'] <- NA
+		  if(!("ReleaseTemperature" %in% col_labs)) tmpstream[, 'ReleaseTemperature'] <- NA
 		  
 		} else {
 			tmpstream <- sattagutils::rcsv(path)
