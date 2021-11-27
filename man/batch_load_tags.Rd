@@ -9,7 +9,8 @@ batch_load_tags(
   tags_dir = NA,
   ignore = NA,
   streams = NA,
-  stream_delim = "-"
+  stream_delim = "-",
+  retain_date_format = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ batch_load_tags(
 \item{streams}{character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} and \code{*-Labels.csv} are expected to populate some of the slots of \code{sattag-class}.}
 
 \item{stream_delim}{character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.}
+
+\item{retain_date_format}{bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates. gets passed to \code{\link[sattagutils]{load_tag}}.}
 }
 \value{
 an S4 object of class \code{\link[sattagutils]{tagstack}}

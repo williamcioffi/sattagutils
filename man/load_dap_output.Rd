@@ -4,12 +4,14 @@
 \alias{load_dap_output}
 \title{load dap output}
 \usage{
-load_dap_output(data_dir, stream_delim = "-")
+load_dap_output(data_dir, stream_delim = "-", retain_date_format = FALSE)
 }
 \arguments{
 \item{data_dir}{the directory path to your data}
 
 \item{stream_delim}{a character which defaults to \code{"-"}. This is what Argos\ Message\ Decoder.exe puts between the tag identifier and the stream name in the csv filenames.}
+
+\item{retain_date_format}{bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates. gets passed to \code{\link[sattagutils]{load_tag}}.}
 }
 \value{
 an S4 object of class \code{\link[sattagutils]{tagstack}}

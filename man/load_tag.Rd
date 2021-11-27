@@ -4,7 +4,7 @@
 \alias{load_tag}
 \title{load a single sat tag}
 \usage{
-load_tag(tag_dir, streams = NA, stream_delim = "-")
+load_tag(tag_dir, streams = NA, stream_delim = "-", retain_date_format = FALSE)
 }
 \arguments{
 \item{tag_dir}{a path to a tag directory containg csv data streams downloaded from the portal.}
@@ -12,6 +12,8 @@ load_tag(tag_dir, streams = NA, stream_delim = "-")
 \item{streams}{a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.}
 
 \item{stream_delim}{character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.}
+
+\item{retain_date_format}{bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates.}
 }
 \value{
 a \code{\link[sattagutils]{sattag}} S4 object.
