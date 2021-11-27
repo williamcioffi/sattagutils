@@ -2,9 +2,9 @@
 
 ## MINOR CHANGES
 - doi updated
-- load\_tag is aware of added columns to status 'Tilt', 'S11', 'ReleaseWetDry', and 'ReleaseTemperature'. If they aren't there they are added with NAs for forward compatability and merge-ability.
+- `load\_tag` is aware of added columns to status 'Tilt', 'S11', 'ReleaseWetDry', and 'ReleaseTemperature'. If they aren't there they are added with NAs for forward compatability and merge-ability.
 - changed various typos
-
+- added a bool param to `batch\_load\_tags`, `load\_gonio\_output`, and `load\_tag` to retain original date formats
 ## MAJOR CHANGES
 - renamed the main branch to 'main'
 
