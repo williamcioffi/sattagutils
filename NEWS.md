@@ -1,11 +1,15 @@
 # CHANGES IN sattagutils VERSION 0.2.2
 
 ## MINOR CHANGES
+- doi updated
+- load\_tag is aware of added columns to status 'Tilt', 'S11', 'ReleaseWetDry', and 'ReleaseTemperature'. If they aren't there they are added with NAs for forward compatability and merge-ability.
+- changed various typos
 
 ## MAJOR CHANGES
+- renamed the main branch to 'main'
 
 ## BUG FIXES
-
+- fix #66 needed a newline in show tagstack
 
 # CHANGES IN sattagutils VERSION 0.2.1
 
