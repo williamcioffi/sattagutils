@@ -1,5 +1,7 @@
 # Contributing to sattagutils
 
+20211022 renamed main branch so you may have to update your local copies if you have any.
+
 ## Issues
 
 - Please include a minimal reproducible example when filing an issue (bug report).
