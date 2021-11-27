@@ -7,6 +7,7 @@
 #' @param ignore character vector of directories to ignore or NA defaults not to ignore any directories.
 #' @param streams character vector limiting which streams to search for. NA defaults to all streams. note \code{*-Summary.csv} and \code{*-Labels.csv} are expected to populate some of the slots of \code{sattag-class}. 
 #' @param stream_delim character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.
+#' @param retain_date_format bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates. gets passed to \code{\link[sattagutils]{load_tag}}.
 #' @return an S4 object of class \code{\link[sattagutils]{tagstack}}
 #' @export
 #' @examples
@@ -19,7 +20,8 @@ batch_load_tags <- function(
 	tags_dir = NA,		# vector of tag dir names to include or NA defaults to every dir in the data_dir
 	ignore = NA,			# vector of tag dir names to ignore or NA defaults to not ignore anything in the data_dir
 	streams = NA,			# vector of data streams (CSV file names) to load in or NA defaults to all data streams in the directory)
-	stream_delim = "-"
+	stream_delim = "-",
+  retain_date_format = FALSE
 ) {
 	
 	# need at least a valid data_dir to proceed
@@ -64,7 +66,7 @@ batch_load_tags <- function(
 	# loop over each tag
 	# and pull the desired streams
 	for(d in 1:length(dpaths)) {
-		out[[d]] <- sattagutils::load_tag(dpaths[d], streams, stream_delim)
+		out[[d]] <- sattagutils::load_tag(dpaths[d], streams, stream_delim, retain_date_format = retain_date_format)
 	}
 	
 	names(out) <- sapply(out, DeployID)

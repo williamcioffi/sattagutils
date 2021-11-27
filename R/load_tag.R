@@ -5,6 +5,7 @@
 #' @param tag_dir a path to a tag directory containg csv data streams downloaded from the portal.
 #' @param streams a character vector limiting which streams to search for. NA default to all streams. note that \code{*-Summary.csv} is expected to populate some of the slots.
 #' @param stream_delim character defaults to \code{"-"}. this is what the wildlife computers portal puts between the tag identifier (sometimes DeployID, sometimes Ptt) and the stream identifier (e.g., Argos, RTC, etc.) in the csv files.
+#' @param retain_date_format bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates.
 #' @return a \code{\link[sattagutils]{sattag}} S4 object.
 #' @export
 #' @examples
@@ -12,7 +13,7 @@
 #' tag1 <- load_tag("~/path/to/tags/tag1")
 #' }
 
-load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
+load_tag <- function(tag_dir, streams = NA, stream_delim = "-", retain_date_format = FALSE) {
 	# constants
 	STREAM_DELIM <- stream_delim 
 	
@@ -147,12 +148,13 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 		}
     
     # make a new stream object of the correct class
-    tmpdata <- sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
+    tmpdata <- sattagutils::sattagstream(stream_names[s], tmpstream, filename = csvfnames[s])
     
-    # convert times to numeric appropraitely
+    # convert times to numeric appropriately
     # don't do this for labels since there aren't any dates
+    # and don't do this if the user has asked to retain date formats
     if(stream_names[s] != "labels") {
-      tmpdata <- sattagutils::date2num(tmpdata)
+      if(!retain_date_format) tmpdata <- sattagutils::date2num(tmpdata)
     }
     
     # save to the list

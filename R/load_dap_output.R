@@ -3,6 +3,7 @@
 #' load a directory of output csv's created by Argos\ Message\ Decoder.exe into a sane tagstack.
 #' @param data_dir the directory path to your data
 #' @param stream_delim a character which defaults to \code{"-"}. This is what Argos\ Message\ Decoder.exe puts between the tag identifier and the stream name in the csv filenames.
+#' @param retain_date_format bool defaults to FALSE. set to TRUE to keep whatever date format the source files are in and not add any additional columns for datenum formatted dates. gets passed to \code{\link[sattagutils]{load_tag}}.
 #' @return an S4 object of class \code{\link[sattagutils]{tagstack}}
 #' @details This functions expects there to be multiple tags concatenated into the same csv files and so returns a tagstack. This isn't a problem if there is only one tag, but it will since return a tagstack of length of 1. You can always un-nest it later. Basically this function just calls \code{\link[sattagutils]{load_tag}} and then deals with the fallout to get things into a nice tagstack. This function also expects Ptts to be unique, which should be the case for a batch of tags running at the same time, but isn't neccessarily true for all time. Nevertheless, the user can't neccessarily be relied upon to always have \code{DeployID} set so perhaps this is the most reasonable first pass?
 #' @export
@@ -11,13 +12,13 @@
 #' tag <- load_dap_output("path/to/dap/csvs/")
 #' }
 
-load_dap_output <- function(data_dir, stream_delim = '-') {
+load_dap_output <- function(data_dir, stream_delim = '-', retain_date_format = FALSE) {
   
   # check args
   if(!hasArg(data_dir)) stop("I need a data directory to look for tags...")
   
   # load in everything together as a badly formatted sattag
-  tmptag <- load_tag(data_dir)
+  tmptag <- load_tag(data_dir, stream_delim = stream_delim, retain_date_format = retain_date_format)
   nstreams <- length(tmptag)
   
   # get unique ptts
