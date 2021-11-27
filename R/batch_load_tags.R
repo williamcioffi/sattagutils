@@ -64,7 +64,7 @@ batch_load_tags <- function(
 	# loop over each tag
 	# and pull the desired streams
 	for(d in 1:length(dpaths)) {
-		out[[d]] <- load_tag(dpaths[d], streams, stream_delim)
+		out[[d]] <- sattagutils::load_tag(dpaths[d], streams, stream_delim)
 	}
 	
 	names(out) <- sapply(out, DeployID)
