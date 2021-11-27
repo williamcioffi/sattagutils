@@ -83,7 +83,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 	    # some behavior has a bunch of extra columns. it is supposed to be 17. but sometimes it is 29. 
 	    # Blanks of Number, Shape, DepthMin, DepthMax, DurationMin, DurationMax are repeated twice right before Shallow and Deep.
 	    # This is crazy but easy to fix as long as it remains consistent.
-	    tmpstream <- rcsv(path)
+	    tmpstream <- sattagutils::rcsv(path)
 	    
 	    if(ncol(tmpstream) == 29) {
 	      warning(paste0(path, ": i'm detecting blank columns in the behavior stream. this is a known oddity of the file format, but you still might want to double check and make sure everything looks ok in your output. if something looks amiss please report it at https://github.com/williamcioffi/sattagutils/issues the file format may have changed..."))
@@ -93,10 +93,10 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
       if(ncol(tmpstream) != 17 & ncol(tmpstream) != 29) warning(paste0(path, ": i was expecting either 17 or 29 columns in behavior stream, but i saw ", ncol(tmpstream), ".", " you might want to double check your input files... and report this at https://github.com/williamcioffi/sattagutils/issues the file format might have changed..."))
 	  } else if(stream_names[s] == "rawargos") {
 			# RAWARGOS always has 4 lines that don't follow the csv format at the end
-			tmpstream <- rcsv(text = paste0(head(readLines(path), -4)), comment.char = "")
+			tmpstream <- sattagutils::rcsv(text = paste0(head(readLines(path), -4)), comment.char = "")
 		} else if(stream_names[s] == "fastgps") {
 			# FASTGPS always has 3 lines that don't follow the csv format at the beginning
-			tmpstream <- rcsv(text = paste0(tail(readLines(path), -3)), comment.char = "")
+			tmpstream <- sattagutils::rcsv(text = paste0(tail(readLines(path), -3)), comment.char = "")
 		} else if(stream_names[s] == "labels") {
 			# labels isn't actually a well formatted csv. and I think it might be missing an EOF? 
 			# also it is a tall table instead of a wide one like every other data stream. go figure.
@@ -116,7 +116,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			
 			tmpstream <- labels
 		} else if(stream_names[s] == "summary") {
-			summarystream <- rcsv(path)
+			summarystream <- sattagutils::rcsv(path)
 			
 			# populate some metadata from summary if we haven't been here before
 			if(length(DeployID) > 0 | length(Ptt) > 0 | length(t_start) > 0 | length(t_end) > 0) {
@@ -124,14 +124,26 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
 			} else {
 				DeployID 	<- as.character(summarystream$DeployID[1])
 				Ptt 		<- as.character(summarystream$Ptt[1])
-				t_start 	<- date2num(summarystream$EarliestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
-				t_end 		<- date2num(summarystream$LatestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
+				t_start 	<- sattagutils::date2num(summarystream$EarliestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
+				t_end 		<- sattagutils::date2num(summarystream$LatestDataTime[1], tz = "UTC", format = "%H:%M:%S %d-%b-%Y")
 			}
 			
 			tmpstream <- summarystream
 			
+		} else if(stream_names[s] == "status") {
+		  # several columns have been added over time to status:
+		  # Tilt, S11, REleaseWetDry, ReleaseTemperature
+		  # if they aren't there then just add them with NAs for merge-ability
+		  
+		  tmpstream <- sattagutils::rcsv(path)
+		  col_labs <- names(tmpstream)
+		  if(!("Tilt"               %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  if(!("S11"                %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  if(!("ReleaseWetDry"      %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  if(!("ReleaseTemperature" %in% col_labs)) tmpstream[, 'Tilt'] <- NA
+		  
 		} else {
-			tmpstream <- rcsv(path)
+			tmpstream <- sattagutils::rcsv(path)
 		}
     
     # make a new stream object of the correct class
@@ -140,7 +152,7 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-") {
     # convert times to numeric appropraitely
     # don't do this for labels since there aren't any dates
     if(stream_names[s] != "labels") {
-      tmpdata <- date2num(tmpdata)
+      tmpdata <- sattagutils::date2num(tmpdata)
     }
     
     # save to the list
