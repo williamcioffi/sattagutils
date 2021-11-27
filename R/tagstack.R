@@ -138,4 +138,3 @@ setMethod("show", "tagstack", function(object) {
   tagindices <- 1:length(object)
 	cat(paste0(paste(sprintf("%02d", tagindices), "-", Ptt(object), "-", DeployID(object), "-", sapply(object, function(tag) length(tag)), "streams", collapse = "\n"), '\n'))
 })
-

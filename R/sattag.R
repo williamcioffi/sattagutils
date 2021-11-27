@@ -207,4 +207,3 @@ x
 
 #' @describeIn filename return a vector of source filenames of all sattagstreams contained in a sattag
 setMethod("filename", "sattag", function(x) sapply(x, function(s) filename(s)))
-
