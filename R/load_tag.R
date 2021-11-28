@@ -96,8 +96,17 @@ load_tag <- function(tag_dir, streams = NA, stream_delim = "-", retain_date_form
 			# RAWARGOS always has 4 lines that don't follow the csv format at the end
 			tmpstream <- sattagutils::rcsv(text = paste0(head(readLines(path), -4)), comment.char = "")
 		} else if(stream_names[s] == "fastgps") {
-			# FASTGPS always has 3 lines that don't follow the csv format at the beginning
-			tmpstream <- sattagutils::rcsv(text = paste0(tail(readLines(path), -3)), comment.char = "")
+			# FASTGPS most of the time has 3 lines that don't follow the csv format at the beginning
+      # otherwise it might have a bunch of unlabeled columns that start with 'X' so check that first
+      tmpstream <- sattagutils::rcsv(path)
+      if(names(tmpstream)[1] == 'X') {
+        warning(paste0(path, ": i'm detecting an uncommon format for fastgps where all the column names start with 'X'. i'm trying to correct, but you might want to double check your input and output files. if something unexpected has happened pelase report this at https://github.com/williamcioffi/sattagutils/issues the file format might have changed...")
+      
+        # horrible hard coding, but that's what this all is like
+        names(tmpstream) <- c("Name","Day","Time","Count","Time.Offset","LocNumber","Failures","Hauled.Out","Satellites","InitLat","InitLon","InitTime","InitType","Latitude","Longitude","Height","Bad.Sats","Residual","Time.Error","TWIC.Power","Fastloc.Power","Noise","Range.Bits","Id","Range","Signal","Doppler","CNR","Id.1","Range.1","Signal.1","Doppler.1","CNR.1","Id.2","Range.2","Signal.2","Doppler.2","CNR.2","Id.3","Range.3","Signal.3","Doppler.3","CNR.3","Id.4","Range.4","Signal.4","Doppler.4","CNR.4","Id.5","Range.5","Signal.5","Doppler.5","CNR.5","Id.6","Range.6","Signal.6","Doppler.6","CNR.6","Id.7","Range.7","Signal.7","Doppler.7","CNR.7","Id.8","Range.8","Signal.8","Doppler.8","CNR.8","Id.9","Range.9","Signal.9","Doppler.9","CNR.9","Id.10","Range.10","Signal.10","Doppler.10","CNR.10","Id.11","Range.11","Signal.11","Doppler.11","CNR.11","Id.12","Range.12","Signal.12","Doppler.12","CNR.12","Id.13","Range.13","Signal.13","Doppler.13","CNR.13","Id.14","Range.14","Signal.14","Doppler.14","CNR.14")
+      } else {
+        tmpstream <- sattagutils::rcsv(text = paste0(tail(readLines(path), -3)), comment.char = "")
+      }
 		} else if(stream_names[s] == "labels") {
 			# labels isn't actually a well formatted csv. and I think it might be missing an EOF? 
 			# also it is a tall table instead of a wide one like every other data stream. go figure.
