@@ -99,9 +99,9 @@ suppressWarnings({
     tagdata <- outtags[[i]]
     names(tagdata) <- names(tmptag)
     tagdata[sapply(tagdata, is.null)] <- NULL
-    sattaglist[[i]] <- sattag(tagdata, Ptt = as.character(u_ptts[i]))
+    sattaglist[[i]] <- sattagutils::sattag(tagdata, Ptt = as.character(u_ptts[i]))
   }
   
   # return a tagstack
-  tagstack(sattaglist)
+  sattagutils::tagstack(sattaglist)
 }
