@@ -21,7 +21,7 @@ _There is no tutorial right now but comming soon._ Some background chitchat is p
 
 For now you can install:
 ```r
-devtools::install_github("williamcioffi/sattagutils")
+remotes::install_github("williamcioffi/sattagutils")
 ```
 
 And you probably want to start with:
