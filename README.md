@@ -7,7 +7,7 @@
 
 * For now, please cite as:
 
-Cioffi WR (2020). sattagutils: a collection of utils to help with manupulating sat tag output. R package version 0.2.0. https://github.com/williamcioffi/sattagutils. (doi:10.5281/zenodo.3647714).
+Cioffi WR (2020). sattagutils: a collection of utils to help with manupulating sat tag output. R package version 0.2.0. https://github.com/williamcioffi/sattagutils. (doi:10.5281/zenodo.3647713).
 
 ## Obligatory warning
 This package is under active dev... things will change.
