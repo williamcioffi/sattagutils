@@ -17,11 +17,11 @@ function to extract source directory from which the tag was loaded.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{tagdir(sattag)}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{tagdir(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

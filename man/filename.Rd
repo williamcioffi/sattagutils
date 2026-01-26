@@ -23,13 +23,13 @@ use this function to get the filename of a \code{\link[sattagutils]{sattagstream
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattagstream}: get the source filename of a sattagstream
+\item \code{filename(sattagstream)}: get the source filename of a sattagstream
 
-\item \code{sattag}: return a vector of source filenames of all sattagstreams contained in a sattag
+\item \code{filename(sattag)}: return a vector of source filenames of all sattagstreams contained in a sattag
 
-\item \code{tagstack}: return a vector of source filenames of all sattagstreams contained in a tagstack
+\item \code{filename(tagstack)}: return a vector of source filenames of all sattagstreams contained in a tagstack
+
 }}
-
 \seealso{
 \code{\link[sattagutils]{sattagstream}}
 

@@ -25,11 +25,11 @@ function to get a particular streamtype from a \code{\link[sattagutils]{sattag}}
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: return all streams of streamtype type
+\item \code{getstream(sattag)}: return all streams of streamtype type
 
-\item \code{tagstack}: return a tagstack of all streams of type
+\item \code{getstream(tagstack)}: return a tagstack of all streams of type
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

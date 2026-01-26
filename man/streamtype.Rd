@@ -23,13 +23,13 @@ use this function to get the stream type of a \code{\link[sattagutils]{sattagstr
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattagstream}: get the streamtype of a sattagstream
+\item \code{streamtype(sattagstream)}: get the streamtype of a sattagstream
 
-\item \code{sattag}: return a vector of stream types of all sattagstreams contained in a sattag
+\item \code{streamtype(sattag)}: return a vector of stream types of all sattagstreams contained in a sattag
 
-\item \code{tagstack}: return a vector of stream types of all sattagstreams contained in a tagstack
+\item \code{streamtype(tagstack)}: return a vector of stream types of all sattagstreams contained in a tagstack
+
 }}
-
 \seealso{
 \code{\link[sattagutils]{sattagstream}}
 

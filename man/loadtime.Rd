@@ -17,11 +17,11 @@ function to extract time a tag was loaded into R originally based on when \code{
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{loadtime(sattag)}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{loadtime(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

@@ -62,31 +62,31 @@ this methods may become defunct if wildlife updates their conventions and will h
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattagstream}: for generic sattagstreams
+\item \code{date2num(sattagstream)}: for generic sattagstreams
 
-\item \code{all}: for *-All.csv. note the different time format.
+\item \code{date2num(all)}: for *-All.csv. note the different time format.
 
-\item \code{behavior}: for *-Behavior.csv
+\item \code{date2num(behavior)}: for *-Behavior.csv
 
-\item \code{corrupt}: for *-Corrupt.csv
+\item \code{date2num(corrupt)}: for *-Corrupt.csv
 
-\item \code{fastgps}: for *-FastGPS.csv
+\item \code{date2num(fastgps)}: for *-FastGPS.csv
 
-\item \code{rawargos}: for *-RawArgos.csv
+\item \code{date2num(rawargos)}: for *-RawArgos.csv
 
-\item \code{rtc}: for *-RTC.csv
+\item \code{date2num(rtc)}: for *-RTC.csv
 
-\item \code{series}: for *-Series.csv
+\item \code{date2num(series)}: for *-Series.csv
 
-\item \code{seriesrange}: for *-SeriesRange.csv
+\item \code{date2num(seriesrange)}: for *-SeriesRange.csv
 
-\item \code{locations}: for *-Locations.csv
+\item \code{date2num(locations)}: for *-Locations.csv
 
-\item \code{status}: for *-Status.csv
+\item \code{date2num(status)}: for *-Status.csv
 
-\item \code{summary}: for *-Summary.csv note: not sure how to implement ReleaseDate or DeployDate...
+\item \code{date2num(summary)}: for *-Summary.csv note: not sure how to implement ReleaseDate or DeployDate...
+
 }}
-
 \examples{
 date2num("1988-03-12 07:00:00", tz = "UTC", format = "\%Y-\%m-\%d \%H:\%M:\%S")
 }

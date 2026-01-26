@@ -17,11 +17,11 @@ function to extract DeployID.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{DeployID(sattag)}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{DeployID(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{Ptt}()},

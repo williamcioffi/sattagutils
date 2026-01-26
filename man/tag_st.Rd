@@ -23,15 +23,15 @@ function to extract the data start time for a particular tag. if \code{\link[sat
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{tag_st(sattag)}: method for sattag
 
-\item \code{sattag}: method for sattag
+\item \code{tag_st(sattag) <- value}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{tag_st(tagstack)}: method for tagstack
 
-\item \code{tagstack}: method for tagstack
+\item \code{tag_st(tagstack) <- value}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

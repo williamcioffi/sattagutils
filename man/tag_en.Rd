@@ -20,13 +20,13 @@ function to extract the data end time for a particular tag. if \code{\link[satta
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{tag_en(sattag)}: method for sattag
 
-\item \code{sattag}: method for sattag
+\item \code{tag_en(sattag) <- value}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{tag_en(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

@@ -17,11 +17,11 @@ function to extract instrument type (e.g., SPOT6, MK10-A, etc).
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{instrument(sattag)}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{instrument(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

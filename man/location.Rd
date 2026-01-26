@@ -17,11 +17,11 @@ function to extract study location as defined in *-Labels.csv.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{sattag}: method for sattag
+\item \code{location(sattag)}: method for sattag
 
-\item \code{tagstack}: method for tagstack
+\item \code{location(tagstack)}: method for tagstack
+
 }}
-
 \seealso{
 Other slot access functions: 
 \code{\link{DeployID}()},

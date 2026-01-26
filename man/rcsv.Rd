@@ -11,7 +11,7 @@ rcsv(..., header = TRUE, sep = ",", stringsAsFactors = FALSE)
 
 \item{header}{i always want a header}
 
-\item{sep}{we're talking about comma seperated values here.}
+\item{sep}{we're talking about comma separated values here.}
 
 \item{stringsAsFactors}{default is FALSE. please don't change that. why would you change that?}
 }
