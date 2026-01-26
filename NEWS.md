@@ -6,8 +6,10 @@
 - changed various typos
 - added a bool param to `batch\_load\_tags`, `load\_gonio\_output`, and `load\_tag` to retain original date formats
 - added support for a rare-ish fastgps format in `load\_tag`. Don't worry this format makes even less sense than the other (also) broken format.
+
 ## MAJOR CHANGES
 - renamed the main branch to 'main'
+- added a simplier segementation algorithm `serseg`
 
 ## BUG FIXES
 - fix #66 needed a newline in show tagstack

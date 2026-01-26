@@ -1,7 +1,7 @@
 Package: sattagutils
 Title: utils for manupulating sat tag output
 Version: 0.2.2
-Date: 2020-02-05
+Date: 2026-01-26
 Authors@R: person("William R.", "Cioffi", email = "wrc14@duke.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1182-8578"))
 Author: William R. Cioffi [aut, cre]
 Maintainer: William R. Cioffi <wrc14@duke.edu>
